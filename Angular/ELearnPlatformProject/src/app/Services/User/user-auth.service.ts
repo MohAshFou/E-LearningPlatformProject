@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -7,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 export class UserAuthService {
 
    private authSubject:BehaviorSubject<boolean>
-  constructor() {
+  constructor( private rout:ActivatedRoute) {
 
  this.authSubject=new BehaviorSubject<boolean>(false)
 
@@ -16,13 +17,16 @@ export class UserAuthService {
 
 
   login(){
+    //  to return 
 
- //localStorage.setItem("token","gghhhhhhhhhhhhhhhh");
+    let retuURL=this.rout.snapshot.queryParamMap.get('returnURL') ||'/'
+
+     //localStorage.setItem("token","gghhhhhhhhhhhhhhhh");
 
 
 
- // send true all in subicribe
- this.authSubject.next(true)
+      // send true all in subicribe
+      this.authSubject.next(true)
 
   }
 
