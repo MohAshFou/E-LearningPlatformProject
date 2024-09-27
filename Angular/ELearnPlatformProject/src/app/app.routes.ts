@@ -3,9 +3,11 @@ import { NotFoundComponent } from './Component/NotFound/not-found/not-found.comp
 import { StudentComponent } from './Component/student/student/student.component';
 import { LoginComponent } from './Component/Login/login/login.component';
 import { RegistrationComponent } from './Component/Registration/registration/registration.component';
+import { TeacherComponent } from './Component/Teacher/teacher.component';
+import { authGuard } from './Guards/auth.guard';
 
 export const routes: Routes = [
-  {path:"", redirectTo:"Login",pathMatch:"full"
+  {path:"", redirectTo:"Login",pathMatch:"full" ,
   }
   ,
 
@@ -16,6 +18,9 @@ export const routes: Routes = [
   }
 ,
   {path:"Student",component: StudentComponent
+  }
+  ,
+  {path:"teacher",component: TeacherComponent,  canActivate:[authGuard]
   }
   ,
 

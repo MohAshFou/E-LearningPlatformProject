@@ -1,22 +1,30 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\OneDrive\\Desktop\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\",
+  "WorkspaceRootPath": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2AAABE70-D7D6-4B1B-ACBF-4B0C0239649C}|EduPlatformAPI\\EduPlatformAPI.csproj|d:\\onedrive\\desktop\\iti\\e-learningplatformproject\\api\\eduplatformapi\\eduplatformapi\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2AAABE70-D7D6-4B1B-ACBF-4B0C0239649C}|EduPlatformAPI\\EduPlatformAPI.csproj|solutionrelative:eduplatformapi\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2AAABE70-D7D6-4B1B-ACBF-4B0C0239649C}|EduPlatformAPI\\EduPlatformAPI.csproj|d:\\onedrive\\desktop\\iti\\projects\\e-learningplatformproject\\api\\eduplatformapi\\eduplatformapi\\controllers\\teachercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2AAABE70-D7D6-4B1B-ACBF-4B0C0239649C}|EduPlatformAPI\\EduPlatformAPI.csproj|solutionrelative:eduplatformapi\\controllers\\teachercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2AAABE70-D7D6-4B1B-ACBF-4B0C0239649C}|EduPlatformAPI\\EduPlatformAPI.csproj|d:\\onedrive\\desktop\\iti\\e-learningplatformproject\\api\\eduplatformapi\\eduplatformapi\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2AAABE70-D7D6-4B1B-ACBF-4B0C0239649C}|EduPlatformAPI\\EduPlatformAPI.csproj|solutionrelative:eduplatformapi\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2AAABE70-D7D6-4B1B-ACBF-4B0C0239649C}|EduPlatformAPI\\EduPlatformAPI.csproj|d:\\onedrive\\desktop\\iti\\projects\\e-learningplatformproject\\api\\eduplatformapi\\eduplatformapi\\controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2AAABE70-D7D6-4B1B-ACBF-4B0C0239649C}|EduPlatformAPI\\EduPlatformAPI.csproj|solutionrelative:eduplatformapi\\controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2AAABE70-D7D6-4B1B-ACBF-4B0C0239649C}|EduPlatformAPI\\EduPlatformAPI.csproj|d:\\onedrive\\desktop\\iti\\e-learningplatformproject\\api\\eduplatformapi\\eduplatformapi\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2AAABE70-D7D6-4B1B-ACBF-4B0C0239649C}|EduPlatformAPI\\EduPlatformAPI.csproj|d:\\onedrive\\desktop\\iti\\projects\\e-learningplatformproject\\api\\eduplatformapi\\eduplatformapi\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2AAABE70-D7D6-4B1B-ACBF-4B0C0239649C}|EduPlatformAPI\\EduPlatformAPI.csproj|solutionrelative:eduplatformapi\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2AAABE70-D7D6-4B1B-ACBF-4B0C0239649C}|EduPlatformAPI\\EduPlatformAPI.csproj|d:\\onedrive\\desktop\\iti\\e-learningplatformproject\\api\\eduplatformapi\\eduplatformapi\\controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2AAABE70-D7D6-4B1B-ACBF-4B0C0239649C}|EduPlatformAPI\\EduPlatformAPI.csproj|solutionrelative:eduplatformapi\\controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2AAABE70-D7D6-4B1B-ACBF-4B0C0239649C}|EduPlatformAPI\\EduPlatformAPI.csproj|d:\\onedrive\\desktop\\iti\\projects\\e-learningplatformproject\\api\\eduplatformapi\\eduplatformapi\\dto\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2AAABE70-D7D6-4B1B-ACBF-4B0C0239649C}|EduPlatformAPI\\EduPlatformAPI.csproj|solutionrelative:eduplatformapi\\dto\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2AAABE70-D7D6-4B1B-ACBF-4B0C0239649C}|EduPlatformAPI\\EduPlatformAPI.csproj|d:\\onedrive\\desktop\\iti\\projects\\e-learningplatformproject\\api\\eduplatformapi\\eduplatformapi\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2AAABE70-D7D6-4B1B-ACBF-4B0C0239649C}|EduPlatformAPI\\EduPlatformAPI.csproj|solutionrelative:eduplatformapi\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2AAABE70-D7D6-4B1B-ACBF-4B0C0239649C}|EduPlatformAPI\\EduPlatformAPI.csproj|d:\\onedrive\\desktop\\iti\\projects\\e-learningplatformproject\\api\\eduplatformapi\\eduplatformapi\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2AAABE70-D7D6-4B1B-ACBF-4B0C0239649C}|EduPlatformAPI\\EduPlatformAPI.csproj|solutionrelative:eduplatformapi\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 1126,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,13 +46,39 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TeacherController.cs",
+              "DocumentMoniker": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\Controllers\\TeacherController.cs",
+              "RelativeDocumentMoniker": "EduPlatformAPI\\Controllers\\TeacherController.cs",
+              "ToolTip": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\Controllers\\TeacherController.cs",
+              "RelativeToolTip": "EduPlatformAPI\\Controllers\\TeacherController.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAswBYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-27T20:44:47.773Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "UserDTO.cs",
+              "DocumentMoniker": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\DTO\\UserDTO.cs",
+              "RelativeDocumentMoniker": "EduPlatformAPI\\DTO\\UserDTO.cs",
+              "ToolTip": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\DTO\\UserDTO.cs",
+              "RelativeToolTip": "EduPlatformAPI\\DTO\\UserDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-27T15:30:24.478Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "StudentController.cs",
-              "DocumentMoniker": "D:\\OneDrive\\Desktop\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\Controllers\\StudentController.cs",
+              "DocumentMoniker": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\Controllers\\StudentController.cs",
               "RelativeDocumentMoniker": "EduPlatformAPI\\Controllers\\StudentController.cs",
-              "ToolTip": "D:\\OneDrive\\Desktop\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\Controllers\\StudentController.cs",
+              "ToolTip": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\Controllers\\StudentController.cs",
               "RelativeToolTip": "EduPlatformAPI\\Controllers\\StudentController.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAswBYAAAAHAAAA",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAAABEAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-27T12:54:37.218Z",
               "EditorCaption": ""
@@ -53,35 +87,34 @@
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "AdminController.cs",
-              "DocumentMoniker": "D:\\OneDrive\\Desktop\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\Controllers\\AdminController.cs",
+              "DocumentMoniker": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\Controllers\\AdminController.cs",
               "RelativeDocumentMoniker": "EduPlatformAPI\\Controllers\\AdminController.cs",
-              "ToolTip": "D:\\OneDrive\\Desktop\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\Controllers\\AdminController.cs",
+              "ToolTip": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\Controllers\\AdminController.cs",
               "RelativeToolTip": "EduPlatformAPI\\Controllers\\AdminController.cs",
-              "ViewState": "AQIAAAoAAAAAAAAAAAAswBIAAAAAAAAA",
+              "ViewState": "AQIAAAoAAAAAAAAAAAA9wB4AAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-27T12:20:49.431Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "AuthService.cs",
-              "DocumentMoniker": "D:\\OneDrive\\Desktop\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\Services\\AuthService.cs",
+              "DocumentMoniker": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\Services\\AuthService.cs",
               "RelativeDocumentMoniker": "EduPlatformAPI\\Services\\AuthService.cs",
-              "ToolTip": "D:\\OneDrive\\Desktop\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\Services\\AuthService.cs",
+              "ToolTip": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\Services\\AuthService.cs",
               "RelativeToolTip": "EduPlatformAPI\\Services\\AuthService.cs",
               "ViewState": "AQIAAAsAAAAAAAAAAAAswB0AAAAGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-27T10:04:02.281Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-27T10:04:02.281Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "AccountController.cs",
-              "DocumentMoniker": "D:\\OneDrive\\Desktop\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\Controllers\\AccountController.cs",
+              "DocumentMoniker": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "EduPlatformAPI\\Controllers\\AccountController.cs",
-              "ToolTip": "D:\\OneDrive\\Desktop\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\Controllers\\AccountController.cs",
+              "ToolTip": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\Controllers\\AccountController.cs",
               "RelativeToolTip": "EduPlatformAPI\\Controllers\\AccountController.cs",
               "ViewState": "AQIAACsAAAAAAAAAAAAwwDIAAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",

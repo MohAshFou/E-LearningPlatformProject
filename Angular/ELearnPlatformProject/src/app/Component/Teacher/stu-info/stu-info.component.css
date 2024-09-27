@@ -1,0 +1,83 @@
+.container{
+    background-color: #DCDCDC;
+    height: 739px;
+    position: relative;
+    left: 90px;
+}
+.bodyy{
+    background-color: #191970;
+    font-weight: bold;
+    color: white;
+    width: 200px;
+    position: relative;
+    left: 80px;
+    top: 100px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+upload{
+    /* text-align: center; */
+    position: relative;
+    left: 50px;
+}
+pre{
+    font-size: 17px;
+}
+#upload{
+    position: relative;
+     left: 100px;
+     bottom: 3px;
+     border-radius: 20px;
+}
+.bodyInput{
+    background-color: #6495ED;
+    position: relative;
+    top: 70px;
+
+}
+.paragraph{
+    color: white;
+}
+.p{
+    text-align: center;
+}
+.LessonStyle{
+    position: relative;
+    top: 100px;
+}
+.Level1{
+    padding: 3px;
+    background-color: #696969;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+
+}
+.Level2{
+    padding: 3px;
+    background-color: #696969;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    
+}
+.Level3{
+    padding: 3px;
+    background-color: #696969;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.table{
+    background-color: #B0C4DE;
+    position: relative;
+    top: 40px;
+}
+th{
+    text-align: center;
+}
+td{
+    text-align: center;
+}

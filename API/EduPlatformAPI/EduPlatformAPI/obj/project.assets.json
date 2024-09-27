@@ -4248,11 +4248,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\OneDrive\\Desktop\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\EduPlatformAPI.csproj",
+      "projectUniqueName": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\EduPlatformAPI.csproj",
       "projectName": "EduPlatformAPI",
-      "projectPath": "D:\\OneDrive\\Desktop\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\EduPlatformAPI.csproj",
+      "projectPath": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\EduPlatformAPI.csproj",
       "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-      "outputPath": "D:\\OneDrive\\Desktop\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\obj\\",
+      "outputPath": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
