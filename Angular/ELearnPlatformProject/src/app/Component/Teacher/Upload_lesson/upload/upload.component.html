@@ -1,0 +1,67 @@
+<div class="video-upload-container">
+  <div class="search-bar">
+    <input type="text" placeholder="Search">
+    <div class="profile">
+      <select>
+        <option>ENG</option>
+        <option>AR</option>
+      </select>
+      <div class="notifications">
+        <span class="notification-icon">🔔</span>
+        <span class="notification-count">2</span>
+      </div>
+      <div class="profile-info">
+        <span>Teacher {{ Name }}</span>
+        <img src="path-to-avatar-image" alt="Profile Picture">
+      </div>
+    </div>
+  </div>
+
+  <div class="video-upload-box">
+    <div class="upload-section">
+      <div class="upload-area">
+        <p>Drag and drop Video File</p>
+        <span>Or</span>
+        <button (click)="openFileDialog()">Browse</button>
+        <input type="file" accept="video/*" (change)="onFileSelected($event)" hidden>
+      </div>
+    </div>
+
+    <div class="progress-section" *ngIf="uploadInProgress">
+      <p>{{ fileName }} - {{ uploadProgress }}% done</p>
+      <progress [value]="uploadProgress" max="100"></progress>
+      <button (click)="cancelUpload()">X</button>
+    </div>
+
+    <div class="url-import">
+      <label for="video-url">Import from URL</label>
+      <input id="video-url" type="text" [(ngModel)]="videoUrl">
+      <button (click)="uploadFromUrl()">Upload</button>
+    </div>
+
+    <form class="video-details" (ngSubmit)="submitVideo()">
+      <label for="title">Video Title</label>
+      <input id="title" type="text" [(ngModel)]="videoTitle" name="title" required>
+
+      <label for="level">Level</label>
+      <select id="level" [(ngModel)]="videoLevel" name="level" required>
+        <option>Select The Level</option>
+
+      </select>
+
+      <label for="price">Price</label>
+      <input id="price" type="number" [(ngModel)]="videoPrice" name="price" required>
+
+      <label for="date">Date</label>
+      <input id="date" type="date" [(ngModel)]="uploadDate" name="date" required>
+
+      <label for="time">Time</label>
+      <input id="time" type="time" [(ngModel)]="uploadTime" name="time" required>
+
+      <label for="description">Description</label>
+      <textarea id="description" [(ngModel)]="videoDescription" name="description" required></textarea>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>

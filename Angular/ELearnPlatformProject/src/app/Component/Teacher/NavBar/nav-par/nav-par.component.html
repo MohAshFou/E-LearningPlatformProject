@@ -1,26 +1,22 @@
-<div class="container-fluid"  >
-  <div class="row"  >
-    <nav class="col-md-2 d-none d-md-block sidebar">
-      <div class="sidebar-sticky" >
-        <ul  class="nav flex-column" >
-          <li id="Name" class="nav-item">Welcome {{Name}}</li>
-          <li class="nav-item">
-            <a class="nav-link active" href="#"><img class="Dashboard" src="Images/Dashboard2.PNG"> Dashboard </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"><img class="Dashboard" src="Images/lesson.PNG"> Lessons </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"> <img class="Dashboard" src="Images/upload.PNG">Upload Lesson</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"><img class="Dashboard" src="Images/book.PNG"> Home Work</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"><img class="Dashboard" src="Images/chat.PNG">Chat</a>
-          </li>      
-        </ul>
-      </div>
-    </nav>
-
-   
+<nav class="col-md-2 d-none d-md-block sidebar">
+  <div class="sidebar-sticky">
+    <ul class="nav flex-column">
+      <li id="Name" class="nav-item">Welcome {{ Name }}</li>
+      <li class="nav-item">
+        <a class="nav-link active" routerLink="/teacher"> <img class="Dashboard" src="Images/Dashboard2.PNG"> Dashboard </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="Lessons/"><img class="Dashboard" src="Images/lesson.PNG"> Lessons </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="upload/"><img class="Dashboard" src="Images/upload.PNG"> Upload Lesson</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="homework/"><img class="Dashboard" src="Images/book.PNG"> Home Work</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="chat/"><img class="Dashboard" src="Images/chat.PNG"> Chat</a>
+      </li>
+    </ul>
+  </div>
+</nav>

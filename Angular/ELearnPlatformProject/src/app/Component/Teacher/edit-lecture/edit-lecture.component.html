@@ -1,0 +1,27 @@
+
+   <div class="modal-backdrop" (click)="closeModal()"></div>
+
+   <div class="modal-content">
+     <div class="edit-lecture">
+       <h2>Edit Lecture</h2>
+   
+       <label>Title:</label>
+       <input [(ngModel)]="editedLecture.title" />
+   
+       <label>Description:</label>
+       <input [(ngModel)]="editedLecture.description" />
+   
+       <label>Date:</label>
+       <input [(ngModel)]="editedLecture.date" />
+   
+       <label>Time:</label>
+       <input [(ngModel)]="editedLecture.time" />
+   
+       <label>Price:</label>
+       <input [(ngModel)]="editedLecture.price" />
+   
+       <button (click)="onSave()">Save</button>
+       <button (click)="closeModal()">Cancel</button>
+     </div>
+   </div>
+   

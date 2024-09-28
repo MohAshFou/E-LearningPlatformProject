@@ -1,7 +1,9 @@
 ﻿using EduPlatformAPI.Models;
+using EduPlatformAPI.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace EduPlatformAPI.Controllers
 {
@@ -10,24 +12,27 @@ namespace EduPlatformAPI.Controllers
     [ApiController]
     public class AdminController : ControllerBase
     {
+       
         private readonly EduPlatformDbContext context;
-
-        public AdminController(EduPlatformDbContext context)
+        private readonly GenerateUserAndPass Service;
+        public AdminController(EduPlatformDbContext context, GenerateUserAndPass service)
         {
             this.context = context;
+            this.Service = service;
         }
 
-        [HttpGet("Getall")]
-        public IActionResult Getall() { 
-        
-                List<string> users = context.Users.Select(e=> e.Name).ToList();
 
-            if (users == null || users.Count == 0)
-            {
-                return NotFound("No users found.");
-            }
 
-            return Ok(users);
+        [HttpGet("GengenerateUAndP")]
+        public IActionResult GengenerateUAndP()
+        {
+
+
+            var NewUser = Service.GenerateRandomUserAndPassForStuden();
+
+            return Ok(NewUser);
         }
+
+
     }
 }

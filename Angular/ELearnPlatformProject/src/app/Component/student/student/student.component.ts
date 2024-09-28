@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UserAuthService } from '../../../Services/User/user-auth.service';
 
 @Component({
   selector: 'app-student',
@@ -7,6 +8,25 @@ import { Component } from '@angular/core';
   templateUrl: './student.component.html',
   styleUrl: './student.component.css'
 })
-export class StudentComponent {
+export class StudentComponent implements OnInit {
+
+  Name=""
+
+ constructor( private service:UserAuthService){}
+
+
+
+
+
+  ngOnInit(): void {
+    this.service.getRoleAndName().subscribe({
+     next: (d) => {
+        this.Name= d.username
+     },
+     error: (e: any) => {
+
+     }
+   });
+   }
 
 }

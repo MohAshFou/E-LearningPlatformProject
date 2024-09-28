@@ -1,7 +1,10 @@
 ﻿using EduPlatformAPI.DTO;
+using EduPlatformAPI.DTO.User;
 using EduPlatformAPI.Models;
 using EduPlatformAPI.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -19,13 +22,13 @@ namespace EduPlatformAPI.Controllers
         private readonly AuthService authService;
         private readonly IConfiguration config;
 
-        public AccountController(  AuthService _authService , IConfiguration config)
+        public AccountController(AuthService _authService, IConfiguration config)
         {
             authService = _authService;
             this.config = config;
         }
         [HttpPost("login")]
-        public IActionResult Login([FromBody]  UserDTO us) {
+        public IActionResult Login([FromBody] UserDTO us) {
 
             if (ModelState.IsValid) {
                 var user = authService.AuthenticateUser(us);
@@ -36,12 +39,12 @@ namespace EduPlatformAPI.Controllers
 
                 var token = GenerateJwtToken(user);
 
-                return Ok(new { token });
+                return Ok(new { token ,user.Role });
 
 
 
             }
-           return BadRequest();
+            return BadRequest();
         }
         private string GenerateJwtToken(User user)
         {
@@ -52,8 +55,9 @@ namespace EduPlatformAPI.Controllers
             {
             new Claim(JwtRegisteredClaimNames.Sub, user.Name),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+             new Claim(ClaimTypes.Name, user.Name),
             new Claim(ClaimTypes.Role, user.Role)
-        };
+             };
 
             var token = new JwtSecurityToken(
                 issuer: config["Jwt:Issuer"],
@@ -65,5 +69,29 @@ namespace EduPlatformAPI.Controllers
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
+
+
+        [HttpGet("getuserinfo")]
+        [Authorize]
+        // extract name and role from token
+        public IActionResult GetUserInfo()
+        {
+            var username = User.Identity.Name;
+            var role = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value;
+
+            var userInfo = new UserInfoDto
+            {
+                Username = username,
+                Role = role
+            };
+
+
+            return Ok(userInfo);
+
+
+        }
+
     }
-}
+   
+    }
+

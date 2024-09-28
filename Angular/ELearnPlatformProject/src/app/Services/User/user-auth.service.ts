@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { Observable, firstValueFrom } from 'rxjs';
 import { environment } from '../../../environments/environment.development';
 
 @Injectable({
@@ -9,46 +10,35 @@ import { environment } from '../../../environments/environment.development';
 })
 export class UserAuthService {
 
+
+
+
+
+
    private authSubject:BehaviorSubject<boolean>
   constructor( private rout:ActivatedRoute , private  Clinent:HttpClient) {
-
- this.authSubject=new BehaviorSubject<boolean>(false)
+    console.log('UserAuthService instance created');
+    this.authSubject=new BehaviorSubject<boolean>(false)
 
 
   }
 
-
-
-  login(email: string, password: string): void {
+  login(email: string, password: string):Observable<any> {
     const user = { Email: email, Password: password };
 
-
-    this.Clinent.post<any>(`${environment.baseUrl}Account/Login`, user).subscribe({
-      next: (d) => {
-        const token = d.token;
-        const returnURL = this.rout.snapshot.queryParamMap.get('returnURL') || '/';
-        localStorage.setItem('token', token);
-
-        this.authSubject.next(true);
-      },
-      error: (e) => {
-       
-        this.authSubject.next(false);
-      }
-    });
+     return  this.Clinent.post<any>(`${environment.baseUrl}Account/Login`, user);
   }
-
 
   Logout(){
 
-   // localStorage.removeItem("token");
+    localStorage.removeItem("token");
+    localStorage.removeItem('mm');
 
     this.authSubject.next(false)
 
      }
 
-     getUserLogged():boolean{
-    //                  اكيد هنتحقق ف الاول
+    getUserLogged():boolean{
       return  localStorage.getItem("token")?true:false
      }
 
@@ -61,4 +51,21 @@ getToken(){
   return localStorage.getItem("token")?localStorage.getItem("token"):null
 }
 
+
+getRoleAndName(): Observable<any> {
+
+  return this.Clinent.get<any>(`${environment.baseUrl}Account/getuserinfo`);
 }
+
+ 
+
+}
+
+
+
+
+
+
+
+
+

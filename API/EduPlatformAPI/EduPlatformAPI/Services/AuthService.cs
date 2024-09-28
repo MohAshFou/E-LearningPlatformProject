@@ -1,4 +1,4 @@
-﻿using EduPlatformAPI.DTO;
+﻿using EduPlatformAPI.DTO.User;
 using EduPlatformAPI.Models;
 
 namespace EduPlatformAPI.Services

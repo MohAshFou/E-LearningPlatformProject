@@ -1,4 +1,4 @@
-﻿namespace EduPlatformAPI.DTO
+﻿namespace EduPlatformAPI.DTO.User
 {
     public class UserDTO
     {

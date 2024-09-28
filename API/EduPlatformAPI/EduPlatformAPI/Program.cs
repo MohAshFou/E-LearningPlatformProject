@@ -21,6 +21,8 @@ namespace EduPlatformAPI
             });
 
             builder.Services.AddScoped<AuthService>();
+            builder.Services.AddScoped<GenerateUserAndPass>();
+            
 
             // Add services to the Cors.
             builder.Services.AddCors(options =>
