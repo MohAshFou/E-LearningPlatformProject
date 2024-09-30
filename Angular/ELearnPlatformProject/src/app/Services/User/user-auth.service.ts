@@ -13,11 +13,11 @@ export class UserAuthService {
 
 
 
-
+   Controller ='Account/'
 
    private authSubject:BehaviorSubject<boolean>
   constructor( private rout:ActivatedRoute , private  Clinent:HttpClient) {
-    console.log('UserAuthService instance created');
+
     this.authSubject=new BehaviorSubject<boolean>(false)
 
 
@@ -26,7 +26,7 @@ export class UserAuthService {
   login(email: string, password: string):Observable<any> {
     const user = { Email: email, Password: password };
 
-     return  this.Clinent.post<any>(`${environment.baseUrl}Account/Login`, user);
+     return  this.Clinent.post<any>(`${environment.baseUrl}${this.Controller}Login`, user);
   }
 
   Logout(){
@@ -54,10 +54,10 @@ getToken(){
 
 getRoleAndName(): Observable<any> {
 
-  return this.Clinent.get<any>(`${environment.baseUrl}Account/getuserinfo`);
+  return this.Clinent.get<any>(`${environment.baseUrl}${this.Controller}getuserinfo`);
 }
 
- 
+
 
 }
 

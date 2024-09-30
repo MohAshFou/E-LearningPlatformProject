@@ -19,7 +19,11 @@ export class LoginComponent {
       next: (d) => {
         const token = d.token;
         localStorage.setItem('token', token);
-         let r="fvbgfnmnm@#$"+d.role+"cvb@@#$asdfghnm,,mnbvcx34@#$bghhhtgrgthyh;lkjhgfdsxcvbnm"
+        let randomStr=  this.generateRandomString(50)
+        let leftStrin=randomStr.substring(0,randomStr.length/2)
+        let RigStrin=randomStr.substring(randomStr.length/2,randomStr.length-1)
+         let r=leftStrin+d.role+RigStrin
+     console.log(r)
         localStorage.setItem('mm', r);
         this.goTopag(d.role);
       },
@@ -45,6 +49,16 @@ export class LoginComponent {
     }
 
 
+  }
+
+  generateRandomString(length: number): string {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijkl#@!$%^&&(*)_+_mnopqrstuvwxyz0123456789';
+    let result = '';
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
   }
 
 }

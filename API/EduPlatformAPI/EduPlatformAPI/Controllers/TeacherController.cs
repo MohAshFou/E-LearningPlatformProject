@@ -120,7 +120,27 @@ namespace EduPlatformAPI.Controllers
             return Ok(lessons);
         }
 
+        [HttpGet("QuestionAndCountOfNotReplyFromTeacher")]
+        public IActionResult CountOfQuestionNotReplying()
+        {
+            var count = context.Comments.Count(i => string.IsNullOrEmpty(i.Reply));
+            return Ok(new { Count = count });
+        }
 
+        [HttpGet("GradeLevelQuestionsAndReplies")]
+        public IActionResult GetGradeLevelQuestionsAndReplies(string gradeLevel)
+        {
+            var questionsAndReplies = context.StudentComments
+                .Where(sc => sc.Student.GradeLevel == gradeLevel)
+                .Select(sc => new LessonQuestionReplyDTO
+                {
+                    StudentName = sc.Student.StudentNavigation.Name,
+                    Question = sc.Comment.Question,
+                    Reply = sc.Comment.Reply
+                })
+                .ToList();
+            return Ok(questionsAndReplies);
+        }
 
 
     }

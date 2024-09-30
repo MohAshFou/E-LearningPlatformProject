@@ -25,7 +25,7 @@ export const adminGuard: CanActivateFn = (route, state: RouterStateSnapshot) => 
 
 let role = localStorage.getItem('mm')
 
-if ( role?.charAt(12)=== 'A') {
+if ( role?.charAt(25)=== 'A') {
         return true;
       } else {
         rout.navigate(['/Login']);

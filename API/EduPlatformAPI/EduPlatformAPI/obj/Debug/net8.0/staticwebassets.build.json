@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "9nzDMmiE/2KlV3pE6AMywqC2/fzfVK0ulYxTgBkDNEQ=",
+  "Hash": "oW9kL9MzUkmUFXewGUjYN9IFWX6s/xoJlLgL8yNDrew=",
   "Source": "EduPlatformAPI",
   "BasePath": "_content/EduPlatformAPI",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "EduPlatformAPI\\wwwroot",
+      "Source": "EduPlatformAPI",
+      "ContentRoot": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "BasePath": "_content/EduPlatformAPI",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }

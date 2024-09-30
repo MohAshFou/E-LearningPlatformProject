@@ -273,3 +273,4 @@ D:\OneDrive\Desktop\ITI\Projects\E-LearningPlatformProject\API\EduPlatformAPI\Ed
 D:\OneDrive\Desktop\ITI\Projects\E-LearningPlatformProject\API\EduPlatformAPI\EduPlatformAPI\obj\Debug\net8.0\EduPlatformAPI.pdb
 D:\OneDrive\Desktop\ITI\Projects\E-LearningPlatformProject\API\EduPlatformAPI\EduPlatformAPI\obj\Debug\net8.0\EduPlatformAPI.genruntimeconfig.cache
 D:\OneDrive\Desktop\ITI\Projects\E-LearningPlatformProject\API\EduPlatformAPI\EduPlatformAPI\obj\Debug\net8.0\ref\EduPlatformAPI.dll
+D:\OneDrive\Desktop\ITI\Projects\E-LearningPlatformProject\API\EduPlatformAPI\EduPlatformAPI\bin\Debug\net8.0\EduPlatformAPI.staticwebassets.runtime.json

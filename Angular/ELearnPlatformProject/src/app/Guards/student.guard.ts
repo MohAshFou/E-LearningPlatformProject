@@ -9,7 +9,7 @@ export const studentGuard:  CanActivateFn = async  (route, state:RouterStateSnap
 
   let role = localStorage.getItem('mm')
 
-if ( role?.charAt(12) === 'S') {
+if ( role?.charAt(25) === 'S') {
         return true;
       } else {
         rout.navigate(['/Login']);

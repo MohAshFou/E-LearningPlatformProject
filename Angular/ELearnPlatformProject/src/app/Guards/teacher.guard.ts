@@ -9,7 +9,7 @@ export const teacherGuard:  CanActivateFn = async (route, state:RouterStateSnaps
 
     let role = localStorage.getItem('mm')
 
-    if ( role?.charAt(12) === 'T') {
+    if ( role?.charAt(25) === 'T') {
             return true;
           } else {
             rout.navigate(['/Login']);

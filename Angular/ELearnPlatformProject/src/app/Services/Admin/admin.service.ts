@@ -4,21 +4,8 @@ import { environment } from '../../../environments/environment.development';
 @Injectable({
   providedIn: 'root'
 })
-export class TeacherService {
-  Controller ='Teacher/'
+export class AdminService {
+  Controller ='Admin/'
   constructor(private  Clinent:HttpClient) { }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
 }
