@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { UserAuthService } from '../../../Services/User/user-auth.service';
 
@@ -9,7 +9,7 @@ import { UserAuthService } from '../../../Services/User/user-auth.service';
   templateUrl: './stu-info.component.html',
   styleUrl: './stu-info.component.css'
 })
-export class StuInfoComponent {
+export class StuInfoComponent  implements OnInit{
 
   Name:string="Mohamed"
   Number:number=15;
@@ -19,6 +19,7 @@ export class StuInfoComponent {
   }
 
   ngOnInit(): void {
+    if (localStorage.getItem("token")) {
     this.service.getRoleAndName().subscribe({
      next: (d) => {
         this.Name= d.username
@@ -27,8 +28,9 @@ export class StuInfoComponent {
 
      }
    });
-   }
 
+   }
+  }
 
 
 }

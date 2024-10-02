@@ -21,12 +21,76 @@ namespace EduPlatformAPI.Controllers
     {
         private readonly AuthService authService;
         private readonly IConfiguration config;
+        private readonly EduPlatformDbContext context;
 
-        public AccountController(AuthService _authService, IConfiguration config)
+        public AccountController(AuthService _authService, IConfiguration config , EduPlatformDbContext context)
         {
             authService = _authService;
             this.config = config;
+            this.context = context;
         }
+    
+
+
+        // For registration
+        [HttpPost("register")]
+        public IActionResult RegisterStudent([FromBody] StudentDTO studentDTO)
+        {
+            if (ModelState.IsValid)
+            {
+                // Check for required User fields
+                if (string.IsNullOrWhiteSpace(studentDTO.Name) ||
+                    string.IsNullOrWhiteSpace(studentDTO.Email) ||
+                    string.IsNullOrWhiteSpace(studentDTO.Password) ||
+                    string.IsNullOrWhiteSpace(studentDTO.Phone))
+                {
+                    return BadRequest("All User fields (Name, Email, Password, Phone) are required.");
+                }
+
+                // Check for required Student fields
+                if (string.IsNullOrWhiteSpace(studentDTO.GradeLevel) ||
+                    string.IsNullOrWhiteSpace(studentDTO.Governorate) ||
+                    string.IsNullOrWhiteSpace(studentDTO.ParentPhone))
+                {
+                    return BadRequest("All Student fields (GradeLevel, Governorate, ParentPhone) are required.");
+                }
+
+                var user = new User
+                {
+                    Name = studentDTO.Name,
+                    Email = studentDTO.Email,
+                    Password = studentDTO.Password,
+                    Phone = studentDTO.Phone,
+                    Role = "S",
+                    RegistrationDate = DateOnly.FromDateTime(DateTime.Now),
+                };
+
+                // Add user to the database
+                context.Users.Add(user);
+                context.SaveChanges();
+
+                var student = new Student
+                {
+                    StudentId = user.UserId,
+                    GradeLevel = studentDTO.GradeLevel,
+                    Governorate = studentDTO.Governorate,
+                    ParentPhone = studentDTO.ParentPhone
+                };
+
+                // Add student to the database
+                context.Students.Add(student);
+                context.SaveChanges();
+
+                return Ok(new { message = "Student registered successfully" });
+            }
+
+            return BadRequest(ModelState);
+        }
+
+
+
+
+
         [HttpPost("login")]
         public IActionResult Login([FromBody] UserDTO us) {
 
@@ -68,10 +132,72 @@ namespace EduPlatformAPI.Controllers
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+        [Authorize()]
+        [HttpGet]
+        
+        [HttpGet("ISExpired")]
+        public IActionResult ISExpired()
+        {
+            try
+            {
+                var token = HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+                if (string.IsNullOrEmpty(token))
+                {
+                    return Unauthorized("Token is missing.");
+                }
+
+                bool isExpired = IsTokenExpired(token, config["Jwt:Key"]);
+
+                if (isExpired)
+                {
+                    return Unauthorized("Token has expired.");
+                }
+
+                var role = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value;
+                return Ok(new { role });
+            }
+            catch (Exception ex)
+            {
+               
+                return StatusCode(500, "Internal server error: " + ex.Message);
+            }
+        }
+
+
+        private bool IsTokenExpired(string token, string secretKey)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.UTF8.GetBytes(secretKey);
+
+            try
+            {
+                var validationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateLifetime = true,
+                    ClockSkew = TimeSpan.Zero
+                };
+
+                tokenHandler.ValidateToken(token, validationParameters, out SecurityToken validatedToken);
+                return false;
+            }
+            catch (SecurityTokenExpiredException)
+            {
+                return true;
+            }
+            catch (Exception)
+            {
+                return true;
+            }
+        }
+    
 
 
 
-        [HttpGet("getuserinfo")]
+     [HttpGet("getuserinfo")]
         [Authorize]
         // extract name and role from token
         public IActionResult GetUserInfo()

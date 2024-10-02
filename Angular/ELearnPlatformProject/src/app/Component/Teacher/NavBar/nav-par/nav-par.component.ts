@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { UserAuthService } from '../../../../Services/User/user-auth.service';
 
@@ -9,7 +9,7 @@ import { UserAuthService } from '../../../../Services/User/user-auth.service';
   templateUrl: './nav-par.component.html',
   styleUrl: './nav-par.component.css'
 })
-export class NavParComponent {
+export class NavParComponent implements OnInit {
   Name:string="Mohamed"
   constructor(private service:UserAuthService){
 
@@ -17,14 +17,17 @@ export class NavParComponent {
   }
 
   ngOnInit(): void {
-    this.service.getRoleAndName().subscribe({
-     next: (d) => {
-        this.Name= d.username
-     },
-     error: (e: any) => {
+    if (localStorage.getItem("token")) {
 
-     }
-   });
+      this.service.getRoleAndName().subscribe({
+        next: (d) => {
+           this.Name= d.username
+        },
+        error: (e: any) => {
+
+        }
+      });
+  }
    }
 
 

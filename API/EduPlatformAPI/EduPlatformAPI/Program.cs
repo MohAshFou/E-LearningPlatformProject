@@ -55,7 +55,8 @@ namespace EduPlatformAPI
                     ValidAudience= builder.Configuration["Jwt:Audience"],
                      ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
-
+                  ,   ValidateLifetime = true, 
+                    ClockSkew = TimeSpan.Zero 
                 };
             }       
                 );
@@ -82,14 +83,16 @@ namespace EduPlatformAPI
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+            app.UseCors("pa");
             app.UseStaticFiles();
+
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
 
 
             app.MapControllers();
-            app.UseCors("pa");
+         
             app.Run();
         }
     }

@@ -7,4 +7,9 @@ import { environment } from '../../../environments/environment.development';
 export class StudentService {
   Controller ='Student/'
   constructor(private  Clinent:HttpClient) { }
+
+
+
+
+  
 }

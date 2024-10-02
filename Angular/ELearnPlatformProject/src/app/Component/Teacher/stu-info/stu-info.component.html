@@ -1,29 +1,44 @@
-    <main class="col-md-9 ml-sm-auto col-lg-10 px-4">
-      <div class="bodyInput">
+    <main class="col-md-9 ml-sm-auto col-lg-10 px-4" >
+      <div class="bodyInput"  style="width: 100%;">
           <p class="paragraph">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda alias rem et velit id inventore eaque quasi, eligendi odio dolorem quas accusamus, nisi saepe accusantium dolor cum, facere deserunt obcaecati.</p>
           <a id="upload" class="btn btn-success" routerLink="upload/" >Upload Lessons</a>
       </div>
 
       <div class="row" style="margin-top: 30px;">
-          <div class="col-12 col-md-4">
-              <div class="Level1">
-                  <h4>Level 1</h4>
-                  <h5>{{Number}} Videos</h5>
-              </div>
+
+        <!-- level 1 -->
+        <div class="col-12 col-md-4">
+              <a  routerLink="level/1"   class="nav-link active" >
+
+                      <div class="Level">
+                        <h4>Level 1</h4>
+                        <h5>{{Number}} Videos</h5>
+                            </div>
+               </a>
           </div>
+    <!-- level 2 -->
           <div class="col-12 col-md-4">
-              <div class="Level2">
-                  <h4>Level 2</h4>
-                  <h5>{{Number}} Videos</h5>
-              </div>
+            <a  routerLink="level/2"   class="nav-link active" >
+
+                  <div class="Level">
+                    <h4>Level 2</h4>
+                    <h5>{{Number}} Videos</h5>
+                        </div>
+              </a>
           </div>
+          <!-- level 3 -->
           <div class="col-12 col-md-4">
-              <div class="Level3">
-                  <h4>Level 3</h4>
-                  <h5>{{Number}} Videos</h5>
-              </div>
+            <a  routerLink="level/3"   class="nav-link active" >
+
+                  <div class="Level">
+                    <h4>Level 3</h4>
+                    <h5>{{Number}} Videos</h5>
+                        </div>
+               </a>
+
           </div>
       </div>
+      <a  routerLink="homework"  class="nav-link active"   >    ShowAll    </a>
 
       <table class="table table-bordered table-striped" style="margin-top: 30px;">
           <thead class="thead-dark">

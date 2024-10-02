@@ -1,71 +1,52 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
-import { Observable, firstValueFrom } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from '../../../environments/environment.development';
+import { Student } from '../../Models/Student/student';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserAuthService {
+   Controller = 'Account/';
+   private authSubject: BehaviorSubject<boolean>;
 
+   constructor(private client: HttpClient) {
+     this.authSubject = new BehaviorSubject<boolean>(false);
+   }
 
+   login(email: string, password: string): Observable<any> {
+     const user = { Email: email, Password: password };
+     return this.client.post<any>(`${environment.baseUrl}${this.Controller}Login`, user);
+   }
 
+   logout() {
+     localStorage.removeItem("token");
+     localStorage.removeItem('mm');
+     this.authSubject.next(false);
+   }
 
-   Controller ='Account/'
+   getUserLogged(): boolean {
+     return !!localStorage.getItem("token");
+   }
 
-   private authSubject:BehaviorSubject<boolean>
-  constructor( private rout:ActivatedRoute , private  Clinent:HttpClient) {
+   getAuthSubject(): BehaviorSubject<boolean> {
+     return this.authSubject;
+   }
 
-    this.authSubject=new BehaviorSubject<boolean>(false)
+   getToken(): string | null {
+     return localStorage.getItem("token");
+   }
 
+   getRoleAndName(): Observable<any> {
+     return this.client.get<any>(`${environment.baseUrl}${this.Controller}getuserinfo`);
+   }
 
-  }
+   registerStudent(student: Student): Observable<any> {
+     return this.client.post(`${environment.baseUrl}${this.Controller}register`, student);
+   }
 
-  login(email: string, password: string):Observable<any> {
-    const user = { Email: email, Password: password };
-
-     return  this.Clinent.post<any>(`${environment.baseUrl}${this.Controller}Login`, user);
-  }
-
-  Logout(){
-
-    localStorage.removeItem("token");
-    localStorage.removeItem('mm');
-
-    this.authSubject.next(false)
-
-     }
-
-    getUserLogged():boolean{
-      return  localStorage.getItem("token")?true:false
-     }
-
- getAthSubject():BehaviorSubject<boolean>{
-
-    return this.authSubject
- }
-getToken(){
-
-  return localStorage.getItem("token")?localStorage.getItem("token"):null
+   ISExpired(): Observable<any> {
+     return this.client.get(`${environment.baseUrl}${this.Controller}ISExpired`);
+   }
 }
-
-
-getRoleAndName(): Observable<any> {
-
-  return this.Clinent.get<any>(`${environment.baseUrl}${this.Controller}getuserinfo`);
-}
-
-
-
-}
-
-
-
-
-
-
-
-
-

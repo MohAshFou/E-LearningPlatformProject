@@ -1,18 +1,31 @@
+import { inject } from '@angular/core';
 import { CanActivateFn, Router, RouterStateSnapshot } from '@angular/router';
 import { UserAuthService } from '../Services/User/user-auth.service';
-import { inject } from '@angular/core';
-import { firstValueFrom } from 'rxjs';
-export const teacherGuard:  CanActivateFn = async (route, state:RouterStateSnapshot) => {
+import { map, catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 
-  const aut = inject(UserAuthService);
-  const rout = inject(Router);
+export const teacherGuard: CanActivateFn = (route, state: RouterStateSnapshot) => {
+  const authService = inject(UserAuthService);
+  const router = inject(Router);
 
-    let role = localStorage.getItem('mm')
 
-    if ( role?.charAt(25) === 'T') {
-            return true;
-          } else {
-            rout.navigate(['/Login']);
-            return false;
-          }
+  if (typeof localStorage === 'undefined') {
+    router.navigate(['/Login']);
+    return of(false);
   }
+
+  return authService.ISExpired().pipe(
+    map((response) => {
+      if (response.role && response.role.toUpperCase() === 'T') {
+        return true;
+      } else {
+        router.navigate(['/Login']);
+        return false;
+      }
+    }),
+    catchError(() => {
+      router.navigate(['/Login']);
+      return of(false);
+    })
+  );
+};

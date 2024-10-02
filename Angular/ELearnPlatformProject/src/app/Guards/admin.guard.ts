@@ -5,32 +5,27 @@ import { map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 export const adminGuard: CanActivateFn = (route, state: RouterStateSnapshot) => {
-  const aut = inject(UserAuthService);
-  const rout = inject(Router);
+  const authService = inject(UserAuthService);
+  const router = inject(Router);
 
-  // return aut.getRoleAndName().pipe(
-  //   map(d => {
-  //     if (d.role && d.role.toUpperCase() === 'A') {
-  //       return true;
-  //     } else {
-  //       rout.navigate(['/Login']);
-  //       return false;
-  //     }
-  //   }),
-  //   catchError(() => {
-  //     rout.navigate(['/Login']);
-  //     return of(false);
-  //   })
-  // );
 
-let role = localStorage.getItem('mm')
+  if (typeof localStorage === 'undefined') {
+    router.navigate(['/Login']);
+    return of(false);
+  }
 
-if ( role?.charAt(25)=== 'A') {
+  return authService.ISExpired().pipe(
+    map((response) => {
+      if (response.role && response.role.toUpperCase() === 'A') {
         return true;
       } else {
-        rout.navigate(['/Login']);
+        router.navigate(['/Login']);
         return false;
       }
-
-
+    }),
+    catchError(() => {
+      router.navigate(['/Login']); 
+      return of(false);
+    })
+  );
 };

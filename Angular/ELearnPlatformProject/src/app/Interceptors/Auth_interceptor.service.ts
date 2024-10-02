@@ -12,7 +12,7 @@ export function AuthInterceptor(req: HttpRequest<any>, next: HttpHandlerFn) {
     const clonedReq = req.clone({
       headers: req.headers.append('Authorization', `Bearer ${token}`)
     });
-  
+     console.log(clonedReq)
     return next(clonedReq);
   }
 

@@ -8,17 +8,4 @@ export class TeacherService {
   Controller ='Teacher/'
   constructor(private  Clinent:HttpClient) { }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

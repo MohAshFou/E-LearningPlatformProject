@@ -3,6 +3,10 @@ nav {
   width: 15%;
   text-align: center;
 }
+img{
+  width: 25px;
+  float: left;
+}
 
 li {
   text-align: right;

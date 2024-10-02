@@ -30,6 +30,8 @@ export class UploadComponent implements OnInit {
   constructor(private service: UserAuthService) {}
 
   ngOnInit(): void {
+
+    if (localStorage.getItem("token")) {
     this.service.getRoleAndName().subscribe({
       next: (d) => {
         this.Name = d.username;
@@ -38,6 +40,7 @@ export class UploadComponent implements OnInit {
         console.error(e);
       }
     });
+  }
   }
 
   onFileSelected(event: any): void {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserAuthService } from '../../../Services/User/user-auth.service';
+import { UserAuthService } from '../../Services/User/user-auth.service';
+
 
 @Component({
   selector: 'app-student',
@@ -19,6 +20,7 @@ export class StudentComponent implements OnInit {
 
 
   ngOnInit(): void {
+    if (localStorage.getItem("token")) {
     this.service.getRoleAndName().subscribe({
      next: (d) => {
         this.Name= d.username
@@ -28,5 +30,5 @@ export class StudentComponent implements OnInit {
      }
    });
    }
-
+  }
 }

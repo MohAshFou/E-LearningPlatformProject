@@ -42,7 +42,7 @@ body {
   position: relative;
 }
 
-.Level1, .Level2, .Level3 {
+.Level {
   padding: 3px;
   background-color: #696969;
   color: white;
