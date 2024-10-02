@@ -4,6 +4,7 @@ using EduPlatformAPI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using EduPlatformAPI.Controllers;
 
 
 namespace EduPlatformAPI
@@ -22,7 +23,8 @@ namespace EduPlatformAPI
 
             builder.Services.AddScoped<AuthService>();
             builder.Services.AddScoped<GenerateUserAndPass>();
-            
+            builder.Services.AddScoped<VideosService>();
+
 
             // Add services to the Cors.
             builder.Services.AddCors(options =>
@@ -74,6 +76,13 @@ namespace EduPlatformAPI
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+
+            // Configure  server options to increase the max request body size
+            builder.WebHost.ConfigureKestrel(serverOptions =>
+            {
+                serverOptions.Limits.MaxRequestBodySize = 1000 * 1024 * 1024; 
+            });
 
             var app = builder.Build();
 

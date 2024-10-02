@@ -4,8 +4,8 @@
     {
         public int StudentId { get; set; }
         public string GradeLevel { get; set; }
-        public string Governorate { get; set; }
-        public string ParentPhone { get; set; }
+       
+       
         public string UserName { get; set; }
 
         public List<HomeworkSubmissionDTO> Homeworks { get; set; }

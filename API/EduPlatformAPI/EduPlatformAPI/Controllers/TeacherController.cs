@@ -4,6 +4,7 @@ using EduPlatformAPI.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using EduPlatformAPI.Services;
 
 namespace EduPlatformAPI.Controllers
 {
@@ -13,12 +14,13 @@ namespace EduPlatformAPI.Controllers
     public class TeacherController : ControllerBase
     {
         private readonly EduPlatformDbContext context;
-
-        public TeacherController(EduPlatformDbContext context)
+        private readonly VideosService vidSer;
+        public TeacherController(EduPlatformDbContext context , VideosService vidSer)
         {
             this.context = context;
+            this.vidSer = vidSer;
         }
-
+    
         [HttpGet("GetLevelsWithLessonCount")]
         public IActionResult GetLevelsWithLessonCount()
         {
@@ -67,21 +69,23 @@ namespace EduPlatformAPI.Controllers
         [HttpGet("GetStudentsWithSubmittedHomeworks")]
         public IActionResult GetStudentsWithSubmittedHomeworks()
         {
+              
             var studentsWithSubmittedHomeworks = context.Students
-                .Where(s => s.Enrollments.Any(e => e.SubmissionDate != null))
+                .Where(s => s.Enrollments.Any(e => e.SubmissionDate != null && e.HomeWorkEvaluation=="pending"))
                 .Select(s => new StudentSubmissionDTO
                 {
                     StudentId = s.StudentId,
                     GradeLevel = s.GradeLevel,
-                    Governorate = s.Governorate,
-                    ParentPhone = s.ParentPhone,
-                    UserName = s.Enrollments.Select(e => e.UserName).FirstOrDefault(),
+                    
+                   
+                    UserName = context.Users.Where(d => d.UserId == s.StudentId).Select(s => s.Name).FirstOrDefault(),
                     Homeworks = s.Enrollments
                         .Where(e => e.SubmissionDate != null)
                         .Select(e => new HomeworkSubmissionDTO
                         {
                             LessonId = e.LessonId,
                             LessonTitle = e.Lesson.Title,
+                            HomeWorkEvaluation= e.HomeWorkEvaluation,
                             SubmissionDate = e.SubmissionDate.Value,
                             SubmissionLink = e.SubmissionLink ?? "N/A"
                         })
@@ -100,15 +104,36 @@ namespace EduPlatformAPI.Controllers
                 return BadRequest("Grade level cannot be null or empty.");
             }
 
-            var lessons = context.Lessons
+            var NewLevel = "";
+            if (gradeLevel=="F")
+                    {
+                        NewLevel = "One";
+                    }
+            else if (gradeLevel=="S") 
+                    {
+                            NewLevel = "Two";
+                     }
+             else if (gradeLevel == "T")
+                
+                    {
+                        NewLevel = "Three";
+                    }
+
+
+
+
+
+                    var lessons = context.Lessons
                 .Where(l => l.GradeLevel.ToLower()==gradeLevel.ToLower())
                 .Select(l => new LessonDTO
                 {
                     LessonId = l.LessonId,
                     Title = l.Title,
                     Description = l.Description,
+                    VideoURL= vidSer.GetVideoURL( HttpContext  ,NewLevel, context.Materials.Where(s => s.LessonId == l.LessonId && s.MaterialType == "Video").Select(w => w.MaterialLink).FirstOrDefault() ?? ""),
                     UploadDate = l.UploadDate,
-                    FeeAmount = l.FeeAmount
+                    FeeAmount = l.FeeAmount 
+                           
                 })
                 .ToList();
 
