@@ -1,92 +1,172 @@
 import { Component, OnInit } from '@angular/core';
 import { UserAuthService } from '../../../../Services/User/user-auth.service';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
+import { UploadLesson } from '../../../../Models/Teacher/upload-lesson';
+import { TeacherService } from '../../../../Services/Teacher/teacher.service';
 
 @Component({
   selector: 'app-upload',
   standalone: true,
   imports: [
-    CommonModule, // Only import CommonModule
-    FormsModule   // Import FormsModule for ngModel
+    CommonModule,
+    FormsModule
   ],
+  providers:[DatePipe] ,
   templateUrl: './upload.component.html',
-  styleUrls: ['./upload.component.css'] // Corrected property name to styleUrls
+  styleUrls: ['./upload.component.css']
 })
 export class UploadComponent implements OnInit {
   Name: string = '';
-  videoUrl: string = '';
-  videoTitle: string = '';
-  videoLevel: string = '';
-  videoPrice: number = 0;
-  uploadDate: string = '';
-  uploadTime: string = '';
-  videoDescription: string = '';
+  NewLesson: UploadLesson = {
+    Title: '',
+    Level: '',
+    FileVideo: null,
+    FileAttach: null,
+    Price: 0,
+    AccessPeriod:0,
+    uploadDate: '',
 
-  fileName: string = '';
+    Description: ''
+  };
+  public successMessage: string | null = null;
   uploadProgress: number = 0;
   uploadInProgress: boolean = false;
+  invalidFields = {
+    Title: false,
+    Level: false,
+    FileVideo: false,
+    FileAttach: false,
+    Price: false,
+    Description: false,
+    AccessPeriod: false
+  };
 
-  constructor(private service: UserAuthService) {}
+  constructor(private service: UserAuthService , private datePipe: DatePipe , private TeacherService:TeacherService) {}
 
   ngOnInit(): void {
-
-    if (localStorage.getItem("token")) {
-    this.service.getRoleAndName().subscribe({
-      next: (d) => {
-        this.Name = d.username;
-      },
-      error: (e: any) => {
-        console.error(e);
-      }
-    });
-  }
-  }
-
-  onFileSelected(event: any): void {
-    const file = event.target.files[0];
-    if (file) {
-      this.fileName = file.name;
-      this.uploadInProgress = true;
-
-      const interval = setInterval(() => {
-        if (this.uploadProgress < 100) {
-          this.uploadProgress += 10;
-        } else {
-          clearInterval(interval);
-          this.uploadInProgress = false;
+    if (localStorage.getItem('token')) {
+      this.service.getRoleAndName().subscribe({
+        next: (d) => {
+          this.Name = d.username;
+        },
+        error: (e: any) => {
+          console.error(e);
         }
-      }, 500);
+      });
     }
   }
 
-  cancelUpload(): void {
-    this.uploadInProgress = false;
-    this.uploadProgress = 0;
-    this.fileName = '';
+  onVideoSelected(event: any): void {
+    const file = event.target.files[0];
+    if (file) {
+      this.NewLesson.FileVideo = file;
+    }
   }
 
-  uploadFromUrl(): void {
-    console.log(`Uploading video from URL: ${this.videoUrl}`);
+  onAttachSelected(event: any): void {
+    const file = event.target.files[0];
+    if (file) {
+      this.NewLesson.FileAttach = file;
+    }
+  }
+
+  validateField(field: string): void {
+    switch (field) {
+      case 'Title':
+        this.invalidFields.Title = !this.validTitle(this.NewLesson.Title);
+        break;
+      case 'Level':
+        this.invalidFields.Level = !this.validLevel(this.NewLesson.Level);
+        break;
+      case 'FileVideo':
+        this.invalidFields.FileVideo = !this.validFile(this.NewLesson.FileVideo);
+        break;
+      case 'FileAttach':
+        this.invalidFields.FileAttach = !this.validFile(this.NewLesson.FileAttach);
+        break;
+      case 'Price':
+        this.invalidFields.Price = !this.validPrice(this.NewLesson.Price);
+        break;
+      case 'Description':
+        this.invalidFields.Description = !this.validDescription(this.NewLesson.Description);
+        break;
+        case 'AccessPeriod' :
+          this.invalidFields.AccessPeriod = !this.validAccessPeriod(this.NewLesson.Price);
+          break;
+      default:
+        break;
+    }
+  }
+
+  validTitle(title: string): boolean {
+    return title.trim() !== '' && title.length <= 50 && /^[a-zA-Z\u0600-\u06FF][a-zA-Z\u0600-\u06FF0-9\s]*$/.test(title);
+
+  }
+  validLevel(level: string): boolean {
+    return ['F', 'S', 'T'].includes(level);
+  }
+
+  validFile(file: File | null): boolean {
+    return file !== null;
+  }
+
+  validPrice(price: number): boolean {
+    return price > 0;
+  }
+  validAccessPeriod(price: number): boolean {
+    return price > 0;
+  }
+
+  validDescription(description: string): boolean {
+    return description.trim() !== '';
   }
 
   submitVideo(): void {
-    const videoData = {
-      title: this.videoTitle,
-      level: this.videoLevel,
-      price: this.videoPrice,
-      uploadDate: this.uploadDate,
-      uploadTime: this.uploadTime,
-      description: this.videoDescription
-    };
+    for (const field in this.invalidFields) {
+      this.validateField(field);
+    }
 
-    console.log(videoData);
-  }
+    if (Object.values(this.invalidFields).every(isInvalid => !isInvalid)) {
+      this.NewLesson.uploadDate = this.datePipe.transform(new Date(), 'yyyy-MM-dd') || "";
 
-  openFileDialog(): void {
-    const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
-    if (fileInput) {
-      fileInput.click();
+      const formData = new FormData();
+      formData.append('FileVideo', this.NewLesson.FileVideo as Blob);
+      formData.append('FileAttach', this.NewLesson.FileAttach as Blob);
+      formData.append('Title', this.NewLesson.Title);
+      formData.append('Level', this.NewLesson.Level);
+      formData.append('Price', this.NewLesson.Price.toString());
+      formData.append('AccessPeriod', this.NewLesson.AccessPeriod.toString());
+      formData.append('uploadDate', this.NewLesson.uploadDate);
+      formData.append('Description', this.NewLesson.Description);
+
+      console.log(this.NewLesson);
+
+      this.TeacherService.AddNewLesson(formData).subscribe({
+        next: (response) => {
+          this.successMessage = 'Lesson added successfully!';
+
+          this.NewLesson = {
+            Title: "",
+            AccessPeriod: 0,
+            Description: "",
+            Price: 0,
+            FileAttach: null,
+            FileVideo: null,
+            Level: "" ,
+            uploadDate: "" 
+        };
+
+        },
+        error: (error) => {
+          console.error('Error adding lesson:', error);
+        }
+      });
+
+      console.log(this.NewLesson);
+    } else {
+      console.error('Validation failed:', this.invalidFields);
     }
   }
+
 }

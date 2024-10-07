@@ -1,66 +1,44 @@
 <div class="video-upload-container">
 
-
-            <!-- <div class="profile">
-
-                      <div class="notifications">
-                        <span class="notification-icon">🔔</span>
-                        <span class="notification-count">2</span>
-                      </div>
-                    <div class="profile-info">
-                      <span>Teacher {{ Name }}</span>
-                      <img src="path-to-avatar-image" alt="Profile Picture">
-                    </div>
-            </div> -->
-
-
+  <div *ngIf="successMessage" class="alert alert-success mt-2">
+    {{ successMessage }}
+  </div>
   <div class="video-upload-box">
-    <div class="upload-section">
-      <div class="upload-area">
-        <p>Drag and drop Video File</p>
-        <span>Or</span>
-        <button (click)="openFileDialog()">Browse</button>
-        <input type="file" accept="video/*" (change)="onFileSelected($event)" hidden>
-      </div>
-    </div>
-
-    <div class="progress-section" *ngIf="uploadInProgress">
-      <p>{{ fileName }} - {{ uploadProgress }}% done</p>
-      <progress [value]="uploadProgress" max="100"></progress>
-      <button (click)="cancelUpload()">X</button>
-    </div>
-
-    <div class="url-import">
-      <label for="video-url">Import from URL</label>
-      <input id="video-url" type="text" [(ngModel)]="videoUrl">
-      <button (click)="uploadFromUrl()">Upload</button>
-    </div>
-
     <form class="video-details" (ngSubmit)="submitVideo()">
       <label for="title">Video Title</label>
-      <input id="title" type="text" [(ngModel)]="videoTitle" name="title" required>
+      <input id="title" type="text" [(ngModel)]="NewLesson.Title" name="title" required (blur)="validateField('Title')" />
+      <div *ngIf="invalidFields.Title" class="text-danger mt-1"> Title is required, should be less than 50 characters, and should not start with a number.
+      </div>
 
       <label for="level">Level</label>
-      <select id="level" [(ngModel)]="videoLevel" name="level" required>
-        <option >Select The Level</option>
+      <select id="level" [(ngModel)]="NewLesson.Level" name="level" required (blur)="validateField('Level')">
+        <option value="" disabled selected>Select The Level</option>
         <option value="F">1</option>
         <option value="S">2</option>
         <option value="T">3</option>
       </select>
+      <div *ngIf="invalidFields.Level" class="text-danger mt-1">Level is required</div>
+
+      <label for="videoFile">Upload Video File</label>
+      <input id="videoFile" type="file" accept="video/*" (change)="onVideoSelected($event)" required (blur)="validateField('FileVideo')" />
+      <div *ngIf="invalidFields.FileVideo" class="text-danger mt-1">Video file is required</div>
+
+      <label>Attached File:</label>
+      <input type="file" accept=".pdf" (change)="onAttachSelected($event)" (blur)="validateField('FileAttach')" />
+      <div *ngIf="invalidFields.FileAttach" class="text-danger mt-1">Attachment file is required</div>
 
       <label for="price">Price</label>
-      <input id="price" type="number" [(ngModel)]="videoPrice" name="price" required>
-
-      <label for="date">Date</label>
-      <input id="date" type="date" [(ngModel)]="uploadDate" name="date" required>
-
-      <label for="time">Time</label>
-      <input id="time" type="time" [(ngModel)]="uploadTime" name="time" required>
-
+      <input id="price" type="number" [(ngModel)]="NewLesson.Price" name="price" required (blur)="validateField('Price')" />
+      <div *ngIf="invalidFields.Price" class="text-danger mt-1">Price must be greater than 0</div>
+      <label for="price">AccessPeriod</label>
+      <input id="price" type="number" [(ngModel)]="NewLesson.AccessPeriod" name="AccessPeriod" required (blur)="validateField('AccessPeriod')" />
+      <div *ngIf="invalidFields.AccessPeriod" class="text-danger mt-1">Price must be greater than 0</div>
       <label for="description">Description</label>
-      <textarea id="description" [(ngModel)]="videoDescription" name="description" required></textarea>
+      <textarea id="description" [(ngModel)]="NewLesson.Description" name="description" required (blur)="validateField('Description')"></textarea>
+      <div *ngIf="invalidFields.Description" class="text-danger mt-1">Description is required</div>
 
       <button type="submit">Submit</button>
     </form>
+
   </div>
 </div>

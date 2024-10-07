@@ -1,9 +1,6 @@
 
   <div class="lecture-container">
-    <app-lecture-card
-      *ngFor="let lecture of lectures"
-      [lecture]="lecture"
-      (edit)="onEditLecture(lecture)">
+    <app-lecture-card>
     </app-lecture-card>
   </div>
 
@@ -14,5 +11,12 @@
   (save)="onSaveLecture($event)"
   (close)="onCloseModal()"
 ></app-edit-lecture>
+
+
+<!-- <app-lecture-card
+      *ngFor="let lecture of lectures"
+      [lecture]="lecture"
+      (edit)="onEditLecture(lecture)">
+    </app-lecture-card> -->
 
 

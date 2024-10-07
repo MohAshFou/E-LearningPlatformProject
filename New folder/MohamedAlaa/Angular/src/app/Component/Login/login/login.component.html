@@ -1,0 +1,22 @@
+<div class="login-card mx-auto ">
+    <h2>Login</h2>
+    <div class="input-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="Enter your Email"  #email>
+    </div>
+    <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your Password" #pass>
+    </div>
+    <button class="login-button" (click)="log(email.value , pass.value)"  >Login</button>
+    <div>
+      Don't have an account?
+      <button (click)="navigateToRegistration()"  class="btn btn-secondary">Go to Registration</button>
+
+
+      <!-- <video src="https://localhost:7217/api/Video/Levels/One/Video/lesson2.mp4" controls></video> -->
+
+  </div>
+
+    <div class="text-danger">   {{err}}</div>
+</div>

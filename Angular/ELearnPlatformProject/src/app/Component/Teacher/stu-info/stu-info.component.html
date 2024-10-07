@@ -1,18 +1,19 @@
     <main class="col-md-9 ml-sm-auto col-lg-10 px-4" >
-      <div class="bodyInput"  style="width: 100%;">
-          <p class="paragraph">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda alias rem et velit id inventore eaque quasi, eligendi odio dolorem quas accusamus, nisi saepe accusantium dolor cum, facere deserunt obcaecati.</p>
-          <a id="upload" class="btn btn-success" routerLink="upload/" >Upload Lessons</a>
-      </div>
+          <a id="upload" class="btn btn-success" routerLink="upload/" >Upload New Lessons</a>
+          <br>  <br><br>  <br>
+
+
+
 
       <div class="row" style="margin-top: 30px;">
 
         <!-- level 1 -->
-        <div class="col-12 col-md-4">
+        <div id="Levels" class="col-12 col-md-4">
               <a  routerLink="level/1"   class="nav-link active" >
 
                       <div class="Level">
                         <h4>Level 1</h4>
-                        <h5>{{Number}} Videos</h5>
+                        <h5>{{CountOfVideoLevels.level1}} Videos</h5>
                             </div>
                </a>
           </div>
@@ -22,7 +23,7 @@
 
                   <div class="Level">
                     <h4>Level 2</h4>
-                    <h5>{{Number}} Videos</h5>
+                    <h5>{{CountOfVideoLevels.level2}} Videos</h5>
                         </div>
               </a>
           </div>
@@ -32,51 +33,37 @@
 
                   <div class="Level">
                     <h4>Level 3</h4>
-                    <h5>{{Number}} Videos</h5>
+                    <h5>{{CountOfVideoLevels.level3}} Videos</h5>
                         </div>
                </a>
 
           </div>
       </div>
-      <a  routerLink="homework"  class="nav-link active"   >    ShowAll    </a>
+      <br><br>
+      <table class="table table-bordered " style="margin-top: 30px;">
+        <thead class="thead-dark">
+            <tr>
+                <th>Student</th>
+                <th>Lesson Title</th>
+                <th>Level</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of StudenntHomeWork">
+                <td>{{ item.userName }}</td>
+                <td>{{ item.lessonTitle }}</td>
+                <td>{{ item.gradeLevel }}</td>
+                <td>
+                    <a routerLink="/teacher/homework" style="cursor: pointer; text-decoration: none; color: white; ">
+                        <img style="width: 20px;" src="Images/Edit.PNG">
+                    {{item.studentId}}
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+      <a  routerLink="homework" id="ShowAll"  class="btn btn-outline-primary" > Show All </a>
 
-      <table class="table table-bordered table-striped" style="margin-top: 30px;">
-          <thead class="thead-dark">
-              <tr>
-                  <th>#</th>
-                  <th>Student</th>
-                  <th>Do The Homework</th>
-                  <th>Course Title</th>
-                  <th>Level</th>
-                  <th>Action</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr>
-                  <td>1</td>
-                  <td>Row 1 Data 1</td>
-                  <td>Row 1 Data 2</td>
-                  <td>Row 1 Data 3</td>
-                  <td>Row 1 Data 4</td>
-                  <td><button><img style="width: 20px;" src="Images/Edit.PNG"></button></td>
-              </tr>
-              <tr>
-                  <td>2</td>
-                  <td>Row 2 Data 1</td>
-                  <td>Row 2 Data 2</td>
-                  <td>Row 2 Data 3</td>
-                  <td>Row 2 Data 4</td>
-                  <td><button><img style="width: 20px;" src="Images/Edit.PNG"></button></td>
-              </tr>
-              <tr>
-                  <td>3</td>
-                  <td>Row 3 Data 1</td>
-                  <td>Row 3 Data 2</td>
-                  <td>Row 3 Data 3</td>
-                  <td>Row 3 Data 4</td>
-                  <td><button><img style="width: 20px;" src="Images/Edit.PNG"></button></td>
-              </tr>
-          </tbody>
-      </table>
   </main>
 

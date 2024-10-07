@@ -86,18 +86,28 @@ namespace EduPlatformAPI.Controllers
 
 
 
-
-
-
-        [HttpPost("Upload")]
-        public async Task<IActionResult> UploadVideo([FromForm] IFormFile file)
+        [HttpPost("Uploadlesson")]
+        public async Task<IActionResult> UploadVideo([FromForm] IFormFile file, [FromForm] string level, [FromForm] string TypeLess)
         {
             if (file == null || file.Length == 0)
             {
                 return BadRequest("No file uploaded.");
             }
 
-            var filePath = Path.Combine(env.WebRootPath, "Levels", "One", "Video", file.FileName);
+            var folder = level switch
+            {
+                "F" => "One",
+                "S" => "Two",
+                "T" => "Three",
+                _ => null
+            };
+
+            if (folder == null)
+            {
+                return BadRequest("Invalid level.");
+            }
+
+            var filePath = Path.Combine(env.WebRootPath, "Levels", folder, TypeLess, file.FileName);
 
             using (var stream = new FileStream(filePath, FileMode.Create))
             {
@@ -106,5 +116,11 @@ namespace EduPlatformAPI.Controllers
 
             return Ok(new { filePath });
         }
+
+
+
+
+
+
     }
 }

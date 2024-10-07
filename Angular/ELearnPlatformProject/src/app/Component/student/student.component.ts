@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { UserAuthService } from '../../Services/User/user-auth.service';
+import { NavParComponent } from './NavBar/nav-par/nav-par.component';
+import { StuInfoComponent } from './stu-info/stu-info.component';
+import { RouterOutlet } from '@angular/router';
 
 
 @Component({
   selector: 'app-student',
   standalone: true,
-  imports: [],
+  imports: [NavParComponent ,StuInfoComponent ,RouterOutlet ],
   templateUrl: './student.component.html',
   styleUrl: './student.component.css'
 })

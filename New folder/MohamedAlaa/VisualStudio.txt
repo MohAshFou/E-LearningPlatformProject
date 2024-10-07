@@ -1,0 +1,35 @@
+DTO
+
+namespace EduPlatformAPI.DTO
+{
+    public class StudentLessonDTO
+    {
+
+        public string UserName { get; set; }
+        public string LessonTitle { get; set; }
+        public string GradeLevel { get; set; }
+        public int StudentId { get; set; }
+
+    }
+}
+\\
+Method
+
+
+ [HttpGet("GetStudentsLessonDetails")]
+ public IActionResult GetStudentsLessonDetails()
+ {
+     var studentsLessonDetails = context.Students
+         .Where(s => s.Enrollments.Any(e => e.SubmissionDate != null && e.HomeWorkEvaluation == "Accepted"))
+         .Select(s => new StudentLessonDTO
+         {
+             UserName = context.Users.Where(u => u.UserId == s.StudentId).Select(u => u.Name).FirstOrDefault(),
+             LessonTitle = s.Enrollments.Select(e => e.Lesson.Title).FirstOrDefault(),
+             GradeLevel = s.GradeLevel,
+             StudentId = s.StudentId,
+         })
+         .Take(10) 
+         .ToList();
+
+     return Ok(studentsLessonDetails);
+ }

@@ -8,6 +8,12 @@ body {
   height: 100vh;
   margin: 0;
 }
+.lecturesContainer{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
 .lecture-card {
   background-color: #fff;
   border-radius: 15px;
@@ -16,6 +22,7 @@ body {
   width: 300px;
   text-align: center;
   position: relative;
+  margin-bottom: 20px;
 }
 .lecture-card img {
   width: 100%;
@@ -29,20 +36,26 @@ body {
 }
 .lecture-card .lecture-title-description {
   text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 .lecture-card .lecture-title {
   font-size: 20px;
   color: #333;
   margin: 0;
+
 }
 .lecture-card .lecture-description {
   color: #666;
   margin: 5px 0;
+  
 }
 .lecture-card .lecture-price {
   background-color: #3b3b6d;
   color: #fff;
-  padding: 5px 10px;
+  padding: 5px 5px;
   border-radius: 5px;
   display: inline-block;
 }
@@ -86,4 +99,10 @@ body {
   transform: translate(-50%, -50%);
   font-size: 50px;
   color: red;
+}
+.lecture-info{
+  display: flex !important;
+  flex-direction: column;
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
 }

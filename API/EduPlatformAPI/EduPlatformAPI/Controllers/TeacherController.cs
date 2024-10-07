@@ -5,20 +5,23 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using EduPlatformAPI.Services;
+using Microsoft.EntityFrameworkCore;
 
 namespace EduPlatformAPI.Controllers
 {
-    //[Authorize(Policy = "TeacherOnly")]
+   // [Authorize(Policy = "TeacherOnly")]
     [Route("api/[controller]")]
     [ApiController]
     public class TeacherController : ControllerBase
     {
         private readonly EduPlatformDbContext context;
         private readonly VideosService vidSer;
-        public TeacherController(EduPlatformDbContext context , VideosService vidSer)
+        private readonly VideoController videos;
+        public TeacherController(EduPlatformDbContext context , VideosService vidSer , VideoController videos)
         {
             this.context = context;
             this.vidSer = vidSer;
+            this.videos = videos;
         }
     
         [HttpGet("GetLevelsWithLessonCount")]
@@ -165,6 +168,151 @@ namespace EduPlatformAPI.Controllers
                 })
                 .ToList();
             return Ok(questionsAndReplies);
+        }
+
+
+        [HttpGet("GetStudentsLessonDetails")]
+        public IActionResult GetStudentsLessonDetails()
+        {
+            var studentsLessonDetails = context.Students
+                .Where(s => s.Enrollments.Any(e => e.SubmissionDate != null && e.HomeWorkEvaluation == "Pending"))
+                .Select(s => new StudentLessonDTO
+                {
+                    UserName = context.Users.Where(u => u.UserId == s.StudentId).Select(u => u.Name).FirstOrDefault(),
+                    LessonTitle = s.Enrollments.Select(e => e.Lesson.Title).FirstOrDefault(),
+                    GradeLevel = s.GradeLevel,
+                    StudentId = s.StudentId,
+                })
+                .Take(10)
+                .ToList();
+
+            return Ok(studentsLessonDetails);
+        }
+
+
+        [HttpGet("GetNumberOfVideosByLevel")]
+        public IActionResult GetNumberOfVideosByLevel()
+        {
+            var videoCounts = new
+            {
+                F = context.Materials
+                    .Where(m => m.MaterialType == "video" && m.Lesson.GradeLevel == "F")
+                    .Count(),
+
+                S = context.Materials
+                    .Where(m => m.MaterialType == "video" && m.Lesson.GradeLevel == "S")
+                    .Count(),
+
+                T = context.Materials
+                    .Where(m => m.MaterialType == "video" && m.Lesson.GradeLevel == "T")
+                    .Count()
+            };
+
+            return Ok(videoCounts);
+        }
+
+
+        [HttpPost("Uploadlesson")]
+        public IActionResult Uploadlesson( [FromForm]  NewLessonDTo newLesson)
+        {
+            if (ModelState.IsValid)
+            {
+                var lesson = new Lesson
+                {
+                    Title = newLesson.Title,
+                    Description = newLesson.Description,
+                    GradeLevel = newLesson.Level,
+                    TeacherId = 4,
+                    FeeAmount = newLesson.Price,
+                    AccessPeriod = newLesson.AccessPeriod,
+                    UploadDate = DateOnly.Parse(newLesson.UploadDate)
+                };
+
+                context.Lessons.Add(lesson);
+                context.SaveChanges();
+
+
+                if (newLesson.FileVideo != null)
+                {
+                    var videoMaterial = new Material
+                    {
+                        LessonId = lesson.LessonId,
+                        MaterialType = "Video",
+                        MaterialLink = newLesson.FileVideo.FileName,
+                        Name = ""
+                    };
+                    var videoUploadResult = videos.UploadVideo(newLesson.FileVideo, newLesson.Level, videoMaterial.MaterialType); // تمرير المستوى
+
+                    context.Materials.Add(videoMaterial);
+                }
+
+
+                if (newLesson.FileAttach != null)
+                {
+                    var pdfMaterial = new Material
+                    {
+                        LessonId = lesson.LessonId,
+                        MaterialType = "PDF",
+                        MaterialLink = newLesson.FileAttach.FileName,
+                        Name = ""
+                    };
+                    var attachmentUploadResult = videos.UploadVideo(newLesson.FileAttach, newLesson.Level, pdfMaterial.MaterialType); // تمرير المستوى
+
+                    context.Materials.Add(pdfMaterial);
+                }
+
+                context.SaveChanges();
+                return Ok();
+            }
+
+            return BadRequest(ModelState);
+        }
+
+        [HttpGet]
+        [Route("api/comments/unansweredByLesson")]
+        public async Task<IActionResult> GetUnansweredQuestionsByLesson()
+        {
+            var unansweredQuestions = await (from sc in context.StudentComments
+                                             join c in context.Comments on sc.CommentId equals c.CommentId
+                                             join s in context.Students on sc.StudentId equals s.StudentId
+                                             join u in context.Users on s.StudentId equals u.UserId
+                                             where string.IsNullOrEmpty(c.Reply)
+                                             select new StudentCommentDTO
+                                             {
+                                                 CommentId = c.CommentId,         // إضافة CommentId
+                                                 StudentName = u.Name,            // اسم الطالب
+                                                 GradeLevel = s.GradeLevel,       // المستوى الدراسي
+                                                 Question = c.Question,           // السؤال
+                                                 QuestionDate = ((DateOnly)c.QuestionDate).ToDateTime(TimeOnly.MinValue) // تحويل DateOnly إلى DateTime // تاريخ السؤال
+                                             }).ToListAsync();
+
+            if (unansweredQuestions == null || unansweredQuestions.Count == 0)
+            {
+                return Ok(new { Message = "No unanswered questions found." });
+            }
+
+            return Ok(unansweredQuestions);
+        }
+        [HttpPost]
+        [Route("api/comments/replyToQuestion")]
+        public async Task<IActionResult> ReplyToQuestion(int commentId, string teacherReply)
+        {
+            
+            var comment = await context.Comments.FirstOrDefaultAsync(c => c.CommentId == commentId);
+
+            if (comment == null)
+            {
+                return NotFound(new { Message = "Comment not found." });
+            }
+
+            
+            comment.Reply = teacherReply;
+
+         
+            comment.ReplyDate = DateOnly.FromDateTime(DateTime.Now); 
+            await context.SaveChangesAsync();
+
+            return Ok(new { Message = "Reply saved successfully." });
         }
 
 

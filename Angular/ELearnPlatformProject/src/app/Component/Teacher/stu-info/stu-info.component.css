@@ -48,6 +48,7 @@ body {
   color: white;
   font-weight: bold;
   text-align: center;
+  border-radius: 10px;
 }
 
 .table {
@@ -96,4 +97,18 @@ main {
     position: static;
     width: 100%;
   }
+}
+#levels{
+  float: left;
+}
+#upload{
+width: 350px;
+font-size: 30px;
+border-radius: 10px;
+/* position: relative;
+left: 200px; */
+position: sticky;
+}
+#ShowAll{
+  position: relative;
 }

@@ -274,3 +274,7 @@ D:\OneDrive\Desktop\ITI\Projects\E-LearningPlatformProject\API\EduPlatformAPI\Ed
 D:\OneDrive\Desktop\ITI\Projects\E-LearningPlatformProject\API\EduPlatformAPI\EduPlatformAPI\obj\Debug\net8.0\EduPlatformAPI.genruntimeconfig.cache
 D:\OneDrive\Desktop\ITI\Projects\E-LearningPlatformProject\API\EduPlatformAPI\EduPlatformAPI\obj\Debug\net8.0\ref\EduPlatformAPI.dll
 D:\OneDrive\Desktop\ITI\Projects\E-LearningPlatformProject\API\EduPlatformAPI\EduPlatformAPI\bin\Debug\net8.0\EduPlatformAPI.staticwebassets.runtime.json
+D:\OneDrive\Desktop\ITI\Projects\E-LearningPlatformProject\API\EduPlatformAPI\EduPlatformAPI\bin\Debug\net8.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\OneDrive\Desktop\ITI\Projects\E-LearningPlatformProject\API\EduPlatformAPI\EduPlatformAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\OneDrive\Desktop\ITI\Projects\E-LearningPlatformProject\API\EduPlatformAPI\EduPlatformAPI\bin\Debug\net8.0\Newtonsoft.Json.dll
+D:\OneDrive\Desktop\ITI\Projects\E-LearningPlatformProject\API\EduPlatformAPI\EduPlatformAPI\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll

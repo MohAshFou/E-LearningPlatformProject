@@ -9,6 +9,14 @@
       "PackagePath": "staticwebassets\\Levels\\One\\Video\\lesson2.mp4"
     },
     {
+      "Id": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDF\\placement test (2).pdf",
+      "PackagePath": "staticwebassets\\Levels\\Three\\PDF\\placement test (2).pdf"
+    },
+    {
+      "Id": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDF\\sora-Model.pdf",
+      "PackagePath": "staticwebassets\\Levels\\Three\\PDF\\sora-Model.pdf"
+    },
+    {
       "Id": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\lesson1.mp4",
       "PackagePath": "staticwebassets\\Levels\\Three\\Video\\lesson1.mp4"
     },
@@ -17,12 +25,28 @@
       "PackagePath": "staticwebassets\\Levels\\Three\\Video\\lesson2.mp4"
     },
     {
+      "Id": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\lesson4.mp4",
+      "PackagePath": "staticwebassets\\Levels\\Three\\Video\\lesson4.mp4"
+    },
+    {
+      "Id": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\lesson5.mp4",
+      "PackagePath": "staticwebassets\\Levels\\Three\\Video\\lesson5.mp4"
+    },
+    {
+      "Id": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Two\\PDF\\lesson3.mp4",
+      "PackagePath": "staticwebassets\\Levels\\Two\\PDF\\lesson3.mp4"
+    },
+    {
       "Id": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Two\\Video\\lesson1.mp4",
       "PackagePath": "staticwebassets\\Levels\\Two\\Video\\lesson1.mp4"
     },
     {
       "Id": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Two\\Video\\lesson2.mp4",
       "PackagePath": "staticwebassets\\Levels\\Two\\Video\\lesson2.mp4"
+    },
+    {
+      "Id": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Two\\Video\\lesson3.mp4",
+      "PackagePath": "staticwebassets\\Levels\\Two\\Video\\lesson3.mp4"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.EduPlatformAPI.Microsoft.AspNetCore.StaticWebAssets.props",

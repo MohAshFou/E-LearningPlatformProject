@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { UserAuthService } from '../../../../Services/User/user-auth.service';
+import { TeacherService } from '../../../../Services/Teacher/teacher.service';
 
 @Component({
   selector: 'app-nav-par',
@@ -10,8 +11,9 @@ import { UserAuthService } from '../../../../Services/User/user-auth.service';
   styleUrl: './nav-par.component.css'
 })
 export class NavParComponent implements OnInit {
-  Name:string="Mohamed"
-  constructor(private service:UserAuthService){
+  Name:any="Mohamed"
+  QuestionNotReplying:any=''
+  constructor(private service:UserAuthService , private teacherService:TeacherService){
 
 
   }
@@ -27,7 +29,19 @@ export class NavParComponent implements OnInit {
 
         }
       });
+
+
   }
+
+    this.teacherService.GetCountOfQuestionNotReplying().subscribe({
+      next: (ed) => {
+         this.QuestionNotReplying= ed.count
+      },
+      error: (e: any) => {
+
+      }
+    });
+
    }
 
 

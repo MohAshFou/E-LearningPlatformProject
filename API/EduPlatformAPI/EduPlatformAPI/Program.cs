@@ -5,7 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using EduPlatformAPI.Controllers;
-
+using Microsoft.AspNetCore.Http.Features;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace EduPlatformAPI
 {
@@ -17,14 +18,15 @@ namespace EduPlatformAPI
 
             // Add services to the DB.
             builder.Services.AddDbContext<EduPlatformDbContext>(op => {
-
                 op.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
             });
 
             builder.Services.AddScoped<AuthService>();
             builder.Services.AddScoped<GenerateUserAndPass>();
             builder.Services.AddScoped<VideosService>();
+            builder.Services.AddScoped<VideoController>();
 
+            builder.Services.AddScoped<TeacherController>();
 
             // Add services to the Cors.
             builder.Services.AddCors(options =>
@@ -35,33 +37,28 @@ namespace EduPlatformAPI
                 });
             });
 
-            // to search about word  Bearer in header 
-            builder.Services.AddAuthentication(options => { 
-            
-            
-            options.DefaultAuthenticateScheme= JwtBearerDefaults.AuthenticationScheme;
-                // to return un athu    
-             options.DefaultChallengeScheme= JwtBearerDefaults.AuthenticationScheme;
-            options.DefaultScheme= JwtBearerDefaults.AuthenticationScheme;
-            
-            }).AddJwtBearer( op=>
+            // to search about word Bearer in header 
+            builder.Services.AddAuthentication(options => {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(op =>
             {
-
                 op.SaveToken = true;
-                op.RequireHttpsMetadata= false;
+                op.RequireHttpsMetadata = false;
                 op.TokenValidationParameters = new TokenValidationParameters()
                 {
                     ValidateIssuer = true,
-                    ValidIssuer= builder.Configuration["Jwt:Issuer"],
+                    ValidIssuer = builder.Configuration["Jwt:Issuer"],
                     ValidateAudience = true,
-                    ValidAudience= builder.Configuration["Jwt:Audience"],
-                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
-                  ,   ValidateLifetime = true, 
-                    ClockSkew = TimeSpan.Zero 
+                    ValidAudience = builder.Configuration["Jwt:Audience"],
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
+                    ValidateLifetime = true,
+                    ClockSkew = TimeSpan.Zero
                 };
-            }       
-                );
+            });
+
             builder.Services.AddAuthorization(options =>
             {
                 options.AddPolicy("AdminOnly", policy => policy.RequireRole("A"));
@@ -69,19 +66,24 @@ namespace EduPlatformAPI
                 options.AddPolicy("StudentOnly", policy => policy.RequireRole("S"));
             });
 
-
-
             // Add services to the container.
-            builder.Services.AddControllers();
+            builder.Services.AddControllers()
+                .AddNewtonsoftJson(); // Add this line
+
+            // Configure form options to increase the max request body size
+            builder.Services.Configure<FormOptions>(options =>
+            {
+                options.MultipartBodyLengthLimit = 104857600; // Set your desired limit here
+            });
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-
-            // Configure  server options to increase the max request body size
+            // Configure server options to increase the max request body size
             builder.WebHost.ConfigureKestrel(serverOptions =>
             {
-                serverOptions.Limits.MaxRequestBodySize = 1000 * 1024 * 1024; 
+                serverOptions.Limits.MaxRequestBodySize = 1000 * 1024 * 1024;
             });
 
             var app = builder.Build();
@@ -99,9 +101,8 @@ namespace EduPlatformAPI
 
             app.UseAuthorization();
 
-
             app.MapControllers();
-         
+
             app.Run();
         }
     }
