@@ -39,17 +39,17 @@ export const routes: Routes = [
     canActivate: [studentGuard] , children: [
       {
         path: "",
-        component: StuInfoComponent
+        component: LecturesStudentComponent
       },
 
       {
         path: "Lectures",
         component: LecturesStudentComponent
       } ,
-      {
-        path: "Question And Answer",
-        component: ChatComponent
-      }
+      // {
+      //   path: "Question And Answer",
+      //   component: ChatComponent
+      // }
     ]
   },
   {

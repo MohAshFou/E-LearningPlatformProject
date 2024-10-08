@@ -1,6 +1,19 @@
-<div class="lecture-container">
-  <app-lectures-card-student
-    *ngFor="let lecture of lectures"
-    [lecture]="lecture">
-  </app-lectures-card-student>
+<div class="lecture-card">
+  <div class="image-container">
+    <img src="Images/lessonVideo.jpg" alt="Lecture Image" />
+    <i class="fas fa-play play-button"></i>
+  </div>
+  <div class="lecture-info">
+    <div class="lecture-title-description">
+      <div class="lecture-title"></div>
+      <div class="lecture-description"></div>
+    </div>
+    <div class="lecture-price"></div>
+  </div>
+  <div class="lecture-date-time">
+    <div>Parts: </div>
+    <div>Date:  </div>
+    <div>Time: </div>
+  </div>
+
 </div>

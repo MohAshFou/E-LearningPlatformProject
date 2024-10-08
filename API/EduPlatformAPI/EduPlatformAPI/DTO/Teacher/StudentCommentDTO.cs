@@ -7,6 +7,7 @@
         public string StudentName { get; set; }
         public string GradeLevel { get; set; }
         public string Question { get; set; }
+        public string TitleLesson { get; set; }
         public DateTime QuestionDate { get; set; }
 
     }

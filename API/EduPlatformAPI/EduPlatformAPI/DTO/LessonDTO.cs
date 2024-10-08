@@ -6,6 +6,8 @@
         public string Title { get; set; }
         public string Description { get; set; }
         public string? VideoURL { get; set; }
+        public string? PDFURL { get; set; }
+        public string? hasVideoAccess { get; set; }
         public DateOnly UploadDate { get; set; }
         public decimal FeeAmount { get; set; }
 

@@ -15,9 +15,9 @@ namespace EduPlatformAPI.Controllers
     public class TeacherController : ControllerBase
     {
         private readonly EduPlatformDbContext context;
-        private readonly VideosService vidSer;
+        private readonly LessonService vidSer;
         private readonly VideoController videos;
-        public TeacherController(EduPlatformDbContext context , VideosService vidSer , VideoController videos)
+        public TeacherController(EduPlatformDbContext context , LessonService vidSer , VideoController videos)
         {
             this.context = context;
             this.vidSer = vidSer;
@@ -107,25 +107,13 @@ namespace EduPlatformAPI.Controllers
                 return BadRequest("Grade level cannot be null or empty.");
             }
 
-            var NewLevel = "";
-            if (gradeLevel=="F")
-                    {
-                        NewLevel = "One";
-                    }
-            else if (gradeLevel=="S") 
-                    {
-                            NewLevel = "Two";
-                     }
-             else if (gradeLevel == "T")
-                
-                    {
-                        NewLevel = "Three";
-                    }
-
-
-
-
-
+            var NewLevel = gradeLevel switch
+            {
+                "F" or "f" => "One",
+                "S" or "s" => "Two",
+                "T" or "t" => "Three",
+                _ => null
+            };
                     var lessons = context.Lessons
                 .Where(l => l.GradeLevel.ToLower()==gradeLevel.ToLower())
                 .Select(l => new LessonDTO
@@ -133,7 +121,10 @@ namespace EduPlatformAPI.Controllers
                     LessonId = l.LessonId,
                     Title = l.Title,
                     Description = l.Description,
-                    VideoURL= vidSer.GetVideoURL( HttpContext  ,NewLevel, context.Materials.Where(s => s.LessonId == l.LessonId && s.MaterialType == "Video").Select(w => w.MaterialLink).FirstOrDefault() ?? ""),
+                    VideoURL= vidSer.GetVideoURL(HttpContext, NewLevel, context.Materials.Where(s => s.LessonId == l.LessonId && s.MaterialType == "Video").Select(w => w.MaterialLink).FirstOrDefault() ?? ""),
+                    PDFURL= vidSer.GetPDFURL(HttpContext, NewLevel, context.Materials.Where(s => s.LessonId == l.LessonId && s.MaterialType == "PDF").Select(w => w.MaterialLink).FirstOrDefault() ?? ""),
+
+
                     UploadDate = l.UploadDate,
                     FeeAmount = l.FeeAmount 
                            
@@ -241,7 +232,7 @@ namespace EduPlatformAPI.Controllers
                         MaterialLink = newLesson.FileVideo.FileName,
                         Name = ""
                     };
-                    var videoUploadResult = videos.UploadVideo(newLesson.FileVideo, newLesson.Level, videoMaterial.MaterialType); // تمرير المستوى
+                    var videoUploadResult = videos.UploadVideo(newLesson.FileVideo, newLesson.Level, videoMaterial.MaterialType); 
 
                     context.Materials.Add(videoMaterial);
                 }
@@ -269,21 +260,24 @@ namespace EduPlatformAPI.Controllers
         }
 
         [HttpGet]
-        [Route("api/comments/unansweredByLesson")]
+        [Route("unansweredByLesson")]
         public async Task<IActionResult> GetUnansweredQuestionsByLesson()
         {
             var unansweredQuestions = await (from sc in context.StudentComments
                                              join c in context.Comments on sc.CommentId equals c.CommentId
                                              join s in context.Students on sc.StudentId equals s.StudentId
                                              join u in context.Users on s.StudentId equals u.UserId
+                                             join l in context.Lessons on sc.LessonId equals l.LessonId
                                              where string.IsNullOrEmpty(c.Reply)
                                              select new StudentCommentDTO
                                              {
-                                                 CommentId = c.CommentId,         // إضافة CommentId
-                                                 StudentName = u.Name,            // اسم الطالب
-                                                 GradeLevel = s.GradeLevel,       // المستوى الدراسي
-                                                 Question = c.Question,           // السؤال
-                                                 QuestionDate = ((DateOnly)c.QuestionDate).ToDateTime(TimeOnly.MinValue) // تحويل DateOnly إلى DateTime // تاريخ السؤال
+                                                 CommentId = c.CommentId,        
+                                                 StudentName = u.Name,            
+                                                 GradeLevel = s.GradeLevel,       
+                                                 Question = c.Question,  
+                                                 TitleLesson= l.Title,
+                                                  
+                                                 QuestionDate = ((DateOnly)c.QuestionDate).ToDateTime(TimeOnly.MinValue) 
                                              }).ToListAsync();
 
             if (unansweredQuestions == null || unansweredQuestions.Count == 0)
@@ -294,11 +288,11 @@ namespace EduPlatformAPI.Controllers
             return Ok(unansweredQuestions);
         }
         [HttpPost]
-        [Route("api/comments/replyToQuestion")]
-        public async Task<IActionResult> ReplyToQuestion(int commentId, string teacherReply)
+        [Route("replyToQuestion")]
+        public async Task<IActionResult> ReplyToQuestion(ReplyToQuestionDTO teacReplyDTo)
         {
             
-            var comment = await context.Comments.FirstOrDefaultAsync(c => c.CommentId == commentId);
+            var comment = await context.Comments.FirstOrDefaultAsync(c => c.CommentId == teacReplyDTo.commentId);
 
             if (comment == null)
             {
@@ -306,7 +300,7 @@ namespace EduPlatformAPI.Controllers
             }
 
             
-            comment.Reply = teacherReply;
+            comment.Reply = teacReplyDTo.teacherReply;
 
          
             comment.ReplyDate = DateOnly.FromDateTime(DateTime.Now); 

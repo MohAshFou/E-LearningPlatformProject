@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
          this.ser.ISExpired().subscribe({
         next: ( res) => {
 
-                console.log(res.role);
+              
                 this.goTopag(res.role);
 
         },
