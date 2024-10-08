@@ -9,10 +9,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{2AAABE70-D7D6-4B1B-ACBF-4B0C0239649C}|EduPlatformAPI\\EduPlatformAPI.csproj|d:\\onedrive\\desktop\\iti\\projects\\e-learningplatformproject\\api\\eduplatformapi\\eduplatformapi\\dto\\lessondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2AAABE70-D7D6-4B1B-ACBF-4B0C0239649C}|EduPlatformAPI\\EduPlatformAPI.csproj|solutionrelative:eduplatformapi\\dto\\lessondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\Services\\LessonService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:EduPlatformAPI\\Services\\LessonService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 1126,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,29 +30,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "LessonService.cs",
-              "DocumentMoniker": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\Services\\LessonService.cs",
-              "RelativeDocumentMoniker": "EduPlatformAPI\\Services\\LessonService.cs",
-              "ToolTip": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\Services\\LessonService.cs",
-              "RelativeToolTip": "EduPlatformAPI\\Services\\LessonService.cs",
-              "ViewState": "AQIAAAoAAAAAAAAAAAAAABoAAAAQAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T22:22:38.461Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
               "Title": "LessonDTO.cs",
               "DocumentMoniker": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\DTO\\LessonDTO.cs",
               "RelativeDocumentMoniker": "EduPlatformAPI\\DTO\\LessonDTO.cs",
               "ToolTip": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\DTO\\LessonDTO.cs",
               "RelativeToolTip": "EduPlatformAPI\\DTO\\LessonDTO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAlAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T22:19:35.673Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-07T22:19:35.673Z"
             },
             {
               "$type": "Document",
@@ -66,7 +48,7 @@
               "RelativeDocumentMoniker": "EduPlatformAPI\\Controllers\\StudentController.cs",
               "ToolTip": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\Controllers\\StudentController.cs",
               "RelativeToolTip": "EduPlatformAPI\\Controllers\\StudentController.cs",
-              "ViewState": "AQIAAGEAAAAAAAAAAAAAAEIAAAAIAAAA",
+              "ViewState": "AQIAABoAAAAAAAAAAAAAACEAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-07T19:58:04.066Z",
               "EditorCaption": ""

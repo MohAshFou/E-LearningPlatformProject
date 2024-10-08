@@ -88,7 +88,9 @@ namespace EduPlatformAPI.Controllers
                 .Select(l => new
                 {
                     l.LessonId,
-                    l.Title,
+                    l.Title, 
+                    l.AccessPeriod
+                    ,
                     l.Description,
                     VideoURL = vidSer.GetVideoURL(HttpContext, NewLevel,
                         context.Materials.Where(s => s.LessonId == l.LessonId && s.MaterialType == "Video")
@@ -118,7 +120,8 @@ namespace EduPlatformAPI.Controllers
                 PDFURL = l.PDFURL,
                 hasVideoAccess = HasVideoAccess(id, l.LessonId),
                 UploadDate = l.UploadDate,
-                FeeAmount = l.FeeAmount
+                FeeAmount = l.FeeAmount ,
+                AccessPeriod=l.AccessPeriod,
             }).ToList();
 
             return Ok(lessonDTOs);
