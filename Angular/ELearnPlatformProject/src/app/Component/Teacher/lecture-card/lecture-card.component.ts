@@ -18,12 +18,15 @@ import { LectureService } from '../../../Services/Teacher/lecture.service';
 export class LectureCardComponent implements OnInit{
   // @Input() lecture: any;
   @Output() edit = new EventEmitter<void>();
+  @Output() Save = new EventEmitter<any>();
+
 
   ///
   levelId: string | null = null;
   grade: 'F' | 'S' | 'T' = 'F'
   lectures: any
   selectedLec: any
+
 
   constructor(private route: ActivatedRoute, private lectureService: LectureService) {}
 
@@ -42,6 +45,13 @@ export class LectureCardComponent implements OnInit{
       this.grade='T'
     }
 
+
+    this.getLessonsByGradeLevel();
+
+  }
+
+  getLessonsByGradeLevel(){
+    // debugger;
     this.lectureService.getLessonsByGradeLevel(this.grade).subscribe((response)=>{console.log(response);
       this.lectures=response
     })
@@ -59,13 +69,21 @@ export class LectureCardComponent implements OnInit{
   }
 
   onSave(updatedLecture: any) {
-    console.log('Lecture updated:', updatedLecture);
-    this.onClose();
+    const gradeLevel = updatedLecture.gradeLevel;
 
-}
+    this.lectureService.getLessonsByGradeLevel(gradeLevel).subscribe({
+      next: (lessons) => {
+        console.log('Updated lessons:', lessons);
+        this.onClose();
+      },
+      error: (error) => {
+        console.error('Error fetching updated lessons:', error);
+      }
+    });
+    console.log('test on save')
+  }
 
-onClose(): void { this.showModal = false;  }
 
-
+onClose(): void { this.showModal = false; console.log('close test') ; this.getLessonsByGradeLevel();}
 
 }

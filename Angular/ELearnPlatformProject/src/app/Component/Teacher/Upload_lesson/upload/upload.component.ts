@@ -23,6 +23,7 @@ export class UploadComponent implements OnInit {
     Level: '',
     FileVideo: null,
     FileAttach: null,
+    PDFHomework:null,
     Price: 0,
     AccessPeriod:0,
     uploadDate: '',
@@ -30,8 +31,7 @@ export class UploadComponent implements OnInit {
     Description: ''
   };
   public successMessage: string | null = null;
-  uploadProgress: number = 0;
-  uploadInProgress: boolean = false;
+
   invalidFields = {
     Title: false,
     Level: false,
@@ -39,7 +39,8 @@ export class UploadComponent implements OnInit {
     FileAttach: false,
     Price: false,
     Description: false,
-    AccessPeriod: false
+    AccessPeriod: false ,
+    PDFHomework: false
   };
 
   constructor(private service: UserAuthService , private datePipe: DatePipe , private TeacherService:TeacherService) {}
@@ -70,6 +71,12 @@ export class UploadComponent implements OnInit {
       this.NewLesson.FileAttach = file;
     }
   }
+  onHomeWork(event: any): void {
+    const file = event.target.files[0];
+    if (file) {
+      this.NewLesson.PDFHomework = file;
+    }
+  }
 
   validateField(field: string): void {
     switch (field) {
@@ -94,6 +101,9 @@ export class UploadComponent implements OnInit {
         case 'AccessPeriod' :
           this.invalidFields.AccessPeriod = !this.validAccessPeriod(this.NewLesson.Price);
           break;
+          case 'HomeWorkPDF' :
+            this.invalidFields.AccessPeriod = !this.validPDFHomework(this.NewLesson.PDFHomework);
+            break;
       default:
         break;
     }
@@ -108,6 +118,9 @@ export class UploadComponent implements OnInit {
   }
 
   validFile(file: File | null): boolean {
+    return file !== null;
+  }
+  validPDFHomework(file: File | null): boolean {
     return file !== null;
   }
 
@@ -139,6 +152,7 @@ export class UploadComponent implements OnInit {
       formData.append('AccessPeriod', this.NewLesson.AccessPeriod.toString());
       formData.append('uploadDate', this.NewLesson.uploadDate);
       formData.append('Description', this.NewLesson.Description);
+      formData.append('HomeWork', this.NewLesson.PDFHomework as Blob );
 
       console.log(this.NewLesson);
 
@@ -154,7 +168,8 @@ export class UploadComponent implements OnInit {
             FileAttach: null,
             FileVideo: null,
             Level: "" ,
-            uploadDate: "" 
+            uploadDate: "",
+            PDFHomework: null
         };
 
         },

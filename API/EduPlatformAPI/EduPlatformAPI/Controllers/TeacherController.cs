@@ -16,8 +16,8 @@ namespace EduPlatformAPI.Controllers
     {
         private readonly EduPlatformDbContext context;
         private readonly LessonService vidSer;
-        private readonly VideoController videos;
-        public TeacherController(EduPlatformDbContext context , LessonService vidSer , VideoController videos)
+        private readonly MediaController videos;
+        public TeacherController(EduPlatformDbContext context , LessonService vidSer , MediaController videos)
         {
             this.context = context;
             this.vidSer = vidSer;
@@ -72,32 +72,94 @@ namespace EduPlatformAPI.Controllers
         [HttpGet("GetStudentsWithSubmittedHomeworks")]
         public IActionResult GetStudentsWithSubmittedHomeworks()
         {
-              
-            var studentsWithSubmittedHomeworks = context.Students
-                .Where(s => s.Enrollments.Any(e => e.SubmissionDate != null && e.HomeWorkEvaluation=="pending"))
-                .Select(s => new StudentSubmissionDTO
-                {
-                    StudentId = s.StudentId,
-                    GradeLevel = s.GradeLevel,
-                    
-                   
-                    UserName = context.Users.Where(d => d.UserId == s.StudentId).Select(s => s.Name).FirstOrDefault(),
-                    Homeworks = s.Enrollments
-                        .Where(e => e.SubmissionDate != null)
-                        .Select(e => new HomeworkSubmissionDTO
-                        {
-                            LessonId = e.LessonId,
-                            LessonTitle = e.Lesson.Title,
-                            HomeWorkEvaluation= e.HomeWorkEvaluation,
-                            SubmissionDate = e.SubmissionDate.Value,
-                            SubmissionLink = e.SubmissionLink ?? "N/A"
-                        })
-                        .ToList()
-                })
-                .ToList();
+           
+            var homeworksWithPendingEvaluation = context.Students
+                .SelectMany(s => s.Enrollments
+                    .Where(e => e.SubmissionDate != null && e.HomeWorkEvaluation == "pending")
+                    .Select(e => new
+                    {
+                        StudentId = s.StudentId,
+                        GradeLevel = s.GradeLevel,
+                        UserName = context.Users.Where(d => d.UserId == s.StudentId).Select(u => u.Name).FirstOrDefault(),
+                        LessonId = e.LessonId,
+                        LessonTitle = e.Lesson.Title,
+                        HomeWorkEvaluation = e.HomeWorkEvaluation,
+                        SubmissionDate = e.SubmissionDate.Value,
+                        SubmissionLink = e.SubmissionLink
+                    })
+                )
+                .ToList(); 
 
-            return Ok(studentsWithSubmittedHomeworks);
+          
+            var result = homeworksWithPendingEvaluation.Select(hw => new HomeworkSubmissionDTO
+            {
+                StudentId = hw.StudentId,
+                GradeLevel = hw.GradeLevel,
+                UserName = hw.UserName,
+                LessonId = hw.LessonId,
+                LessonTitle = hw.LessonTitle,
+                HomeWorkEvaluation = hw.HomeWorkEvaluation,
+                SubmissionDate = hw.SubmissionDate,
+                SubmissionLink = vidSer.GetMediaURL(HttpContext, newlevel(hw.GradeLevel), "PDFHomework", hw.SubmissionLink),
+            }).ToList();
+
+            return Ok(result);
         }
+
+        [HttpGet("GetOLD10StudentsWithSubmittedHomeworks")]
+        public IActionResult GetOLD10StudentsWithSubmittedHomeworks()
+        {
+            // Step 1: Fetch the data from the database
+            var homeworksWithPendingEvaluation = context.Students
+                .SelectMany(s => s.Enrollments
+                    .Where(e => e.SubmissionDate != null && e.HomeWorkEvaluation == "pending")
+                    .Select(e => new
+                    {
+                        StudentId = s.StudentId,
+                        GradeLevel = s.GradeLevel,
+                        UserName = context.Users.Where(d => d.UserId == s.StudentId).Select(u => u.Name).FirstOrDefault(),
+                        LessonId = e.LessonId,
+                        LessonTitle = e.Lesson.Title,
+                        HomeWorkEvaluation = e.HomeWorkEvaluation,
+                        SubmissionDate = e.SubmissionDate.Value,
+                        SubmissionLink = e.SubmissionLink
+                    })
+                )
+                .Take(10)
+                .ToList(); 
+
+                       var result = homeworksWithPendingEvaluation.Select(hw => new HomeworkSubmissionDTO
+            {
+                StudentId = hw.StudentId,
+                GradeLevel = hw.GradeLevel,
+                UserName = hw.UserName,
+                LessonId = hw.LessonId,
+                LessonTitle = hw.LessonTitle,
+                HomeWorkEvaluation = hw.HomeWorkEvaluation,
+                SubmissionDate = hw.SubmissionDate,
+                SubmissionLink = vidSer.GetMediaURL(HttpContext, newlevel(hw.GradeLevel), "PDFHomework", hw.SubmissionLink),
+            }).ToList();
+
+            return Ok(result);
+        }
+
+
+        private string newlevel(string gradeLevel)
+        {
+
+            var NewLevel = gradeLevel switch
+            {
+                "F" or "f" => "One",
+                "S" or "s" => "Two",
+                "T" or "t" => "Three",
+                _ => ""
+            };
+
+            return NewLevel;
+
+
+        }
+
 
         [HttpGet("GetLessonsByGradeLevel/{gradeLevel}")]
         public IActionResult GetLessonsByGradeLevel(string gradeLevel)
@@ -121,10 +183,11 @@ namespace EduPlatformAPI.Controllers
                     LessonId = l.LessonId,
                     Title = l.Title,
                     Description = l.Description,
-                    VideoURL= vidSer.GetVideoURL(HttpContext, NewLevel, context.Materials.Where(s => s.LessonId == l.LessonId && s.MaterialType == "Video").Select(w => w.MaterialLink).FirstOrDefault() ?? ""),
-                    PDFURL= vidSer.GetPDFURL(HttpContext, NewLevel, context.Materials.Where(s => s.LessonId == l.LessonId && s.MaterialType == "PDF").Select(w => w.MaterialLink).FirstOrDefault() ?? ""),
+                    VideoURL= vidSer.GetMediaURL(HttpContext, NewLevel, "Video", context.Materials.Where(s => s.LessonId == l.LessonId && s.MaterialType == "Video").Select(w => w.MaterialLink).FirstOrDefault() ?? ""),
+                     homeworkURL = vidSer.GetMediaURL(HttpContext, NewLevel, "PDF", context.Materials.Where(s => s.LessonId == l.LessonId && s.MaterialType == "PDF" && s.Name == "Homework").Select(w => w.MaterialLink).FirstOrDefault() ?? ""),
 
-
+                    PDFURL = vidSer.GetMediaURL(HttpContext, NewLevel, "PDF", context.Materials.Where(s => s.LessonId == l.LessonId && s.MaterialType == "PDF" && s.Name == "").Select(w => w.MaterialLink).FirstOrDefault() ?? ""),
+                    gradeLevel= l.GradeLevel,
                     UploadDate = l.UploadDate,
                     FeeAmount = l.FeeAmount 
                            
@@ -162,24 +225,7 @@ namespace EduPlatformAPI.Controllers
         }
 
 
-        [HttpGet("GetStudentsLessonDetails")]
-        public IActionResult GetStudentsLessonDetails()
-        {
-            var studentsLessonDetails = context.Students
-                .Where(s => s.Enrollments.Any(e => e.SubmissionDate != null && e.HomeWorkEvaluation == "Pending"))
-                .Select(s => new StudentLessonDTO
-                {
-                    UserName = context.Users.Where(u => u.UserId == s.StudentId).Select(u => u.Name).FirstOrDefault(),
-                    LessonTitle = s.Enrollments.Select(e => e.Lesson.Title).FirstOrDefault(),
-                    GradeLevel = s.GradeLevel,
-                    StudentId = s.StudentId,
-                })
-                .Take(10)
-                .ToList();
-
-            return Ok(studentsLessonDetails);
-        }
-
+      
 
         [HttpGet("GetNumberOfVideosByLevel")]
         public IActionResult GetNumberOfVideosByLevel()
@@ -238,6 +284,22 @@ namespace EduPlatformAPI.Controllers
                 }
 
 
+
+                if (newLesson.HomeWork!= null)
+                {
+                    var videoMaterial = new Material
+                    {
+                        LessonId = lesson.LessonId,
+                        MaterialType = "PDF" ,
+                        MaterialLink = newLesson.HomeWork.FileName,
+                        Name = "Homework"
+                    };
+                    var videoUploadResult = videos.UploadVideo(newLesson.HomeWork, newLesson.Level, videoMaterial.MaterialType);
+
+                    context.Materials.Add(videoMaterial);
+                }
+
+
                 if (newLesson.FileAttach != null)
                 {
                     var pdfMaterial = new Material
@@ -247,7 +309,7 @@ namespace EduPlatformAPI.Controllers
                         MaterialLink = newLesson.FileAttach.FileName,
                         Name = ""
                     };
-                    var attachmentUploadResult = videos.UploadVideo(newLesson.FileAttach, newLesson.Level, pdfMaterial.MaterialType); // تمرير المستوى
+                    var attachmentUploadResult = videos.UploadVideo(newLesson.FileAttach, newLesson.Level, pdfMaterial.MaterialType); 
 
                     context.Materials.Add(pdfMaterial);
                 }
@@ -309,6 +371,90 @@ namespace EduPlatformAPI.Controllers
             return Ok(new { Message = "Reply saved successfully." });
         }
 
+
+        [HttpPut("UpdateLesson/{id}")]
+        public IActionResult UpdateLesson(int id, [FromForm] updateLessonDTO updatedLesson)
+        {
+           
+            var lesson = context.Lessons.FirstOrDefault(l => l.LessonId == id);
+            if (lesson == null)
+            {
+                return NotFound(new { message = $"Lesson with ID {id} not found." });
+            }
+
+            
+            lesson.Title = updatedLesson.Title;
+            lesson.Description = updatedLesson.Description;
+            lesson.UploadDate = updatedLesson.UploadDate; 
+            lesson.FeeAmount = updatedLesson.FeeAmount;
+
+            
+            if (updatedLesson.VideoURL != null)
+            {
+                var videoMaterial = context.Materials.FirstOrDefault(m => m.LessonId == id && m.MaterialType == "Video");
+                if (videoMaterial != null)
+                {
+                    // Assuming UploadVideo returns a valid path or filename for the uploaded video
+                    var videoUploadResult = videos.UploadVideo(updatedLesson.VideoURL, updatedLesson.GradeLevel, videoMaterial.MaterialType);
+                    videoMaterial.MaterialLink = updatedLesson.VideoURL.FileName; // Update the material link
+                }
+            }
+
+            // Check if a new PDF is uploaded
+            if (updatedLesson.PDFURL != null)
+            {
+                var pdfMaterial = context.Materials.FirstOrDefault(m => m.LessonId == id && m.MaterialType == "PDF" && m.Name == "");
+                if (pdfMaterial != null)
+                {
+                    pdfMaterial.MaterialLink = updatedLesson.PDFURL.FileName; // Update the material link
+
+                    // Assuming UploadVideo returns a valid path or filename for the uploaded PDF
+                    var attachmentUploadResult = videos.UploadVideo(updatedLesson.PDFURL, updatedLesson.GradeLevel, pdfMaterial.MaterialType);
+                        }
+            }
+
+            if (updatedLesson.HomeWork!= null)
+            {
+                var pdfMaterial = context.Materials.FirstOrDefault(m => m.LessonId == id && m.MaterialType == "PDF" && m.Name == "Homework");
+                if (pdfMaterial != null)
+                {
+                    pdfMaterial.MaterialLink = updatedLesson.HomeWork.FileName; // Update the material link
+
+                    // Assuming UploadVideo returns a valid path or filename for the uploaded PDF
+                    var attachmentUploadResult = videos.UploadVideo(updatedLesson.HomeWork, updatedLesson.GradeLevel, pdfMaterial.MaterialType);
+                         }
+            }
+
+            // Save changes to the database
+            context.SaveChanges();
+
+            return Ok(new { message = "Lesson updated successfully." });
+        }
+
+
+        [HttpPost("acceptorrejectHomework")]
+
+        public IActionResult acceptorrejectHomework(acceptorrejectHomeworkDTO homdto) {
+
+
+            if (!(homdto.state.ToLower() == "accept" || homdto.state.ToLower() == "reject"))
+            {
+                return BadRequest();
+            }
+            if (homdto.studentid <0|| homdto.lessonid < 0)
+            {
+               return  BadRequest();
+            }
+            var enro = context.Enrollments.FirstOrDefault(e => e.LessonId == homdto.lessonid && e.StudentId == homdto.studentid);
+
+            if (enro== null)
+            {
+                return NotFound();
+            }
+            enro.HomeWorkEvaluation = homdto.state;
+            context.SaveChanges();
+            return Ok();
+        }
 
     }
 }

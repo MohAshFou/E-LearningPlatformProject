@@ -6,7 +6,13 @@ import { environment } from '../../../environments/environment.development';
 })
 export class StudentService {
   Controller ='Student/'
-  constructor(private  Clinent:HttpClient) { }
+  DB_URL = "https://localhost:7217/api/Student/GetStudentInfo"
+
+  constructor(private readonly  Clinent:HttpClient) { }
+  GetInfoAboutStudentCard()
+  {
+    return this.Clinent.get(this.DB_URL);
+  }
 
 
 

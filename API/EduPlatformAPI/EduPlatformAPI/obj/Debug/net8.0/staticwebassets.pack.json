@@ -5,6 +5,18 @@
       "PackagePath": "staticwebassets\\Levels\\One\\PDF\\lesson1.pdf"
     },
     {
+      "Id": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\One\\PDF\\lesson500.mp4",
+      "PackagePath": "staticwebassets\\Levels\\One\\PDF\\lesson500.mp4"
+    },
+    {
+      "Id": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\One\\PDF\\placement test (2).pdf",
+      "PackagePath": "staticwebassets\\Levels\\One\\PDF\\placement test (2).pdf"
+    },
+    {
+      "Id": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\One\\Video\\[Arabic] Learn Git & GitHub #03 - Create Github Repository And Clone It (720p_30fps_H264-192kbit_AAC).mp4",
+      "PackagePath": "staticwebassets\\Levels\\One\\Video\\[Arabic] Learn Git & GitHub #03 - Create Github Repository And Clone It (720p_30fps_H264-192kbit_AAC).mp4"
+    },
+    {
       "Id": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\One\\Video\\lesson1.mp4",
       "PackagePath": "staticwebassets\\Levels\\One\\Video\\lesson1.mp4"
     },
@@ -13,8 +25,44 @@
       "PackagePath": "staticwebassets\\Levels\\One\\Video\\lesson2.mp4"
     },
     {
+      "Id": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDFHomework\\ss.jpg",
+      "PackagePath": "staticwebassets\\Levels\\Three\\PDFHomework\\ss.jpg"
+    },
+    {
+      "Id": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDF\\hhhhhhhhhhhhhhhhhhhhhhhhh.pdf",
+      "PackagePath": "staticwebassets\\Levels\\Three\\PDF\\hhhhhhhhhhhhhhhhhhhhhhhhh.pdf"
+    },
+    {
       "Id": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDF\\lesson3.pdf",
       "PackagePath": "staticwebassets\\Levels\\Three\\PDF\\lesson3.pdf"
+    },
+    {
+      "Id": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDF\\rrrrrrrr.pdf",
+      "PackagePath": "staticwebassets\\Levels\\Three\\PDF\\rrrrrrrr.pdf"
+    },
+    {
+      "Id": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDF\\rrrrrrrrrrrrrrrrrrrr.pdf",
+      "PackagePath": "staticwebassets\\Levels\\Three\\PDF\\rrrrrrrrrrrrrrrrrrrr.pdf"
+    },
+    {
+      "Id": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDF\\update.pdf",
+      "PackagePath": "staticwebassets\\Levels\\Three\\PDF\\update.pdf"
+    },
+    {
+      "Id": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDF\\we.pdf",
+      "PackagePath": "staticwebassets\\Levels\\Three\\PDF\\we.pdf"
+    },
+    {
+      "Id": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDF\\wwwwwwwww.pdf",
+      "PackagePath": "staticwebassets\\Levels\\Three\\PDF\\wwwwwwwww.pdf"
+    },
+    {
+      "Id": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\ReceiptImages\\dd.jpg",
+      "PackagePath": "staticwebassets\\Levels\\Three\\ReceiptImages\\dd.jpg"
+    },
+    {
+      "Id": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\ReceiptImages\\ss.jpg",
+      "PackagePath": "staticwebassets\\Levels\\Three\\ReceiptImages\\ss.jpg"
     },
     {
       "Id": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\lesson1.mp4",
@@ -25,6 +73,10 @@
       "PackagePath": "staticwebassets\\Levels\\Three\\Video\\lesson2.mp4"
     },
     {
+      "Id": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\lesson2000.mp4",
+      "PackagePath": "staticwebassets\\Levels\\Three\\Video\\lesson2000.mp4"
+    },
+    {
       "Id": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\lesson4.mp4",
       "PackagePath": "staticwebassets\\Levels\\Three\\Video\\lesson4.mp4"
     },
@@ -33,8 +85,20 @@
       "PackagePath": "staticwebassets\\Levels\\Three\\Video\\lesson5.mp4"
     },
     {
+      "Id": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\lesson545.mp4",
+      "PackagePath": "staticwebassets\\Levels\\Three\\Video\\lesson545.mp4"
+    },
+    {
+      "Id": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\lesson800.mp4",
+      "PackagePath": "staticwebassets\\Levels\\Three\\Video\\lesson800.mp4"
+    },
+    {
       "Id": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Two\\PDF\\lesson2.pdf",
       "PackagePath": "staticwebassets\\Levels\\Two\\PDF\\lesson2.pdf"
+    },
+    {
+      "Id": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Two\\ReceiptImages\\mm.jpg",
+      "PackagePath": "staticwebassets\\Levels\\Two\\ReceiptImages\\mm.jpg"
     },
     {
       "Id": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Two\\Video\\lesson1.mp4",
@@ -47,6 +111,14 @@
     {
       "Id": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Two\\Video\\lesson3.mp4",
       "PackagePath": "staticwebassets\\Levels\\Two\\Video\\lesson3.mp4"
+    },
+    {
+      "Id": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Two\\Video\\lesson5.mp4",
+      "PackagePath": "staticwebassets\\Levels\\Two\\Video\\lesson5.mp4"
+    },
+    {
+      "Id": "D:\\OneDrive\\Desktop\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Two\\Video\\lesson500.mp4",
+      "PackagePath": "staticwebassets\\Levels\\Two\\Video\\lesson500.mp4"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.EduPlatformAPI.Microsoft.AspNetCore.StaticWebAssets.props",

@@ -34,11 +34,11 @@
                 <hr class="mt-1 mb-2">
                 <div class="mb-2 flex-grow-1">
                     <label for="teacherReply" class="form-label" style="font-size: 1rem;">Teacher's Reply:</label>
-                    <textarea id="teacherReply" class="form-control form-control-sm" rows="2" placeholder="Type your reply here..." [(ngModel)]="TeacherReply"  ></textarea>
+                    <textarea id="teacherReply" class="form-control form-control-sm" rows="2" placeholder="Type your reply here..." [(ngModel)]="item.TeacherReply"  ></textarea>
                 </div>
 
                   <div class="d-flex justify-content-center align-items-end" style="margin-top: auto;">
-                      <button type="button" class="btn btn-primary btn-sm" (click)="sendReply(item.commentId , TeacherReply)">Send Reply</button>
+                      <button type="button" class="btn btn-primary btn-sm" (click)="sendReply(item.commentId , item.TeacherReply)">Send Reply</button>
                   </div>
     </div>
 </div>
@@ -50,23 +50,15 @@
 
 
 
+}@empty {
+
+
+  <div   style=" color: red;
+            font-weight: bold;  text-align: center;">
+    No students have sent any messages yet.
+  </div>
+
 }
-
-
-
-
-
- commentId
-
- gradeLevel
-
- question
-
- questionDate
-
- studentName
-
-
 
 
 

@@ -4,7 +4,7 @@ import { adminGuard } from './Guards/admin.guard';
 import { studentGuard } from './Guards/student.guard';
 import { NotFoundComponent } from './Component/NotFound/not-found/not-found.component';
 
-import { LoginComponent } from './Component/Login/login/login.component';
+import LoginComponent from './Component/Login/login/login.component';
 import { RegistrationComponent } from './Component/Registration/registration.component';
 import { TeacherComponent } from './Component/Teacher/teacher.component';
 
@@ -18,6 +18,11 @@ import { StudentComponent } from './Component/student/student.component';
 import { HomeworkComponent } from './Component/Teacher/homework/homework.component';
 import { ChatComponent } from './Component/Teacher/chat/chat.component';
 import { LecturesStudentComponent } from './Component/student/lectures-student/lectures-student.component';
+import { SubmittedhomeworkDetailComponent } from './Component/Teacher/homework/submittedhomework-detail/submittedhomework-detail.component';
+import { ReceiptComponent } from './Component/Admin/receipt/receipt.component';
+import { ManageAccountsComponent } from './Component/Admin/manage-accounts/manage-accounts.component';
+import { WatchVedioComponent } from './Component/student/Watching/watch-vedio/watch-vedio.component';
+import { ReceiptStudentComponent } from './Component/student/receipt/receipt-student/receipt-student.component';
 
 export const routes: Routes = [
   {
@@ -46,16 +51,35 @@ export const routes: Routes = [
         path: "Lectures",
         component: LecturesStudentComponent
       } ,
-      // {
-      //   path: "Question And Answer",
-      //   component: ChatComponent
-      // }
+      {
+        path: "receipt",
+        component: ReceiptStudentComponent
+      },
+      {
+        path:"WatchVedio",
+        component: WatchVedioComponent
+      }
+
+
     ]
   },
   {
     path: "admin",
     component: AdminComponent,
-    canActivate: [adminGuard]
+    canActivate: [adminGuard] ,children:[
+
+      {
+        path: "Receipt",
+        component: ReceiptComponent
+      },
+
+      {
+        path: "ManageAccounts",
+        component: ManageAccountsComponent
+      }
+
+
+    ]
   },
   {
     path: "teacher",
@@ -78,6 +102,11 @@ export const routes: Routes = [
         path: "homework",
         component: HomeworkComponent
       },
+      {
+        path: "homework/:id",
+        component: SubmittedhomeworkDetailComponent
+      }
+      ,
       {
         path: "chat",
         component: ChatComponent

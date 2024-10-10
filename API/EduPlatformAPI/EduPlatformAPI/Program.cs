@@ -24,7 +24,7 @@ namespace EduPlatformAPI
             builder.Services.AddScoped<AuthService>();
             builder.Services.AddScoped<GenerateUserAndPass>();
             builder.Services.AddScoped<LessonService>();
-            builder.Services.AddScoped<VideoController>();
+            builder.Services.AddScoped<MediaController>();
 
             builder.Services.AddScoped<TeacherController>();
 

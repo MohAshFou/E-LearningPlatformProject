@@ -12,7 +12,18 @@
                 <a class="nav-link" routerLink="homework/"><img class="Dashboard" src="Images/book.PNG"> Homework</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="chat/"><img class="Dashboard" src="Images/chat.PNG"> Chat   <span style="border-radius: 10px; border: 2px  gold solid ;" >{{QuestionNotReplying}}</span></a>
+                <a class="nav-link" routerLink="chat/"><img class="Dashboard" src="Images/chat.PNG"> Chat
+                  @if (QuestionNotReplying>0) {
+
+                    <span style="border-radius: 10px; border: 2px  gold solid ;" >{{QuestionNotReplying}}</span>
+                  }
+
+                </a>
+            </li>
+
+            <li>
+
+              <button class="btn custom-logout-button"(click)="logout()" >Logout</button>
             </li>
         </ul>
     </div>

@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink, RouterModule } from '@angular/router';
+import { Router, RouterLink, RouterModule } from '@angular/router';
 import { UserAuthService } from '../../../Services/User/user-auth.service';
 import { TeacherService } from '../../../Services/Teacher/teacher.service';
 import { CommonModule } from '@angular/common';
 import { CountOfVideoLevels } from '../../../Models/Teacher/count-of-video-levels';
+import { SumHomeService } from '../../../Services/Teacher/sum-home.service';
+import { StudentsWithSubmittedHomeworks } from '../../../Models/Teacher/students-with-submitted-homeworks';
+
 
 @Component({
   selector: 'app-stu-info',
@@ -17,10 +20,10 @@ export class StuInfoComponent  implements OnInit{
 
   Name:string="Mohamed"
   CountOfVideoLevels: CountOfVideoLevels;
-  StudenntHomeWork : any;
+  allStudents: StudentsWithSubmittedHomeworks[]=[]
   constructor(
     private service:UserAuthService ,
-    public MyServ:TeacherService){
+    public MyServ:TeacherService ,private sumser:SumHomeService , private rou:Router ){
       this.CountOfVideoLevels = {
         level1: '',
         level2: '',
@@ -44,8 +47,8 @@ export class StuInfoComponent  implements OnInit{
 
    ///
    this.MyServ.GetStudentsWithSubmittedHomeworks().subscribe({
-    next:(data)=> {
-      this.StudenntHomeWork=data;
+    next:(data:any)=> {
+      this.allStudents= data
     },
     error:(err)=> {
       console.log("Error is");
@@ -66,4 +69,18 @@ export class StuInfoComponent  implements OnInit{
     },
    });
   }
+
+
+  onclick(data: StudentsWithSubmittedHomeworks): void {
+    this.sumser.SetAlldetails(data);
+    this.rou.navigate([`/teacher/homework/${data.studentId}`]);
+  }
+
+  trackByStudentId(index: number, student: StudentsWithSubmittedHomeworks): number {
+    return student.studentId;
+  }
+
+
+
+  
 }

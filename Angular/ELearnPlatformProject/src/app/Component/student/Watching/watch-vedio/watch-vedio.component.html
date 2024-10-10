@@ -1,0 +1,49 @@
+<div class="container video-container mt-100">
+  <div class="card shadow-lg">
+      <div class="card-header bg-primary text-white text-center">
+          <h4 class="mb-0">Lecture</h4>
+      </div>
+      <div class="card-body">
+          <div class="ratio ratio-4x3 mb-3" style="max-width: 600px; max-height: 250px;margin: auto;">
+              <!-- <iframe title="Lecture Video" allowfullscreen   >   </iframe> -->
+              <video [src]="curentlesson.videoURL"  controls ></video>
+          </div>
+          <h5 class="card-title"> Title{{curentlesson.title}}</h5>
+          <p class="card-text"> description:
+                     {{curentlesson.description}}
+          </p>
+          <!-- <div class="text-start d-flex mb-3"> -->
+
+          <!-- </div> -->
+   <div style="padding: 3px;">
+    <a [href]="curentlesson.pdfurl"    target="_blank"  >Download Lesson PDF</a>
+    <br>
+    <a [href]="curentlesson.homeworkURL"  target="_blank"    >Download HomeWork</a>
+
+   </div>
+   <br>
+
+          <h5>Upload Your HomeWork</h5>
+          <div class="d-flex align-items-center mb-3">
+              <input style="width: 70%;" type="file" id="receiptInput" accept="application/pdf" class="form-control me-2" />
+              <input class="btn btn-outline-primary ms-auto" value="Send">
+          </div>
+
+          <div class="mb-2">
+              <label for="studentQuestion" class="form-label">Student's Question:</label>
+              <textarea id="studentQuestion" class="form-control form-control-sm" rows="2" placeholder="Type your question here..."></textarea>
+          </div>
+          <div class="mb-3">
+              <label for="teacherReply" class="form-label">Teacher's Reply:</label>
+              <textarea id="teacherReply" class="form-control form-control-sm" rows="2" readonly placeholder="The teacher's reply will appear here..."></textarea>
+          </div>
+          <div class="text-start">
+              <button  class="btn btn-primary btn-sm">Submit</button>
+              <button (click)="Back()" class="btn btn-success btn-sm m-2">Back</button>
+          </div>
+  </div>
+</div>
+
+
+
+

@@ -13,22 +13,30 @@ import { FormsModule } from '@angular/forms';
 export class ChatComponent implements OnInit {
   constructor( private teatherSer:TeacherService	){}
      allQuestions:any
-    TeacherReply:string=""
+    // TeacherReply:string=""
+    unansweredQuestionsCount: number = 0;
   ngOnInit(): void {
+    this.loadUnansweredQuestions();
 
+    this.teatherSer.currentCount.subscribe(count => {
+      this.unansweredQuestionsCount = count;
+    });
+  }
+
+  loadUnansweredQuestions(): void {
     this.teatherSer.GetAllUnansweredQuestions().subscribe({
       next: (d) => {
-
-          this.allQuestions= d
-          console.log(this.allQuestions)
+        this.allQuestions = d.map((question: any) => ({ ...question, TeacherReply: '' }));
+        this.unansweredQuestionsCount= d.length
+        this.teatherSer.updateCount(this.unansweredQuestionsCount );
       },
       error: (e: any) => {
-        console.log(e)
+        console.log(e);
       }
     });
-
-
   }
+
+
   sendReply( i:number , r:string){
  let repl:ReplyToQuestion={
   commentId:i,
@@ -37,9 +45,9 @@ export class ChatComponent implements OnInit {
  }
 this.teatherSer.SendReplyMessege(repl).subscribe({
   next: (d) => {
+    this.loadUnansweredQuestions();
+    this.teatherSer.updateCount(this.unansweredQuestionsCount - 1);
 
-
-      console.log(d)
   },
   error: (e: any) => {
     console.log(e)

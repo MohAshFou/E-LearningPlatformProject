@@ -17,7 +17,7 @@ namespace EduPlatformAPI.Controllers
     {
         private readonly EduPlatformDbContext context;
         private readonly LessonService vidSer;
-        private readonly VideoController videos;
+        private readonly MediaController videos;
 
 
         public StudentController(EduPlatformDbContext context, LessonService vidSer )
@@ -92,14 +92,17 @@ namespace EduPlatformAPI.Controllers
                     l.AccessPeriod
                     ,
                     l.Description,
-                    VideoURL = vidSer.GetVideoURL(HttpContext, NewLevel,
+                    VideoURL = vidSer.GetMediaURL(HttpContext, NewLevel, "Video",
                         context.Materials.Where(s => s.LessonId == l.LessonId && s.MaterialType == "Video")
                         .Select(w => w.MaterialLink)
                         .FirstOrDefault() ?? ""),
-                    PDFURL = vidSer.GetPDFURL(HttpContext, NewLevel,
-                        context.Materials.Where(s => s.LessonId == l.LessonId && s.MaterialType == "PDF")
+                    PDFURL = vidSer.GetMediaURL(HttpContext, NewLevel, "PDF",
+                        context.Materials.Where(s => s.LessonId == l.LessonId && s.MaterialType == "PDF" && s.Name == "")
+
                         .Select(w => w.MaterialLink)
                         .FirstOrDefault() ?? ""),
+                    homeworkURL = vidSer.GetMediaURL(HttpContext, NewLevel, "PDF", context.Materials.Where(s => s.LessonId == l.LessonId && s.MaterialType == "PDF" && s.Name == "Homework").Select(w => w.MaterialLink).FirstOrDefault() ?? ""),
+
                     l.UploadDate,
                     l.FeeAmount
                 })
@@ -122,6 +125,7 @@ namespace EduPlatformAPI.Controllers
                 UploadDate = l.UploadDate,
                 FeeAmount = l.FeeAmount ,
                 AccessPeriod=l.AccessPeriod,
+                homeworkURL= l.homeworkURL
             }).ToList();
 
             return Ok(lessonDTOs);

@@ -23,15 +23,20 @@
       <input id="videoFile" type="file" accept="video/*" (change)="onVideoSelected($event)" required (blur)="validateField('FileVideo')" />
       <div *ngIf="invalidFields.FileVideo" class="text-danger mt-1">Video file is required</div>
 
+
+      <label for="videoFile">Upload HomeWork</label>
+      <input id="HomeWorkPDF" type="file" accept=".pdf" (change)="onHomeWork($event)" required (blur)="validateField('HomeWorkPDF')" />
+      <div *ngIf="invalidFields.FileVideo" class="text-danger mt-1">HomeWork PDFis required</div>
+
       <label>Attached File:</label>
       <input type="file" accept=".pdf" (change)="onAttachSelected($event)" (blur)="validateField('FileAttach')" />
       <div *ngIf="invalidFields.FileAttach" class="text-danger mt-1">Attachment file is required</div>
 
       <label for="price">Price</label>
-      <input id="price" type="number" [(ngModel)]="NewLesson.Price" name="price" required (blur)="validateField('Price')" />
+      <input id="price" type="number" [(ngModel)]="NewLesson.Price" name="price" required (blur)="validateField('Price')" min="1" />
       <div *ngIf="invalidFields.Price" class="text-danger mt-1">Price must be greater than 0</div>
       <label for="price">AccessPeriod</label>
-      <input id="price" type="number" [(ngModel)]="NewLesson.AccessPeriod" name="AccessPeriod" required (blur)="validateField('AccessPeriod')" />
+      <input id="price" type="number" [(ngModel)]="NewLesson.AccessPeriod" name="AccessPeriod" required (blur)="validateField('AccessPeriod')" min="1" />
       <div *ngIf="invalidFields.AccessPeriod" class="text-danger mt-1">Price must be greater than 0</div>
       <label for="description">Description</label>
       <textarea id="description" [(ngModel)]="NewLesson.Description" name="description" required (blur)="validateField('Description')"></textarea>

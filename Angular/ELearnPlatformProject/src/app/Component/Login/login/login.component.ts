@@ -10,7 +10,7 @@ import { Router, RouterLink } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent implements OnInit {
+export default class LoginComponent implements OnInit {
   constructor( private ser:UserAuthService , private rou:Router){}
   ngOnInit(): void {
 
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
          this.ser.ISExpired().subscribe({
         next: ( res) => {
 
-              
+
                 this.goTopag(res.role);
 
         },
@@ -92,4 +92,14 @@ export class LoginComponent implements OnInit {
 
 
   }
-}
+
+
+
+
+
+
+
+
+  }
+
+

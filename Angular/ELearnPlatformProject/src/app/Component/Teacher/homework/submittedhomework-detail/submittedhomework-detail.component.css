@@ -1,0 +1,71 @@
+
+.homework-details {
+  h2 {
+    margin-bottom: 20px;
+  }
+
+  label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+  }
+
+  p {
+    margin: 5px 0 15px;
+    padding: 5px;
+    background-color: #f0f4fa;
+    border-radius: 5px;
+  }
+
+  .file-upload {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 15px 0;
+
+    .file-display {
+      flex: 1;
+      display: flex;
+      align-items: center;
+
+      img {
+        max-width: 100px;
+        max-height: 100px;
+        margin-right: 10px;
+        border-radius: 5px;
+      }
+
+      .file-icon {
+        width: 24px;
+        height: 24px;
+        margin-right: 10px;
+      }
+    }
+
+    span {
+      margin-left: 5px;
+    }
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+
+    .accept-button, .reject-button {
+      padding: 10px 20px;
+      background-color: #5A77DF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .reject-button {
+      background-color: #323954;
+    }
+  }
+}
+

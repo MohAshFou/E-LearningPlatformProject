@@ -12,5 +12,6 @@ namespace EduPlatformAPI.DTO.Teacher
         public string UploadDate { get; set; }
         public IFormFile FileVideo { get; set; }
         public IFormFile FileAttach { get; set; }
+        public IFormFile HomeWork { get; set; }
     }
 }

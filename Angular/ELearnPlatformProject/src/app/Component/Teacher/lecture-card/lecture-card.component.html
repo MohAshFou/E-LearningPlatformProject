@@ -4,9 +4,13 @@
     <div class="video-container">
       
       <video width="320" height="240" controls>
-        <source [src]="lecture.videoUrl" type="video/mp4" />
+        <source src="{{ lecture.videoURL }}" type="video/mp4" />
+        <source src="{{ lecture.videoURL }}" type="video/webm" />
+        <source src="{{ lecture.videoURL }}" type="video/ogg"> 
+        
         Your browser does not support the video tag.
       </video>
+      <!-- <div>{{ lecture.videoURL }}</div> -->
       <i class="fas fa-play play-button"></i>
     </div>
     

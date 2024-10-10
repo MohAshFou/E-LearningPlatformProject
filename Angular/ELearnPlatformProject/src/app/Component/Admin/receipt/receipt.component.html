@@ -1,0 +1,10 @@
+
+   <div class="receipt-container">
+  <app-receipt-card 
+    *ngFor="let receipt of receipts" 
+    [receipt]="receipt"  
+    (submitReceipt)="onSubmitReceipt($event)"
+    (acceptReceipt)="onAcceptReceipt(receipt)"
+    (rejectReceipt)="onRejectReceipt(receipt)">
+  </app-receipt-card>
+</div>

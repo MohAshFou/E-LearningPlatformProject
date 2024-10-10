@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { UserAuthService } from '../../Services/User/user-auth.service';
 import { NavParComponent } from './NavBar/nav-par/nav-par.component';
 import { StuInfoComponent } from './stu-info/stu-info.component';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 
 
 @Component({
   selector: 'app-student',
   standalone: true,
-  imports: [NavParComponent ,StuInfoComponent ,RouterOutlet ],
+  imports: [NavParComponent ,StuInfoComponent ,RouterOutlet  ],
   templateUrl: './student.component.html',
   styleUrl: './student.component.css'
 })
@@ -16,7 +16,9 @@ export class StudentComponent implements OnInit {
 
   Name=""
 
- constructor( private service:UserAuthService){}
+  
+
+ constructor( private service:UserAuthService , ){}
 
 
 
@@ -33,5 +35,10 @@ export class StudentComponent implements OnInit {
      }
    });
    }
+
+
+
+
+
   }
 }

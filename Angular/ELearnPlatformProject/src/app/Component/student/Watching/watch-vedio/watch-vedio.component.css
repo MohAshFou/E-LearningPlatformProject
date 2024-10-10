@@ -1,0 +1,5 @@
+@media (max-width: 768px) {
+    .video-container {
+        margin-bottom: 20px; /* أو القيمة المناسبة */
+    }
+}

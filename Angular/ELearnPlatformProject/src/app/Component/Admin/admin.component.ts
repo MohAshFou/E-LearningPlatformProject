@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { UserAuthService } from '../../Services/User/user-auth.service';
 import { Router, RouterOutlet } from '@angular/router';
 import { NavParComponent } from './NavBar/nav-par/nav-par.component';
-import { StuInfoComponent } from './stu-info/stu-info.component';
+
 
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [NavParComponent ,StuInfoComponent ,RouterOutlet ],
+  imports: [NavParComponent  ,RouterOutlet ] ,
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
@@ -29,7 +29,7 @@ export class AdminComponent implements OnInit {
         }
       });
     } else {
-      this.router.navigate(['login']); 
+      this.router.navigate(['login']);
     }
   }
 }

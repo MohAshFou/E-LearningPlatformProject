@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { UserAuthService } from '../../../../Services/User/user-auth.service';
 import { TeacherService } from '../../../../Services/Teacher/teacher.service';
 
@@ -10,14 +10,22 @@ import { TeacherService } from '../../../../Services/Teacher/teacher.service';
   templateUrl: './nav-par.component.html',
   styleUrl: './nav-par.component.css'
 })
-export class NavParComponent implements OnInit {
-  Name:any="Mohamed"
+export class NavParComponent implements OnInit , OnChanges {
+  Name:any=""
   QuestionNotReplying:any=''
-  constructor(private service:UserAuthService , private teacherService:TeacherService){
+  constructor(private service:UserAuthService , private teacherService:TeacherService , private rou: Router){
 
 
   }
+  ngOnChanges(changes: SimpleChanges): void {
+    this.updateQuestionCount()
+  }
+  logout(){
 
+    localStorage.removeItem("token")
+     this.rou.navigate(['\Login'])
+
+   }
   ngOnInit(): void {
     if (localStorage.getItem("token")) {
 
@@ -33,16 +41,24 @@ export class NavParComponent implements OnInit {
 
   }
 
-    this.teacherService.GetCountOfQuestionNotReplying().subscribe({
-      next: (ed) => {
-         this.QuestionNotReplying= ed.count
-      },
-      error: (e: any) => {
+  this.updateQuestionCount()
 
-      }
-    });
+  this.teacherService.currentCount.subscribe(count => {
+    this.QuestionNotReplying = count;
+  });
 
    }
+
+
+   updateQuestionCount(): void {
+    this.teacherService.GetCountOfQuestionNotReplying().subscribe({
+      next: (ed) => {
+        this.QuestionNotReplying = ed.count;
+        this.teacherService.updateCount(this.QuestionNotReplying);
+      },
+      error: (e: any) => { }
+    });
+  }
 
 
 
