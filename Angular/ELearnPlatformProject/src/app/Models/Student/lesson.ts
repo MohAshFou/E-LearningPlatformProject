@@ -20,6 +20,7 @@ export interface Lesson {
   uploadDate:string
 
   videoURL:string
+  homeworkElevation:string
 
 
 

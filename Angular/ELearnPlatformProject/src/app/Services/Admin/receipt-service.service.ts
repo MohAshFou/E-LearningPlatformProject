@@ -12,7 +12,7 @@ export class ReceiptService {
   constructor(private http: HttpClient) {}
 
   getUnapprovedReceipts(): Observable<any[]> {
-    console.log('getUnapprovedReceipts called');
+
 
     // const token = localStorage.getItem('jwtToken');
     // const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
@@ -43,6 +43,18 @@ export class ReceiptService {
     console.error(`Backend returned code ${error.status}, body was: ${error.error}`);
   }
   return throwError('Something went wrong; please try again later.');
+}
+
+
+private key = 'allDetails';
+SetAlldetails(data: any): void {
+
+  sessionStorage.setItem(this.key, JSON.stringify(data));
+}
+
+GetAlldetails(): any {
+  const data = sessionStorage.getItem(this.key);
+  return data ? JSON.parse(data) : null;
 }
 
 }

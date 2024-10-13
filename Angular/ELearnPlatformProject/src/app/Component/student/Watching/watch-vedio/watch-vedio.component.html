@@ -1,49 +1,116 @@
-<div class="container video-container mt-100">
-  <div class="card shadow-lg">
+  <div class="container video-container mt-1">
+    <div class="card shadow-lg">
+
+      <div class="container mt-4">
+        <div *ngIf="alertMessage" class="alert" [ngClass]="{'alert-success': isSuccess, 'alert-danger': !isSuccess}" role="alert">
+          {{ alertMessage }}
+        </div>
       <div class="card-header bg-primary text-white text-center">
-          <h4 class="mb-0">Lecture</h4>
+        <h4 class="mb-0">Lecture</h4>
       </div>
       <div class="card-body">
-          <div class="ratio ratio-4x3 mb-3" style="max-width: 600px; max-height: 250px;margin: auto;">
-              <!-- <iframe title="Lecture Video" allowfullscreen   >   </iframe> -->
-              <video [src]="curentlesson.videoURL"  controls ></video>
-          </div>
-          <h5 class="card-title"> Title{{curentlesson.title}}</h5>
-          <p class="card-text"> description:
-                     {{curentlesson.description}}
-          </p>
-          <!-- <div class="text-start d-flex mb-3"> -->
+        <div class="video-container" style="position: relative; max-width: 600px; max-height: 250px; margin: auto;">
+          <video #videoPlayer
+                [src]="curentlesson.videoURL"
+                crossorigin="anonymous"
+                preload="none"
+                style="width: 100%; height: 100%; border-radius: 8px;"
+                (contextmenu)="onContextMenu($event)"
+                controlsList="nodownload">
+          </video>
 
-          <!-- </div> -->
-   <div style="padding: 3px;">
-    <a [href]="curentlesson.pdfurl"    target="_blank"  >Download Lesson PDF</a>
-    <br>
-    <a [href]="curentlesson.homeworkURL"  target="_blank"    >Download HomeWork</a>
+          <div class="video-overlay">
+              <button *ngIf="isPaused" (click)="togglePlay()" class="play-button">
+                  <i class="fas fa-play"></i>
+              </button>
+              <button *ngIf="!isPaused" (click)="togglePlay()" class="play-button">
+                  <i class="fas fa-pause"></i>
+              </button>
+              <button (click)="toggleFullScreen()" class="full-screen-button">
+                  <i class="fas fa-expand"></i>
+              </button>
+          </div>
+      </div>
 
-   </div>
-   <br>
 
-          <h5>Upload Your HomeWork</h5>
-          <div class="d-flex align-items-center mb-3">
-              <input style="width: 70%;" type="file" id="receiptInput" accept="application/pdf" class="form-control me-2" />
-              <input class="btn btn-outline-primary ms-auto" value="Send">
-          </div>
 
-          <div class="mb-2">
-              <label for="studentQuestion" class="form-label">Student's Question:</label>
-              <textarea id="studentQuestion" class="form-control form-control-sm" rows="2" placeholder="Type your question here..."></textarea>
-          </div>
-          <div class="mb-3">
-              <label for="teacherReply" class="form-label">Teacher's Reply:</label>
-              <textarea id="teacherReply" class="form-control form-control-sm" rows="2" readonly placeholder="The teacher's reply will appear here..."></textarea>
-          </div>
-          <div class="text-start">
-              <button  class="btn btn-primary btn-sm">Submit</button>
-              <button (click)="Back()" class="btn btn-success btn-sm m-2">Back</button>
-          </div>
+
+        <h5 class="card-title">Title: {{ curentlesson.title }}</h5>
+        <p class="card-text">Description: {{ curentlesson.description }}</p>
+
+        <div class="mb-3" *ngIf="curentlesson.pdfurl || curentlesson.homeworkURL">
+          <a *ngIf="curentlesson.pdfurl" [href]="curentlesson.pdfurl" target="_blank" class="btn btn-outline-secondary me-2" style="cursor: pointer;" download>Download Lesson PDF</a>
+          <a *ngIf="curentlesson.homeworkURL" [href]="curentlesson.homeworkURL" target="_blank" class="btn btn-outline-secondary" style="cursor: pointer;" download>Download HomeWork</a>
+        </div>
+
+        <h5>Upload Your HomeWork</h5>
+        <div class="d-flex align-items-center mb-3">
+          <form [formGroup]="uploadForm" (ngSubmit)="onSubmit(curentlesson.lessonId)">
+
+                          @if (curentlesson.homeWorkEvaluation =="accept" )
+                          {
+
+                            <div class="alert alert-success" role="alert">
+                              The homework has been accepted.
+                            </div>
+
+
+                          }
+
+                          @if (curentlesson.homeWorkEvaluation =="reject" )
+                          {
+
+                            <div class="alert alert-danger" role="alert">
+                              The homework has been rejected , please upload yor homework again.
+                            </div>
+
+
+                          }
+                          @else if (curentlesson.homeWorkEvaluation =="Pending") {
+
+                            <div class="alert alert-warning" role="alert">
+                              The homework is pending review.
+                            </div>
+
+                          }
+                          @else {
+                            <input style="width: 70%;" type="file" id="receiptInput" accept="application/pdf" (change)="onFileChange($event)" class="form-control me-2" />
+                            <button type="submit" class="btn btn-outline-primary ms-auto" style="margin-top: 5px; " [disabled]="!isFileValid">Send</button>
+
+
+                          }
+
+                  </form>
+      </div>
+
+
+      <div *ngIf="errorMessage" class="alert alert-danger mt-2">{{ errorMessage }}</div>
+
+
+      <div *ngFor="let item of allessage;">
+        <div class="mb-2">
+            <label for="studentQuestion" class="form-label">Student's Question:</label>
+            <label class="form-control form-control-sm">{{ item.question }}</label>
+        </div>
+        <div class="mb-3">
+            <label for="teacherReply" class="form-label">Teacher's Reply:</label>
+            <label class="form-control form-control-sm">{{ item.reply }}</label>
+        </div>
+    </div>
+
+    <div class="mb-2">
+        <label for="studentQuestion" class="form-label">Type your question here:</label>
+        <textarea id="studentQuestion" class="form-control form-control-sm" rows="2" placeholder="Type your question here..."></textarea>
+    </div>
+    <button (click)="onSubmitQuestion()" class="btn btn-primary btn-sm">Submit</button>
+      </div>
+
+
+
+        <div class="text-start">
+
+          <button (click)="Back()" class="btn btn-success btn-sm m-2">Back</button>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
-
-
-
-

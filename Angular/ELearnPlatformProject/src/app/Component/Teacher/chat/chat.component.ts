@@ -2,24 +2,37 @@ import { Component, OnInit } from '@angular/core';
 import { TeacherService } from '../../../Services/Teacher/teacher.service';
 import { ReplyToQuestion } from '../../../Models/Teacher/reply-to-question';
 import { FormsModule } from '@angular/forms';
+import { SignalRService } from '../../../Services/Hubs/signalr.service';
+
 
 @Component({
   selector: 'app-chat',
   standalone: true,
   imports: [FormsModule],
   templateUrl: './chat.component.html',
-  styleUrl: './chat.component.css'
+  styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit {
-  constructor( private teatherSer:TeacherService	){}
-     allQuestions:any
-    // TeacherReply:string=""
-    unansweredQuestionsCount: number = 0;
+  allQuestions: any;
+  unansweredQuestionsCount: number = 0;
+
+  constructor(
+    private teatherSer: TeacherService,
+    private signalRService: SignalRService
+  ) {}
+
   ngOnInit(): void {
     this.loadUnansweredQuestions();
 
+
     this.teatherSer.currentCount.subscribe(count => {
       this.unansweredQuestionsCount = count;
+    });
+
+
+    this.signalRService.hubConnection.on('SendStudentMessage', (user: string, question: string, commentId: number) => {
+      console.log(`Received question from ${user}: ${question} with Comment ID: ${commentId}`);
+      this.loadUnansweredQuestions();
     });
   }
 
@@ -27,8 +40,8 @@ export class ChatComponent implements OnInit {
     this.teatherSer.GetAllUnansweredQuestions().subscribe({
       next: (d) => {
         this.allQuestions = d.map((question: any) => ({ ...question, TeacherReply: '' }));
-        this.unansweredQuestionsCount= d.length
-        this.teatherSer.updateCount(this.unansweredQuestionsCount );
+        this.unansweredQuestionsCount = d.length;
+        this.teatherSer.updateCount(this.unansweredQuestionsCount);
       },
       error: (e: any) => {
         console.log(e);
@@ -36,28 +49,28 @@ export class ChatComponent implements OnInit {
     });
   }
 
+  sendReply(commentId: number, teacherReply: string , studid:number): void {
 
-  sendReply( i:number , r:string){
- let repl:ReplyToQuestion={
-  commentId:i,
-  teacherReply:r
 
- }
-this.teatherSer.SendReplyMessege(repl).subscribe({
-  next: (d) => {
-    this.loadUnansweredQuestions();
-    this.teatherSer.updateCount(this.unansweredQuestionsCount - 1);
+    console.log(teacherReply)
 
-  },
-  error: (e: any) => {
-    console.log(e)
+    let repl: ReplyToQuestion = {
+      commentId: commentId,
+      teacherReply: teacherReply ,
+      userid:studid
+    };
+
+    this.teatherSer.SendReplyMessege(repl).subscribe({
+      next: () => {
+
+        // this.signalRService.sendTeacherReply('Mohamed sayed ', teacherReply ,commentId ,studid); //
+
+        this.loadUnansweredQuestions(); 
+        this.teatherSer.updateCount(this.unansweredQuestionsCount - 1);
+      },
+      error: (e: any) => {
+        console.log(e);
+      }
+    });
   }
-});
-
-
-}
-
-
-
-
 }

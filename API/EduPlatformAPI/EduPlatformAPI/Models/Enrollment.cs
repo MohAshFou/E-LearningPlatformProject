@@ -13,11 +13,11 @@ public partial class Enrollment
 
     public int ReceiptId { get; set; }
 
-    public DateOnly AccessStartDate { get; set; }
+    public DateTime? AccessStartDate { get; set; }
 
-    public DateOnly AccessEndDate { get; set; }
+    public DateTime? AccessEndDate { get; set; }
 
-    public DateOnly? SubmissionDate { get; set; }
+    public DateTime? SubmissionDate { get; set; }
 
     public string? SubmissionLink { get; set; }
 
@@ -34,4 +34,6 @@ public partial class Enrollment
     public virtual Receipt Receipt { get; set; } = null!;
 
     public virtual Student Student { get; set; } = null!;
+
+    public virtual ICollection<StudentComment> StudentComments { get; set; } = new List<StudentComment>();
 }

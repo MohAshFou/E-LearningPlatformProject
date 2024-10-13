@@ -42,9 +42,14 @@ VALUES(1,1,1,'2024-10-11','2024-10-25','','','pending','hatem','123456789','acti
 INSERT INTO[dbo].[Comment]
 VALUES('Why are you studying English?','','2024-10-11','2024-10-12'),
 ('What do you do in your free time','I study English','2024-10-15','2024-10-17'),
-('How’s the weather?','rainy','2024-10-15','2024-10-17');
+('Howï¿½s the weather?','rainy','2024-10-15','2024-10-17');
 -----------------------------------------------------------------------------------------------------
 INSERT INTO[dbo].[Student_Comment]
 VALUES(1,1,1),
 (2,3,1),
 (3,4,1);
+-----------------------------------------------------
+INSERT INTO [dbo].[FavoriteLessons] (StudentId, LessonId)
+VALUES (1, 4), 
+       (2, 4), 
+       (3, 4);

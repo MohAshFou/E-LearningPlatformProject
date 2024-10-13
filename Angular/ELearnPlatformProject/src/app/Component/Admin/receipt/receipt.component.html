@@ -1,10 +1,31 @@
-
-   <div class="receipt-container">
-  <app-receipt-card 
-    *ngFor="let receipt of receipts" 
-    [receipt]="receipt"  
-    (submitReceipt)="onSubmitReceipt($event)"
-    (acceptReceipt)="onAcceptReceipt(receipt)"
-    (rejectReceipt)="onRejectReceipt(receipt)">
-  </app-receipt-card>
+<div class="receipt-container">
+  <div class="text-center" *ngIf="receipts.length === 0">
+    <p class="alert alert-info">No students have uploaded receipts yet.</p>
+  </div>
+  <div *ngIf="receipts.length > 0">
+    <table class="table table-bordered table-striped mt-3">
+      <thead class="thead-dark">
+        <tr>
+          <th>#</th>
+          <th>Student</th>
+          <th>Course Title</th>
+          <th>Level</th>
+          <th>Receipt Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let receipt of receipts; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ receipt.name }}</td>
+          <td>{{ receipt.title }}</td>
+          <td>{{ receipt.gradeLevel }}</td>
+          <td>
+            <button class="btn btn-primary btn-sm" (click)="viewReceiptDetails(receipt)">
+              <img style="width: 20px;" src="Images/Edit.PNG" alt="View">
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

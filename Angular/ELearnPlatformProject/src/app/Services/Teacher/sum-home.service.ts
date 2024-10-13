@@ -7,17 +7,22 @@ import { StudentsWithSubmittedHomeworks } from '../../Models/Teacher/students-wi
 export class SumHomeService {
 
   private studentsWithHomeworks!:StudentsWithSubmittedHomeworks
-
+  private key = 'allDetails';
   SetAlldetails(data: any): void {
-    this.studentsWithHomeworks = data;
-    console.log(this.studentsWithHomeworks);
+
+    sessionStorage.setItem(this.key, JSON.stringify(data));
   }
 
   GetAlldetails(): any {
-    return this.studentsWithHomeworks;
+    const data = sessionStorage.getItem(this.key);
+    return data ? JSON.parse(data) : null;
+  }
+
+  ClearDetails(): void {
+    sessionStorage.removeItem(this.key);
   }
 
    constructor() { }
 
-  
+
 }

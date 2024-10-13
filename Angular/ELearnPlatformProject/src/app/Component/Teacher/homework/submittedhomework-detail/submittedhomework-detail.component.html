@@ -1,21 +1,19 @@
 <div class="homework-details">
   <h2>HomeWork Details :</h2>
 
-  <label for="student-name">Student Name</label>
-  <p id="student-name">{{ allde.userName }}</p>
+  <label for="student-name">Student Name : {{ allde.userName }}</label>
 
-  <label for="course-title">Course Title</label>
-  <div>
-    <p id="course-title">{{ allde.lessonTitle }}</p>
-  </div>
+  <label for="course-title">Course Title : {{ allde.lessonTitle }}</label>
+
 
   <div>
-    <label for=""> submission Date  </label>
-    <p id="course-title">{{ allde.submissionDate }}</p>
+    <label for=""> submission Date  {{ allde.submissionDate }} </label>
+
+
   </div>
   <div>
-    <label for=""> submission Link  </label>
-    <a [href]="allde.submissionLink" target="_blank">PDF</a>
+    <label for=""> submission Link  :  <a [href]="allde.submissionLink" target="_blank">PDF</a> </label>
+
   </div>
 
   <div class="buttons">

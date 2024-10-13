@@ -1,0 +1,64 @@
+
+body {
+  font-family: serif;
+  margin: 40px;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.wishlist-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.item {
+  margin-bottom: 40px;
+  border-bottom: 1px solid #000;
+  padding-bottom: 20px;
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+.item-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.item-description {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.item-feeAmount {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.button {
+  display: inline-block;
+  width: 70px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: 1px solid;
+  text-align: center;
+  text-decoration: none;
+  color: #000;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.button-info {
+  border-color: #17a2b8;
+  color: #17a2b8;
+}
+
+.button-danger {
+  border-color: #dc3545;
+  color: #dc3545;
+}

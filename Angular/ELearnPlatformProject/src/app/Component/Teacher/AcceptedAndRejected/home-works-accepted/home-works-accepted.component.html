@@ -1,0 +1,25 @@
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Level</th>
+            <th>Lesson</th>
+            <th>Accepted</th>
+            <th>Rejected</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+
+      @for (item of allcount ; track $index) {
+        <tr>
+            <td> {{item.level}}</td>
+            <td>{{item.lessonName}}</td>
+            <td>{{item.countOfAccept}}</td>
+            <td>{{item.countOfreject}}</td>
+            <td>
+                <a class="btn btn-info" (click)="gotodetails(item.id)">Show Students</a>
+            </td>
+        </tr>
+      }
+    </tbody>
+</table>

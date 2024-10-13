@@ -1,10 +1,10 @@
-
-import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { CommonModule, Location } from '@angular/common';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-// import { ReceiptService } from '../../../Services/Receipt/receipt.service';
 import { HttpClient } from '@angular/common/http';
 import { ReceiptService } from '../../../Services/Admin/receipt-service.service';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-receipt-card',
@@ -14,68 +14,106 @@ import { ReceiptService } from '../../../Services/Admin/receipt-service.service'
   styleUrls: ['./receipt-card.component.css']
 })
 
+export class ReceiptCardComponent implements OnInit {
 
-export class ReceiptCardComponent {
+  constructor(private receiptService: ReceiptService, private http: HttpClient, private route: ActivatedRoute , private  loc:Location) {
 
-  constructor(private receiptService: ReceiptService, private http: HttpClient) {
-    this.receiptId= 1
   }
 
-  @Input() receipt: any = {};
+  // @Input() receipt: any = {};
+  receipt: any;
+  receiptId: any;
 
   studentName: string = '';
   gradeLevel: string = '';
   title: string = '';
   feeAmount: number = 0;
   receiptImageLink: string = '';
-  receiptId: number = 1;
+  enrollmentID: number = 1;
+  state: string = '';
 
-enrollmentID= 0;
+
+  successMessage: string | null = null;
+  errorMessage: string | null = null;
+
+
+
 
   ngOnInit() {
-    console.log('test');
-    if (this.receipt) {
 
-      // Map the receipt properties to the component properties
-      this.studentName = this.receipt.name   || '';
-      this.gradeLevel = this.receipt.gradeLevel || '';
-      this.title = this.receipt.title || '';
-      this.feeAmount = this.receipt.feeAmount || 0;
-      this.receiptImageLink = this.receipt.receiptImageLink || '';
-      this.receiptId = this.receipt.receiptId || 1;
-      this.enrollmentID = this.receipt.enrollmentID
-    }
-  }
- state =''
-  acceptReceipt: boolean = false;
-  rejectReceipt: boolean = false;
+    this.receiptId=this.route.snapshot.paramMap.get('id');
 
-  onCheckboxChange(type: string) {
-    if (type === 'accept') {
-      this.state='accept'
-      this.rejectReceipt = false;
-    } else if (type === 'reject') {
-      this.state='reject'
-      this.acceptReceipt = false;
-    }
+    this.fetchReceipts();
   }
 
-  submitReceiptStatus(e:number , i:number) {
-    if (this.acceptReceipt && this.rejectReceipt) {
-      alert("You can't accept and reject at the same time!");
-      return;
-    }
 
-    this.receiptService.UpdateReceipt(e,i,this.state).subscribe({
+
+
+
+  fetchReceipts() {
+    this.receipt=  this.receiptService.GetAlldetails()
+           this.studentName = this.receipt.name || '';
+          this.gradeLevel = this.receipt.gradeLevel || '';
+          this.title = this.receipt.title || '';
+          this.feeAmount = this.receipt.feeAmount || 0;
+          this.receiptImageLink = this.receipt.receiptImageLink || '';
+          this.receiptId = this.receipt.receiptId || 1;
+          this.enrollmentID = this.receipt.enrollmentID;
+
+
+
+          // -------------------------------------------------------------
+    // this.http.get<any[]>(`https://localhost:7217/api/Admin/unapproved`).subscribe
+    // this.receiptService.getUnapprovedReceipts().subscribe(
+
+    //   (data) => {
+
+    //     if (data && data.length > 0) {
+
+    //       this.receipt=data[0]
+    this.receipt.studentName=this.studentName
+    //       this.studentName = this.receipt.name || '';
+    //       this.gradeLevel = this.receipt.gradeLevel || '';
+    //       this.title = this.receipt.title || '';
+    //       this.feeAmount = this.receipt.feeAmount || 0;
+    //       this.receiptImageLink = this.receipt.receiptImageLink || '';
+    //       this.receiptId = this.receipt.receiptId || 1;
+    //       this.enrollmentID = this.receipt.enrollmentID;
+
+    //     } else {
+    //       console.error('No receipts returned from the API');
+    //     }
+    //   },
+    //   (error) => {
+    //     console.error('Failed to fetch receipts', error);
+    //   }
+    // );
+  }
+
+
+  onAccept() {
+    this.state = 'accept';
+    this.submitReceiptStatus(this.receipt.enrollmentID, this.receipt.receiptId);
+  }
+
+  onReject() {
+    this.state = 'reject';
+    this.submitReceiptStatus(this.receipt.enrollmentID, this.receipt.receiptId);
+  }
+
+  submitReceiptStatus(e: number, i: number) {
+    this.receiptService.UpdateReceipt(e, i, this.state).subscribe({
       next: (d) => {
 
+        this.successMessage = 'Receipt status updated successfully';
+        this.errorMessage = null;
+
+        this.loc.back()
       },
       error: (e: any) => {
-
+        this.successMessage = null;
+        this.errorMessage = 'Failed to update receipt status. Please try again later.';
       }
     });
-
-
   }
-  }
-
+}

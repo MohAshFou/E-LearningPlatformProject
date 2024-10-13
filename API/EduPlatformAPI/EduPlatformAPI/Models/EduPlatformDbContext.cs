@@ -21,11 +21,15 @@ public partial class EduPlatformDbContext : DbContext
 
     public virtual DbSet<Enrollment> Enrollments { get; set; }
 
+    public virtual DbSet<FavoriteLesson> FavoriteLessons { get; set; }
+
     public virtual DbSet<Lesson> Lessons { get; set; }
 
     public virtual DbSet<Material> Materials { get; set; }
 
     public virtual DbSet<Receipt> Receipts { get; set; }
+
+    public virtual DbSet<SelectedQuestion> SelectedQuestions { get; set; }
 
     public virtual DbSet<Student> Students { get; set; }
 
@@ -35,9 +39,13 @@ public partial class EduPlatformDbContext : DbContext
 
     public virtual DbSet<User> Users { get; set; }
 
-//    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-//#warning =>{}
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+         {
+
+
+        
+        }
+protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Admin>(entity =>
         {
@@ -60,7 +68,9 @@ public partial class EduPlatformDbContext : DbContext
 
             entity.Property(e => e.CommentId).HasColumnName("CommentID");
             entity.Property(e => e.Question).HasColumnType("text");
+            entity.Property(e => e.QuestionDate).HasColumnType("datetime");
             entity.Property(e => e.Reply).HasColumnType("text");
+            entity.Property(e => e.ReplyDate).HasColumnType("datetime");
         });
 
         modelBuilder.Entity<Enrollment>(entity =>
@@ -71,13 +81,16 @@ public partial class EduPlatformDbContext : DbContext
 
             entity.HasIndex(e => e.UserName, "UQ__Enrollme__C9F2845669E8A1EB").IsUnique();
 
-            entity.Property(e => e.HomeWorkEvaluation)
-                .HasMaxLength(25)
-                .HasDefaultValue("Pending");
+            entity.Property(e => e.AccessEndDate).HasColumnType("datetime");
+            entity.Property(e => e.AccessStartDate).HasColumnType("datetime");
+            entity.Property(e => e.HomeWorkEvaluation).HasMaxLength(25);
             entity.Property(e => e.Password)
                 .HasMaxLength(30)
                 .IsUnicode(false);
-            entity.Property(e => e.ReceiptStatus).HasMaxLength(20);
+            entity.Property(e => e.ReceiptStatus)
+                .HasMaxLength(20)
+                .HasDefaultValue("Pending");
+            entity.Property(e => e.SubmissionDate).HasColumnType("datetime");
             entity.Property(e => e.SubmissionLink).HasDefaultValue("");
             entity.Property(e => e.UserName)
                 .HasMaxLength(25)
@@ -95,6 +108,21 @@ public partial class EduPlatformDbContext : DbContext
             entity.HasOne(d => d.Student).WithMany(p => p.Enrollments)
                 .HasForeignKey(d => d.StudentId)
                 .HasConstraintName("FK__Enrollmen__Stude__5441852A");
+        });
+
+        modelBuilder.Entity<FavoriteLesson>(entity =>
+        {
+            entity.HasKey(e => e.FavoriteLessonId).HasName("PK__Favorite__ADA5AA76F147B44C");
+
+            entity.Property(e => e.DateAdded).HasDefaultValueSql("(getdate())");
+
+            entity.HasOne(d => d.Lesson).WithMany(p => p.FavoriteLessons)
+                .HasForeignKey(d => d.LessonId)
+                .HasConstraintName("FK__FavoriteL__Lesso__04E4BC85");
+
+            entity.HasOne(d => d.Student).WithMany(p => p.FavoriteLessons)
+                .HasForeignKey(d => d.StudentId)
+                .HasConstraintName("FK__FavoriteL__Stude__03F0984C");
         });
 
         modelBuilder.Entity<Lesson>(entity =>
@@ -136,6 +164,15 @@ public partial class EduPlatformDbContext : DbContext
             entity.ToTable("Receipt");
 
             entity.Property(e => e.AdminReviewed).HasMaxLength(20);
+            entity.Property(e => e.UploadDate).HasColumnType("datetime");
+        });
+
+        modelBuilder.Entity<SelectedQuestion>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Selected__3214EC07D381C0CD");
+
+            entity.Property(e => e.GradeLevel).HasMaxLength(2);
+            entity.Property(e => e.LessonName).HasMaxLength(50);
         });
 
         modelBuilder.Entity<Student>(entity =>
@@ -156,25 +193,31 @@ public partial class EduPlatformDbContext : DbContext
 
         modelBuilder.Entity<StudentComment>(entity =>
         {
-            entity.HasKey(e => e.EnrollmentId).HasName("PK__Student___7F6877FB1A3ACB0F");
+            entity.HasKey(e => e.StudentCommentId).HasName("PK__Student___860BBCDB3BC034F6");
 
             entity.ToTable("Student_Comment");
 
-            entity.Property(e => e.EnrollmentId).HasColumnName("EnrollmentID");
+            entity.Property(e => e.StudentCommentId).HasColumnName("Student_CommentId");
             entity.Property(e => e.CommentId).HasColumnName("CommentID");
+            entity.Property(e => e.EnrollmentId).HasColumnName("EnrollmentID");
             entity.Property(e => e.LessonId).HasColumnName("LessonID");
 
             entity.HasOne(d => d.Comment).WithMany(p => p.StudentComments)
                 .HasForeignKey(d => d.CommentId)
-                .HasConstraintName("FK__Student_C__Comme__5DCAEF64");
+                .HasConstraintName("FK__Student_C__Comme__2739D489");
+
+            entity.HasOne(d => d.Enrollment).WithMany(p => p.StudentComments)
+                .HasForeignKey(d => d.EnrollmentId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__Student_C__Enrol__245D67DE");
 
             entity.HasOne(d => d.Lesson).WithMany(p => p.StudentComments)
                 .HasForeignKey(d => d.LessonId)
-                .HasConstraintName("FK__Student_C__Lesso__5CD6CB2B");
+                .HasConstraintName("FK__Student_C__Lesso__2645B050");
 
             entity.HasOne(d => d.Student).WithMany(p => p.StudentComments)
                 .HasForeignKey(d => d.StudentId)
-                .HasConstraintName("FK__Student_C__Stude__5BE2A6F2");
+                .HasConstraintName("FK__Student_C__Stude__25518C17");
         });
 
         modelBuilder.Entity<Teacher>(entity =>

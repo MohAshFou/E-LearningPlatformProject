@@ -23,6 +23,8 @@ public partial class Lesson
 
     public virtual ICollection<Enrollment> Enrollments { get; set; } = new List<Enrollment>();
 
+    public virtual ICollection<FavoriteLesson> FavoriteLessons { get; set; } = new List<FavoriteLesson>();
+
     public virtual ICollection<Material> Materials { get; set; } = new List<Material>();
 
     public virtual ICollection<StudentComment> StudentComments { get; set; } = new List<StudentComment>();

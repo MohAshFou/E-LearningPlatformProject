@@ -20,6 +20,8 @@ export class EditLectureComponent {
   selectedHomeWorkPDF: File | null = null;
   selectedAttachedFile: File | null = null;
   showModal: boolean = true;
+  errorMessage!:string|null;
+  showError:boolean=false;
 
   invalidFields = {
     title: false,
@@ -98,91 +100,91 @@ export class EditLectureComponent {
     return gradeLevel.trim() !== '';
   }
 
-  validFile(file: File | null): boolean {
-    return file !== null;
+  validFile(file: File): boolean {
+    return file !== undefined && file !== null;
   }
 
-  onVideoSelected(event: any) {
-    this.selectedVideo = event.target.files[0];
+  removeVideo(): void {
+    this.editedLecture.videoURL = null;
+    this.selectedVideo = null;
+    this.hasChanges = true;
+  }
+
+  removeHomeworkPDF(): void {
+    this.editedLecture.homeworkURL = null;
+    this.selectedHomeWorkPDF = null;
+    this.hasChanges = true;
+  }
+
+  removePDF(): void {
+    this.editedLecture.pdfurl = null;
+    this.selectedAttachedFile = null;
+    this.hasChanges = true;
+  }
+
+  onVideoSelected(event: any): void {
+    const file: File = event.target.files[0];
+    if (file && this.validFile(file)) {
+      this.selectedVideo = file;
+    } else {
+      this.selectedVideo = null;
+    }
     this.validateField('videoURL');
   }
 
-  onHomeWorkPDF(event: any) {
-    this.selectedHomeWorkPDF = event.target.files[0];
+  onHomeWorkPDF(event: any): void {
+    const file: File = event.target.files[0];
+    if (file && this.validFile(file)) {
+      this.selectedHomeWorkPDF = file;
+    } else {
+      this.selectedHomeWorkPDF = null;
+    }
     this.validateField('homeworkURL');
   }
 
-  onFileSelected(event: any) {
-    this.selectedAttachedFile = event.target.files[0];
+  onFileSelected(event: any): void {
+    const file: File = event.target.files[0];
+    if (file && this.validFile(file)) {
+      this.selectedAttachedFile = file;
+    } else {
+      this.selectedAttachedFile = null;
+    }
     this.validateField('pdfURL');
   }
 
-  removeVideo() {
-    this.editedLecture.videoURL = null;
-    this.invalidFields.videoURL = true;
+  save(): void {
+    this.showError = false;
+    if (!this.selectedVideo && !this.editedLecture.videoURL) {
+      this.invalidFields.videoURL = true;
+      this.showError = true;
+      this.errorMessage = 'Please upload a lecture video.';
+      return;
+    }
+    if (!this.selectedHomeWorkPDF && !this.editedLecture.homeworkURL) {
+      this.invalidFields.homeworkURL = true;
+      this.showError = true;
+      this.errorMessage = 'Please upload a homework PDF.';
+      return;
+    }
+    if (!this.selectedAttachedFile && !this.editedLecture.pdfurl) {
+      this.invalidFields.pdfURL = true;
+      this.showError = true;
+      this.errorMessage = 'Please upload an attachment file.';
+      return;
+    }
+    if (!this.hasChanges) {
+      this.showError = true;
+      this.errorMessage = 'No changes detected.';
+      return;
+    }
+
+    // إضافة الكود الخاص بحفظ البيانات هنا.
+
+    this.onSave.emit(this.editedLecture);
+    this.closeModal();
   }
 
-  removeHomeworkPDF() {
-    this.editedLecture.homeworkURL = null;
-    this.invalidFields.homeworkURL = true;
-  }
-
-  removePDF() {
-    this.editedLecture.pdfurl = null;
-    this.invalidFields.pdfURL = true;
-  }
-
-  async save() {
-    // Validate all fields before saving
-
-    console.log(this.editedLecture)
-    for (const field in this.invalidFields) {
-      this.validateField(field);
-    }
-
-    if (Object.values(this.invalidFields).some((invalid) => invalid)) {
-      console.error('Some fields are invalid. Please correct them before saving.');
-      return; // Prevent save if there are invalid fields
-    }
-
-    const formData = new FormData();
-    // Append lesson data to the form data
-    formData.append('Title', this.editedLecture.title);
-    formData.append('GradeLevel', this.editedLecture.gradeLevel);
-    formData.append('Description', this.editedLecture.description);
-    formData.append('UploadDate', this.editedLecture.uploadDate);
-    formData.append('FeeAmount', this.editedLecture.feeAmount.toString()); // Ensure it's a string
-
-    if (this.selectedVideo) {
-      formData.append('VideoURL', this.selectedVideo);
-    } else if (this.editedLecture.videoURL) {
-      formData.append('VideoURL', this.editedLecture.videoURL);
-    }
-
-    if (this.selectedHomeWorkPDF) {
-      formData.append('HomeWork', this.selectedHomeWorkPDF);
-    } else if (this.editedLecture.homeworkURL) {
-      formData.append('HomeWork', this.editedLecture.homeworkURL);
-    }
-
-    if (this.selectedAttachedFile) {
-      formData.append('PDFURL', this.selectedAttachedFile);
-    } else if (this.editedLecture.pdfurl) {
-      formData.append('PDFURL', this.editedLecture.pdfurl);
-    }
-
-    try {
-      const response = await this.http.put(`https://localhost:7217/api/teacher/UpdateLesson/${this.editedLecture.lessonId}`, formData).toPromise();
-      console.log('Lesson updated successfully:', response);
-      this.onSave.emit();
-      this.closeModal();
-    } catch (error) {
-      console.error('Error updating lesson:', error);
-    }
-  }
-
-  closeModal() {
+  closeModal(): void {
     this.onClose.emit();
-    this.showModal = false;
   }
 }

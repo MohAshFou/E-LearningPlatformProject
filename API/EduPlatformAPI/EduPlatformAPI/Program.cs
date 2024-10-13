@@ -7,6 +7,7 @@ using System.Text;
 using EduPlatformAPI.Controllers;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.Extensions.DependencyInjection;
+using EduPlatformAPI.Hubs;
 
 namespace EduPlatformAPI
 {
@@ -27,15 +28,26 @@ namespace EduPlatformAPI
             builder.Services.AddScoped<MediaController>();
 
             builder.Services.AddScoped<TeacherController>();
+            builder.Services.AddSignalR();
 
             // Add services to the Cors.
             builder.Services.AddCors(options =>
             {
-                options.AddPolicy("pa", policy =>
+                //options.AddPolicy("pa", policy =>
+                //{
+                //    policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials()   ;
+                //});
+
+
+                 options.AddPolicy("pa", policy =>
                 {
-                    policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
-                });
+                    policy.WithOrigins("http://localhost:4200") 
+                          .AllowAnyHeader()
+                          .AllowAnyMethod()
+                          .AllowCredentials();
+                            });
             });
+
 
             // to search about word Bearer in header 
             builder.Services.AddAuthentication(options => {
@@ -102,6 +114,7 @@ namespace EduPlatformAPI
             app.UseAuthorization();
 
             app.MapControllers();
+            app.MapHub<ClassroomHub>("/classroomHub");
 
             app.Run();
         }

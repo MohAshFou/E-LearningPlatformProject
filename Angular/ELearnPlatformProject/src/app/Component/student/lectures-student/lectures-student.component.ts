@@ -17,12 +17,12 @@ export class LecturesStudentComponent implements OnInit  {
     this.router.navigate(['student/WatchVedio'])
 
     this.Test.setcurrentLesson(e)
-    console.log(e)
+
   }
 
   constructor (private myserv:StudentService , private Test :RelationsService ,private router: Router){}
   goToReceipt(Test:any) {
-    console.log(Test);
+   this.Test.setcurrentLesson(Test)
 
 
     this.router.navigate(['student/receipt']);
@@ -36,6 +36,7 @@ export class LecturesStudentComponent implements OnInit  {
         this.Lesson=data.lessons;
         this.Test.setLesson(data.lessons)
         this.Test.setStudentInfo(data.studentInfo)
+
 
       },
       error:()=>{

@@ -6,11 +6,30 @@
                 <a class="nav-link active" routerLink="/teacher"><img class="Dashboard" src="Images/Dashboard2.PNG"> Dashboard</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" routerLink="myprofile/"><img class="Dashboard" src="Images/upload.PNG"> My Profile</a>
+          </li>
+            <li class="nav-item">
                 <a class="nav-link" routerLink="upload/"><img class="Dashboard" src="Images/upload.PNG"> Upload Lesson</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" routerLink="homework/"><img class="Dashboard" src="Images/book.PNG"> Homework</a>
             </li>
+
+            <li class="nav-item">
+              <a class="nav-link" routerLink="AcceptAndReject/"><img class="Dashboard" src="Images/book.PNG"> HomeWorks Accepted And Rejected</a>
+             </li>
+
+             <li class="nav-item">
+              <a class="nav-link" routerLink="AllQuestions/"><img class="Dashboard" src="Images/book.PNG"> Manage Comman Questions </a>
+             </li>
+
+             <li class="nav-item">
+              <a class="nav-link" routerLink="Income/"><img class="Dashboard" src="Images/book.PNG"> Incom </a>
+             </li>
+
+             <li class="nav-item">
+              <a class="nav-link" routerLink="ManageAccountAdmin/"><img class="Dashboard" src="Images/book.PNG"> Manage Account Admin </a>
+             </li>
             <li class="nav-item">
                 <a class="nav-link" routerLink="chat/"><img class="Dashboard" src="Images/chat.PNG"> Chat
                   @if (QuestionNotReplying>0) {
@@ -21,8 +40,10 @@
                 </a>
             </li>
 
-            <li>
 
+
+
+            <li>
               <button class="btn custom-logout-button"(click)="logout()" >Logout</button>
             </li>
         </ul>

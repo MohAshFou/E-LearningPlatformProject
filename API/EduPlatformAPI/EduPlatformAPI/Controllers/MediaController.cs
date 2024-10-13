@@ -1,4 +1,5 @@
 ﻿using EduPlatformAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.StaticFiles;
@@ -73,8 +74,8 @@ namespace EduPlatformAPI.Controllers
             return Ok(paths);
         }
 
-     
 
+        //[Authorize]
         [HttpGet("{level}/{TypeMedia}/{fileName}")]
         public IActionResult GetMedia(string level, string fileName, string TypeMedia)
         {
@@ -144,9 +145,13 @@ namespace EduPlatformAPI.Controllers
             }
 
             return Ok(new { filePath });
-        }
+            }
 
        
+
+
+
+
 
 
 

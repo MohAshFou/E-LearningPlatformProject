@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { ReceiptCardComponent } from '../receipt-card/receipt-card.component';
 import { CommonModule } from '@angular/common';
 import { ReceiptService } from '../../../Services/Admin/receipt-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-receipt',
@@ -14,13 +15,14 @@ import { ReceiptService } from '../../../Services/Admin/receipt-service.service'
 })
 
 export class ReceiptComponent implements OnInit {
-  receipts: any[] = [];  // Initialize the array to an empty state
+  receipts: any[] = [];
 
-  constructor(private receiptService: ReceiptService) {}
+
+  constructor(private receiptService: ReceiptService, private router: Router) {}
 
   ngOnInit() {
     console.log('ReceiptComponent initialized');
-    this.fetchReceipts();  // Fetch receipts on initialization
+    this.fetchReceipts();
   }
 
   fetchReceipts() {
@@ -29,10 +31,11 @@ export class ReceiptComponent implements OnInit {
     this.receiptService.getUnapprovedReceipts().subscribe(
 
       (data) => {
-        console.log('Receipts data:', data);
+
         if (data && data.length > 0) {
-          console.log('Valid data received');
+
           this.receipts = data;
+          console.log( this.receipts);
         } else {
           console.error('No receipts returned from the API');
         }
@@ -43,16 +46,26 @@ export class ReceiptComponent implements OnInit {
     );
   }
 
-  onSubmitReceipt(receiptData: any) {
-    console.log('Receipt submitted:', receiptData);
-  }
+  // onSubmitReceipt(receiptData: any) {
+  //   console.log('Receipt submitted:', receiptData);
+  // }
 
-  onAcceptReceipt(receipt: any) {
-    console.log('Receipt accepted:', receipt);
-  }
+  // onAcceptReceipt(receipt: any) {
+  //   console.log('Receipt accepted:', receipt);
+  // }
 
-  onRejectReceipt(receipt: any) {
-    console.log('Receipt rejected:', receipt);
+  // onRejectReceipt(receipt: any) {
+  //   console.log('Receipt rejected:', receipt);
+  // }
+
+  viewReceiptDetails(receipt: any){
+
+    this.receiptService.SetAlldetails(receipt)
+    this.router.navigate(["admin/Receipt/"+ receipt.receiptId])
   }
 }
+
+
+
+
 

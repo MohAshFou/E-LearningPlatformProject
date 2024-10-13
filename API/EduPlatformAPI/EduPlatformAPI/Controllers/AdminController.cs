@@ -55,7 +55,8 @@ namespace EduPlatformAPI.Controllers
                                          GradeLevel = student.GradeLevel,
                                          LessonTitle = lesson.Title,
                                          ReceiptImageLink = receipt.ReceiptImageLink,
-                                         EnrollmentId = enrollment.EnrollmentId
+                                         EnrollmentId = enrollment.EnrollmentId,
+                                         FeeAmount = lesson.FeeAmount
                                      };
 
             var unapprovedStudentsList = unapprovedStudents.ToList();
@@ -67,7 +68,8 @@ namespace EduPlatformAPI.Controllers
                 GradeLevel = x.GradeLevel,
                 Title = x.LessonTitle,
                 ReceiptImageLink = vidSer.GetMediaURL(HttpContext, newlevel(x.GradeLevel), "ReceiptImages", x.ReceiptImageLink),
-                EnrollmentID = x.EnrollmentId
+                EnrollmentID = x.EnrollmentId,
+                FeeAmount = x.FeeAmount
             }).ToList();
 
             return Ok(result);
@@ -89,8 +91,11 @@ namespace EduPlatformAPI.Controllers
             {
                 return BadRequest();
             }
+            var AccessPeriod = context.Lessons.FirstOrDefault(i => i.LessonId== enr.LessonId).AccessPeriod;
             rec.AdminReviewed = "Y";
             enr.ReceiptStatus = state;
+            enr.AccessStartDate = DateTime.Now;
+            enr.AccessEndDate = DateTime.Now.AddDays(AccessPeriod);
             context.SaveChanges();
             return Ok();
         }
@@ -111,6 +116,33 @@ namespace EduPlatformAPI.Controllers
 
         }
 
+
+        [HttpPost("ChangeStudentPassword")]
+
+        public async Task<IActionResult> ChangeStudentPassword([FromBody] ChangePasswordDto request)
+        {
+
+            var studentUser = await context.Users.FirstOrDefaultAsync(u => u.Email == request.Email);
+
+            if (studentUser == null)
+            {
+                return NotFound("Student not found.");
+            }
+
+
+            if (studentUser.Role != "S" && studentUser.Role != "s")
+            {
+                return Forbid("You cannot change the password of a non-student user.");
+            }
+
+
+            studentUser.Password = request.NewPassword;
+
+
+            await context.SaveChangesAsync();
+
+            return Ok();
+        }
 
 
 

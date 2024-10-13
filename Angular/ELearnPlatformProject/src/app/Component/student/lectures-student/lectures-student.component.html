@@ -1,20 +1,47 @@
 <div class="container">
   <div class="row">
     <div *ngIf="Lesson && Lesson.length > 0; else noLessons">
-      <div *ngFor="let item of Lesson" class="col-md-4 mb-4">
-        <div class="card h-100">
-          <div class="image-container">
-            <img src="Images/lessonVideo.jpg" class="card-img-top" alt="Lecture Image" />
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">Lesson {{item.title}}</h5>
-            <p>Description: {{item.description}}</p>
-            <p class="card-text">Price: {{item.feeAmount}}</p>
-            <div>Date: {{item.uploadDate}}</div>
-          </div>
-          <div class="card-footer">
-            <button (click)="goToReceipt(item)" class="btn btn-primary m-4">Pay Now</button>
-            <button (click)="WatchVedio(item)" class="btn btn-success">Watch Now</button>
+      <div class="col-12">
+        <div class="row">
+          <div *ngFor="let item of Lesson" class="col-md-4 mb-4">
+            <div class="card h-100">
+              <div class="image-container">
+                <img src="Images/lessonVideo.jpg" class="card-img-top" alt="Lecture Image" />
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Lesson {{item.title}}</h5>
+                <p>Description: {{item.description}}</p>
+                <p class="card-text">Price: {{item.feeAmount}}</p>
+                <div>Date: {{item.uploadDate}}</div>
+              </div>
+
+              @if (item.hasVideoAccess=="Pending" ) {
+
+
+                <div class="form-label text-warning " style="text-align: center;">
+
+              Your submitted receipt is under review by the admin.
+                <br> For further assistance, please contact support at [ 01000000000].
+                </div>
+              }
+
+              @else if (item.hasVideoAccess=="Yes") {
+
+                <div class="card-footer">
+                <button (click)="WatchVedio(item)" class="btn btn-success">Watch Now</button>
+                  </div>
+              }
+              @else{
+
+                <div class="card-footer">
+                  <button (click)="goToReceipt(item)" class="btn btn-primary m-4">Pay Now</button>
+
+                </div>
+
+
+              }
+
+            </div>
           </div>
         </div>
       </div>
@@ -24,29 +51,3 @@
     </ng-template>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

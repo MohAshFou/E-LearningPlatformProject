@@ -12,7 +12,7 @@ import { TeacherService } from '../../../../Services/Teacher/teacher.service';
     CommonModule,
     FormsModule
   ],
-  providers:[DatePipe] ,
+  providers: [DatePipe],
   templateUrl: './upload.component.html',
   styleUrls: ['./upload.component.css']
 })
@@ -23,11 +23,10 @@ export class UploadComponent implements OnInit {
     Level: '',
     FileVideo: null,
     FileAttach: null,
-    PDFHomework:null,
+    PDFHomework: null,
     Price: 0,
-    AccessPeriod:0,
+    AccessPeriod: 0,
     uploadDate: '',
-
     Description: ''
   };
   public successMessage: string | null = null;
@@ -39,11 +38,11 @@ export class UploadComponent implements OnInit {
     FileAttach: false,
     Price: false,
     Description: false,
-    AccessPeriod: false ,
+    AccessPeriod: false,
     PDFHomework: false
   };
 
-  constructor(private service: UserAuthService , private datePipe: DatePipe , private TeacherService:TeacherService) {}
+  constructor(private service: UserAuthService, private datePipe: DatePipe, private TeacherService: TeacherService) {}
 
   ngOnInit(): void {
     if (localStorage.getItem('token')) {
@@ -61,21 +60,40 @@ export class UploadComponent implements OnInit {
   onVideoSelected(event: any): void {
     const file = event.target.files[0];
     if (file) {
-      this.NewLesson.FileVideo = file;
+      if (!this.validVideoFile(file)) {
+        this.invalidFields.FileVideo = true;
+      } else {
+        this.NewLesson.FileVideo = file;
+        this.invalidFields.FileVideo = false;
+      }
     }
+    this.validateField('FileVideo');
   }
 
   onAttachSelected(event: any): void {
     const file = event.target.files[0];
     if (file) {
-      this.NewLesson.FileAttach = file;
+      if (!this.validPDFFile(file)) {
+        this.invalidFields.FileAttach = true;
+      } else {
+        this.NewLesson.FileAttach = file;
+        this.invalidFields.FileAttach = false;
+      }
     }
+    this.validateField('FileAttach');
   }
+
   onHomeWork(event: any): void {
     const file = event.target.files[0];
     if (file) {
-      this.NewLesson.PDFHomework = file;
+      if (!this.validPDFFile(file)) {
+        this.invalidFields.PDFHomework = true;
+      } else {
+        this.NewLesson.PDFHomework = file;
+        this.invalidFields.PDFHomework = false;
+      }
     }
+    this.validateField('PDFHomework');
   }
 
   validateField(field: string): void {
@@ -98,12 +116,12 @@ export class UploadComponent implements OnInit {
       case 'Description':
         this.invalidFields.Description = !this.validDescription(this.NewLesson.Description);
         break;
-        case 'AccessPeriod' :
-          this.invalidFields.AccessPeriod = !this.validAccessPeriod(this.NewLesson.Price);
-          break;
-          case 'HomeWorkPDF' :
-            this.invalidFields.AccessPeriod = !this.validPDFHomework(this.NewLesson.PDFHomework);
-            break;
+      case 'AccessPeriod':
+        this.invalidFields.AccessPeriod = !this.validAccessPeriod(this.NewLesson.AccessPeriod);
+        break;
+      case 'PDFHomework':
+        this.invalidFields.PDFHomework = !this.validFile(this.NewLesson.PDFHomework);
+        break;
       default:
         break;
     }
@@ -111,8 +129,8 @@ export class UploadComponent implements OnInit {
 
   validTitle(title: string): boolean {
     return title.trim() !== '' && title.length <= 50 && /^[a-zA-Z\u0600-\u06FF][a-zA-Z\u0600-\u06FF0-9\s]*$/.test(title);
-
   }
+
   validLevel(level: string): boolean {
     return ['F', 'S', 'T'].includes(level);
   }
@@ -120,15 +138,21 @@ export class UploadComponent implements OnInit {
   validFile(file: File | null): boolean {
     return file !== null;
   }
-  validPDFHomework(file: File | null): boolean {
-    return file !== null;
+
+  validVideoFile(file: File | null): boolean {
+    return file !== null && file.type.startsWith('video/');
+  }
+
+  validPDFFile(file: File | null): boolean {
+    return file !== null && file.type === 'application/pdf';
   }
 
   validPrice(price: number): boolean {
     return price > 0;
   }
-  validAccessPeriod(price: number): boolean {
-    return price > 0;
+
+  validAccessPeriod(accessPeriod: number): boolean {
+    return accessPeriod > 0;
   }
 
   validDescription(description: string): boolean {
@@ -152,7 +176,7 @@ export class UploadComponent implements OnInit {
       formData.append('AccessPeriod', this.NewLesson.AccessPeriod.toString());
       formData.append('uploadDate', this.NewLesson.uploadDate);
       formData.append('Description', this.NewLesson.Description);
-      formData.append('HomeWork', this.NewLesson.PDFHomework as Blob );
+      formData.append('HomeWork', this.NewLesson.PDFHomework as Blob);
 
       console.log(this.NewLesson);
 
@@ -167,10 +191,10 @@ export class UploadComponent implements OnInit {
             Price: 0,
             FileAttach: null,
             FileVideo: null,
-            Level: "" ,
+            Level: "",
             uploadDate: "",
             PDFHomework: null
-        };
+          };
 
         },
         error: (error) => {
@@ -183,5 +207,4 @@ export class UploadComponent implements OnInit {
       console.error('Validation failed:', this.invalidFields);
     }
   }
-
 }

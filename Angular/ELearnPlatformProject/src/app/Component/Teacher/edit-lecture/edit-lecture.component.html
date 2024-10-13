@@ -1,13 +1,10 @@
 <div *ngIf="showModal">
   <div class="modal-backdrop" (click)="closeModal()"></div>
-
   <div class="modal-content">
     <div class="edit-lecture">
       <h2>Edit Lecture</h2>
-
       <input type="hidden" [(ngModel)]="editedLecture.lessonId">
       <input type="hidden" [(ngModel)]="editedLecture.gradeLevel">
-
       <div class="form-group row">
         <label class="col-2">Title:</label>
         <input class="col-10 small-input" [(ngModel)]="editedLecture.title" required (blur)="validateField('title')" (change)="cha()" />
@@ -15,7 +12,6 @@
           Title is required, should be less than 50 characters, and should not start with a number.
         </div>
       </div>
-
       <div class="form-group row">
         <label class="col-2">Description:</label>
         <input class="col-10 small-input" [(ngModel)]="editedLecture.description" required (blur)="validateField('description')" (change)="cha()"  />
@@ -23,15 +19,12 @@
           Description is required.
         </div>
       </div>
-
       <div class="form-group row">
-        <!-- <label class="col-2">Date:</label> -->
         <input class="col-10 small-input" type="date" [(ngModel)]="editedLecture.uploadDate" required (blur)="validateField('uploadDate')" hidden />
         <div *ngIf="invalidFields.uploadDate" class="text-danger mt-1 col-12">
           Date is required.
         </div>
       </div>
-
       <div class="form-group row">
         <label class="col-2">Price:</label>
         <input class="col-10 small-input" [(ngModel)]="editedLecture.feeAmount" type="number" required (blur)="validateField('feeAmount')"  (change)="cha()" />
@@ -39,7 +32,6 @@
           Price must be greater than 0.
         </div>
       </div>
-
       <div class="form-group row">
         <label class="col-2">Grade Level:</label>
         <input class="col-10 small-input" [(ngModel)]="editedLecture.gradeLevel" required (blur)="validateField('gradeLevel')" readonly />
@@ -47,7 +39,6 @@
           Grade Level is required.
         </div>
       </div>
-
       <div class="form-group row">
         <label class="col-2">Lecture Video:</label>
         <div class="col-10 d-flex align-items-center">
@@ -61,7 +52,6 @@
           </div>
         </div>
       </div>
-
       <div class="form-group row">
         <label class="col-3">Homework PDF:</label>
         <div class="col-9 d-flex align-items-center">
@@ -69,15 +59,13 @@
             <a [href]="editedLecture.homeworkURL" target="_blank">Current Homework PDF</a>
             <a (click)="removeHomeworkPDF()" style="color: red; cursor: pointer;">remove</a>
           </div>
-
-
-          <input type="file" class="form-control-file me-2" (change)="onHomeWorkPDF($event)" accept=".pdf" [disabled]="editedLecture.homeworkURL" (blur)="validateField('homeworkURL')" />
-          <div *ngIf="invalidFields.homeworkURL" class="text-danger mt-1">
-            Homework PDF is required.
-          </div>
+          <span class="text-danger" *ngIf="showError">{{ errorMessage }}</span>
+        </div>
+        <input type="file" class="form-control-file me-2" (change)="onHomeWorkPDF($event)" accept=".pdf" [disabled]="editedLecture.homeworkURL" (blur)="validateField('homeworkURL')" />
+        <div *ngIf="invalidFields.homeworkURL" class="text-danger mt-1">
+          Homework PDF is required.
         </div>
       </div>
-
       <div class="form-group row align-items-center">
         <label class="col-2">Attached File:</label>
         <div class="col-10 d-flex align-items-center">
@@ -91,7 +79,6 @@
           </div>
         </div>
       </div>
-
       <div class="button-group row">
         <button class="col-6 btn btn-primary" (click)="save()"   [disabled]="!hasChanges">Save</button>
         <button class="col-6 btn btn-secondary" (click)="closeModal()">Cancel</button>

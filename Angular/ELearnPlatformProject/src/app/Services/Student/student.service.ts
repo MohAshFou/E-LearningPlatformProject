@@ -1,6 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
+import { Observable } from 'rxjs';
+import { LessonWishList } from '../../Models/Student/lesson-wish-list';
+import { UploadStudentHomework } from '../../Models/Student/upload-student-homework';
+import { Lesson } from '../../Models/Student/lesson';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,7 +19,47 @@ export class StudentService {
   }
 
 
+  getWishlist(id:number): Observable<LessonWishList[]> {
+    return this.Clinent.get<LessonWishList[]>(`${environment.baseUrl}${this.Controller}GetFavoriteLessons/${id}`);
+  }
 
+  removeFromWishlist(lessonId: number): Observable<void> {
+    return this.Clinent.delete<void>(`${environment.baseUrl}${this.Controller}removeLesson/${lessonId}`);
+  }
 
-  
+  uploadStudentHomework(newhomework: any): Observable<void> {
+    return this.Clinent.post<void>(`${environment.baseUrl}${this.Controller}UploadHomework`,newhomework);
+  }
+
+  getallmessege(newhomework: any): Observable<void> {
+    return this.Clinent.post<void>(`${environment.baseUrl}${this.Controller}getallquestionandreply`,newhomework);
+  }
+
+  sendmessage(data:any): Observable<void> {
+    return this.Clinent.post<void>(`${environment.baseUrl}${this.Controller}setQuestionforStudentinlesson`,data);
+  }
+
+  getmylessonS(id: number): Observable<Lesson[]> {
+    return this.Clinent.get<Lesson[]>(`${environment.baseUrl}${this.Controller}studentLessons/${id}`);
+  }
+
+  changeMyPassword(data: any): Observable<Lesson[]> {
+    return this.Clinent.post<Lesson[]>(`${environment.baseUrl}${this.Controller}ChangePassword`,data);
+  }
+
+  UploadReceipt(data: any): Observable<Lesson[]> {
+    return this.Clinent.post<Lesson[]>(`${environment.baseUrl}${this.Controller}UploadReceit`,data);
+  }
+
+  removelessonfromWishList(id: number ,lessonId:number): Observable<Lesson[]> {
+
+    let params = new HttpParams()
+    .set('studentid', id.toString())
+    .set('lessonid', lessonId.toString());
+    return this.Clinent.delete<Lesson[]>(`${environment.baseUrl}${this.Controller}RemoveWishlist`  ,{params});
+  }
+  getQAbyGreadleval(level:string){
+    return this.Clinent.get(`${environment.baseUrl}${this.Controller}commonQA/${level}`);
+  }
+
 }

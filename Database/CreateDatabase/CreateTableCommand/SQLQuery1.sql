@@ -92,18 +92,50 @@ CREATE TABLE Comment (
     
 );
 CREATE TABLE Student_Comment (
-    EnrollmentID INT PRIMARY KEY  IDENTITY(1,1),
-    CommentID INT not null,
-     LessonID INT not null,
-	StudentId INT NOT NULL, 
-	FOREIGN KEY (StudentId) REFERENCES Student(StudentId)
-	ON UPDATE CASCADE ON DELETE CASCADE
-	,
-    FOREIGN KEY (LessonID) REFERENCES Lesson(LessonID)
-	ON UPDATE CASCADE ON DELETE CASCADE
-	,
-	FOREIGN KEY (CommentID) REFERENCES Comment(CommentID)
-	ON UPDATE CASCADE ON DELETE CASCADE
+    Student_CommentId INT PRIMARY KEY IDENTITY(1,1), 
+    CommentID INT NOT NULL,
+    LessonID INT NOT NULL,
+    StudentId INT NOT NULL, 
+    EnrollmentID INT NOT NULL,
+    FOREIGN KEY (EnrollmentID) REFERENCES Enrollment(EnrollmentID) ON UPDATE NO ACTION ON DELETE NO ACTION,
+    FOREIGN KEY (StudentId) REFERENCES Student(StudentId) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (LessonID) REFERENCES Lesson(LessonID) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (CommentID) REFERENCES Comment(CommentID) ON UPDATE CASCADE ON DELETE CASCADE
 );
+
+CREATE TABLE FavoriteLessons (
+    FavoriteLessonId INT PRIMARY KEY IDENTITY(1,1),
+    StudentId INT NOT NULL,
+    LessonId INT NOT NULL,
+    DateAdded DATE NOT NULL DEFAULT GETDATE(),
+    FOREIGN KEY (StudentId) REFERENCES Student(StudentId)
+        ON UPDATE CASCADE 
+        ON DELETE CASCADE,
+    FOREIGN KEY (LessonId) REFERENCES Lesson(LessonId)
+        ON UPDATE CASCADE 
+        ON DELETE CASCADE
+);
+
+
+
+
+CREATE TABLE SelectedQuestions (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    GradeLevel NVARCHAR(2),
+    LessonName NVARCHAR(50),
+    QuestionText NVARCHAR(MAX),
+    ReplyText NVARCHAR(MAX)
+);
+
+
+CREATE TABLE SelectedQuestions (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    GradeLevel NVARCHAR(2),
+    LessonName NVARCHAR(50),
+    QuestionText NVARCHAR(MAX),
+    ReplyText NVARCHAR(MAX)
+);
+
+
 
 

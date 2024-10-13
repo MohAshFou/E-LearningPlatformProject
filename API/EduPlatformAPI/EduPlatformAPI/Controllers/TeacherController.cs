@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using EduPlatformAPI.Services;
 using Microsoft.EntityFrameworkCore;
+using EduPlatformAPI.DTO.Admin;
+using EduPlatformAPI.Hubs;
+using Microsoft.AspNetCore.SignalR;
 
 namespace EduPlatformAPI.Controllers
 {
@@ -14,14 +17,16 @@ namespace EduPlatformAPI.Controllers
     [ApiController]
     public class TeacherController : ControllerBase
     {
+        private readonly IHubContext<ClassroomHub> _hubContext;
         private readonly EduPlatformDbContext context;
         private readonly LessonService vidSer;
         private readonly MediaController videos;
-        public TeacherController(EduPlatformDbContext context , LessonService vidSer , MediaController videos)
+        public TeacherController(EduPlatformDbContext context , LessonService vidSer , MediaController videos , IHubContext<ClassroomHub> hubContext)
         {
             this.context = context;
             this.vidSer = vidSer;
             this.videos = videos;
+            _hubContext = hubContext;
         }
     
         [HttpGet("GetLevelsWithLessonCount")]
@@ -338,8 +343,9 @@ namespace EduPlatformAPI.Controllers
                                                  GradeLevel = s.GradeLevel,       
                                                  Question = c.Question,  
                                                  TitleLesson= l.Title,
-                                                  
-                                                 QuestionDate = ((DateOnly)c.QuestionDate).ToDateTime(TimeOnly.MinValue) 
+                                                 userid= u.UserId,  
+
+                                                 QuestionDate = c.QuestionDate
                                              }).ToListAsync();
 
             if (unansweredQuestions == null || unansweredQuestions.Count == 0)
@@ -350,10 +356,9 @@ namespace EduPlatformAPI.Controllers
             return Ok(unansweredQuestions);
         }
         [HttpPost]
-        [Route("replyToQuestion")]
+        [HttpPost("replyToQuestion")]
         public async Task<IActionResult> ReplyToQuestion(ReplyToQuestionDTO teacReplyDTo)
         {
-            
             var comment = await context.Comments.FirstOrDefaultAsync(c => c.CommentId == teacReplyDTo.commentId);
 
             if (comment == null)
@@ -361,15 +366,16 @@ namespace EduPlatformAPI.Controllers
                 return NotFound(new { Message = "Comment not found." });
             }
 
-            
             comment.Reply = teacReplyDTo.teacherReply;
-
-         
-            comment.ReplyDate = DateOnly.FromDateTime(DateTime.Now); 
+            comment.ReplyDate = DateTime.Now;
             await context.SaveChangesAsync();
+
+        
+            await _hubContext.Clients.All.SendAsync("SendTeacherMessage", "mohamed Sayed", comment.Reply, teacReplyDTo.commentId ,teacReplyDTo.userid);
 
             return Ok(new { Message = "Reply saved successfully." });
         }
+
 
 
         [HttpPut("UpdateLesson/{id}")]
@@ -456,5 +462,226 @@ namespace EduPlatformAPI.Controllers
             return Ok();
         }
 
+        [HttpGet("CountsAllStudentAccpetAndRejectOnLesson")]
+        public IActionResult AllStudentAccpetAndRejectOnLesson()
+        {
+            var allCounts = from l in context.Lessons
+                            join e in context.Enrollments on l.LessonId equals e.LessonId into enrollmentGroup
+                            from eg in enrollmentGroup.DefaultIfEmpty() // استخدم Left Join
+                            group eg by new { l.GradeLevel, l.Title , l.LessonId } into g
+                            select new ALLStudentAccept_AndRejectDTO
+                            {
+                                id= g.Key.LessonId,
+                               level=  g.Key.GradeLevel,
+                                lessonName=     g.Key.Title,
+                               countOfAccept= g.Count(x => x != null && x.HomeWorkEvaluation == "accept"),
+                              countOfreject=  g.Count(x => x != null && x.HomeWorkEvaluation == "reject")
+                            };
+
+            var result = allCounts.ToList();
+
+            return Ok(result);
+        }
+
+        [HttpGet("AllStudentAccpetAndRejectOnLesson/{lessonid}")]
+        public IActionResult GetSAlltudentsAccpetAndRejectBYLessonID(int lessonid)
+        {
+            // إعداد القوائم للأسماء المقبولة والرافضة
+            var studentNames = new ALLStudentNameRejectsAndAccept();
+
+            // استعلام لجلب أسماء الطلاب المقبولين والرافضين
+            var allCounts = from l in context.Lessons
+                            join e in context.Enrollments on l.LessonId equals e.LessonId
+                            join u in context.Users on e.StudentId equals u.UserId
+                            where l.LessonId == lessonid
+                            select new
+                            {
+                                StudentName = u.Name,
+                                HomeWorkEvaluation = e.HomeWorkEvaluation
+                            };
+
+           
+            foreach (var item in allCounts)
+            {
+                if (item.HomeWorkEvaluation == "accept")
+                {
+                    studentNames.NameAccept.Add(item.StudentName);
+                }
+                else if (item.HomeWorkEvaluation == "reject")
+                {
+                    studentNames.NameRejects.Add(item.StudentName);
+                }
+            }
+
+            return Ok(studentNames);
+        }
+
+
+            [HttpGet("GetLessonStatsLast14Days")]
+            public IActionResult GetLessonStatsLast14Days()
+            {
+                var twoWeeksAgo = DateTime.Now.AddDays(-14);
+
+                var lessonStats = context.Lessons
+                    .Where(l => l.UploadDate >= DateOnly.FromDateTime(twoWeeksAgo))
+                    .Select(l => new LessonStatsDto
+                    {
+                        LessonId = l.LessonId,
+                        Title = l.Title,
+                        NumberOfStudents = l.Enrollments.Count,
+                        TotalFeeCollected = l.Enrollments.Count * l.FeeAmount  ,
+
+                        level= l.GradeLevel
+                    })
+                    .ToList();
+
+                return Ok(lessonStats);
+            }
+
+
+      
+        [HttpPut("ChangeAnyUserPassword")]
+        public async Task<IActionResult> ChangeAnyUserPassword([FromBody] ChangePasswordDto request)
+        {
+            
+            var userToChange = await context.Users.FirstOrDefaultAsync(u => u.Email == request.Email);
+            if (userToChange == null)
+            {
+                return NotFound("User not found.");
+            }
+
+          
+            if (string.IsNullOrWhiteSpace(request.NewPassword))
+            {
+                return BadRequest("New password cannot be empty.");
+            }
+
+          
+            userToChange.Password = request.NewPassword;
+
+            await context.SaveChangesAsync();
+
+            return Ok();
+        }
+
+
+
+
+        [HttpGet("GetAllQuestionsAndRepliesonForCommanQuestion")]
+        public IActionResult GetAllQuestionsAndRepliesonForCommanQuestion()
+        {
+            var existingQuestions = context.SelectedQuestions
+                .Select(q => q.QuestionText)
+                .ToList();
+
+            var questionsAndReplies = context.StudentComments
+                .Where(sc => !string.IsNullOrEmpty(sc.Comment.Reply))
+                .Select(sc => new CommonQuestionAndReplyDTO
+                {
+                  
+                    Question = sc.Comment.Question,
+                    Reply = sc.Comment.Reply,
+                    LessonTitle = sc.Lesson.Title,
+                    GradeLevel = sc.Student.GradeLevel
+                })
+                .ToList();
+
+            var uniqueEntries = new List<CommonQuestionAndReplyDTO>();
+
+            foreach (var entry in questionsAndReplies)
+            {
+                if (!existingQuestions.Contains(entry.Question))
+                {
+                    bool exists = uniqueEntries.Any(e =>
+                       
+                        e.Question == entry.Question &&
+                        e.Reply == entry.Reply &&
+                        e.LessonTitle == entry.LessonTitle &&
+                        e.GradeLevel == entry.GradeLevel);
+
+                    if (!exists)
+                    {
+                        uniqueEntries.Add(entry);
+                    }
+                }
+            }
+
+            if (!uniqueEntries.Any())
+            {
+                return NotFound("No new questions and replies found.");
+            }
+
+            return Ok(uniqueEntries);
+        }
+
+
+        //
+        [HttpPost("saveSelectedQuestions")]
+        public async Task<IActionResult> SaveSelectedQuestions([FromBody] List<QuestionModel> questions)
+        {
+            if (questions == null || !questions.Any())
+                return BadRequest("No Question Selected");
+
+            foreach (var question in questions)
+            {
+                context.SelectedQuestions.Add(new SelectedQuestion
+                {
+                    GradeLevel = question.GradeLevel,
+                    LessonName = question.LessonName,
+                    QuestionText = question.Question,
+                    ReplyText = question.Reply
+                });
+            }
+
+            await context.SaveChangesAsync();
+            return Ok();
+        }
+
+        //
+
+        [HttpGet("AllQuestionAndReplyFromSelectedQuestion")]
+        public IActionResult AllQuestionAndReplyFromSelectedQuestion()
+        {
+            var questionsAndReplies = context.SelectedQuestions
+                
+                .Select(sc => new CommonQuestionAndReplyDTO
+                {
+                    QuestionID = sc.Id,
+                    Question = sc.QuestionText,
+                    Reply = sc.ReplyText,
+                    LessonTitle = sc.LessonName,
+                    GradeLevel = sc.GradeLevel
+                })
+                .OrderBy(qr => qr.GradeLevel)
+                .ToList();
+
+            if (!questionsAndReplies.Any())
+            {
+                return NotFound();
+            }
+
+            return Ok(questionsAndReplies);
+        }
+
+        [HttpDelete("RemoveQuestion/{id}")]
+        public IActionResult AllQuestionAndReplyFromSelectedQuestion(int id)
+        {
+            var questionsAndReplies = context.SelectedQuestions.FirstOrDefault(i => i.Id == id);
+            if (questionsAndReplies == null) {
+
+                return BadRequest();
+            
+            }
+
+                             
+              context.SelectedQuestions.Remove(questionsAndReplies);
+            context.SaveChanges();
+
+            return Ok();
+        }
+
+
+
     }
+
 }

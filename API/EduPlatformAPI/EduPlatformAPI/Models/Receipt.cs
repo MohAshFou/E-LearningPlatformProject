@@ -9,7 +9,7 @@ public partial class Receipt
 
     public string ReceiptImageLink { get; set; } = null!;
 
-    public DateOnly UploadDate { get; set; }
+    public DateTime? UploadDate { get; set; }
 
     public string AdminReviewed { get; set; } = null!;
 

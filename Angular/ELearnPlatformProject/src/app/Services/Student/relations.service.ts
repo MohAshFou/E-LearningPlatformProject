@@ -9,31 +9,39 @@ export class RelationsService {
   StudentInfo : any;
   currentLesson:any
 
+
+
   setLesson( ParamOne :any){
     this.Lessons=ParamOne;
     // console.log(this.Lessons);
   }
 
-  setStudentInfo(ParamTwo :any){
-    this.StudentInfo=ParamTwo;
-    // console.log(this.StudentInfo);
+
+
+
+
+  private key1 = 'allDetails';
+  setcurrentLesson(data: any): void {
+
+    sessionStorage.setItem(this.key1, JSON.stringify(data));
+  }
+
+  getcurrentLesson(): any {
+    const data = sessionStorage.getItem(this.key1);
+    return data ? JSON.parse(data) : null;
   }
 
 
-  setcurrentLesson( e:any){
+  private key2 = 'f';
 
-    this.currentLesson= e
+  setStudentInfo(data: any): void {
 
-  }
-  getcurrentLesson( ){
-
-    return  this.currentLesson
-
+    sessionStorage.setItem(this.key2, JSON.stringify(data));
   }
 
-  GetStudentInfo()
-  {
-    return this.StudentInfo
+  GetStudentInfo(): any {
+    const data = sessionStorage.getItem(this.key2);
+    return data ? JSON.parse(data) : null;
   }
 
   constructor() { }

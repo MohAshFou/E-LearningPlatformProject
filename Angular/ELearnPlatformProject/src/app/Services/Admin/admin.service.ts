@@ -12,9 +12,13 @@ export class AdminService {
 
 
 
-  getUnapprovedStudents(): Observable<any[]> {`
-    `
-    return this.Clinent.get<any[]>(`${environment.baseUrl}${this.Controller}/unapproved`);
+  getUnapprovedStudents(): Observable<any[]> {
+    return this.Clinent.get<any[]>(`${environment.baseUrl}${this.Controller}unapproved`);
+  }
+
+
+  ChangeStudentPassword(e:any): Observable<any[]> {
+    return this.Clinent.post<any[]>(`${environment.baseUrl}${this.Controller}ChangeStudentPassword`,e);
   }
 
 }

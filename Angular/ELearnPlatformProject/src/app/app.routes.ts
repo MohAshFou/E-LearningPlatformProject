@@ -23,6 +23,18 @@ import { ReceiptComponent } from './Component/Admin/receipt/receipt.component';
 import { ManageAccountsComponent } from './Component/Admin/manage-accounts/manage-accounts.component';
 import { WatchVedioComponent } from './Component/student/Watching/watch-vedio/watch-vedio.component';
 import { ReceiptStudentComponent } from './Component/student/receipt/receipt-student/receipt-student.component';
+import { HomeWorksAcceptedComponent } from './Component/Teacher/AcceptedAndRejected/home-works-accepted/home-works-accepted.component';
+import { DetailsComponent } from './Component/Teacher/Details/details/details.component';
+import { LessonIncomeComponent } from './Component/Teacher/lesson-income/lesson-income.component';
+import { WishlistComponent } from './Component/student/wishlist/wishlist.component';
+import { ReceiptCardComponent } from './Component/Admin/receipt-card/receipt-card.component';
+import { MyLessonsComponent } from './Component/student/my-lessons/my-lessons.component';
+import { MyProfileComponent } from './Component/Teacher/my-profile/my-profile.component';
+import { ManageUserAccountsComponent } from './Component/Teacher/manage-user-accounts/manage-user-accounts.component';
+import { MyProfileSTUComponent } from './Component/student/my-profile-stu/my-profile-stu.component';
+import { QuestationAndAnswerStuComponent } from './Component/student/questation-and-answer-stu/questation-and-answer-stu.component';
+import { AllQuestionComponent } from './Component/Teacher/all-question/all-question.component';
+import { QuestionsComponent } from './Component/Teacher/questions/questions.component';
 
 export const routes: Routes = [
   {
@@ -58,9 +70,26 @@ export const routes: Routes = [
       {
         path:"WatchVedio",
         component: WatchVedioComponent
+      } ,
+      {
+        path:"Wishlist",
+        component: WishlistComponent
       }
-
-
+      ,
+      {
+        path:"MyLessons",
+        component: MyLessonsComponent
+      }
+      ,
+      {
+        path:"MyProfile",
+        component: MyProfileSTUComponent
+      }
+      ,
+      {
+        path:"commonquestions",
+        component: QuestationAndAnswerStuComponent
+      }
     ]
   },
   {
@@ -74,9 +103,16 @@ export const routes: Routes = [
       },
 
       {
+        path: "Receipt/:id",
+        component: ReceiptCardComponent
+      },
+
+      {
         path: "ManageAccounts",
         component: ManageAccountsComponent
       }
+
+
 
 
     ]
@@ -110,7 +146,41 @@ export const routes: Routes = [
       {
         path: "chat",
         component: ChatComponent
+      } , {
+        path:"AcceptAndReject",
+        component:HomeWorksAcceptedComponent
       }
+      ,
+      {
+        path:"Details",
+        component:DetailsComponent
+      } ,
+      {
+        path:"Income",
+        component:LessonIncomeComponent
+      }
+      ,
+      {
+        path:"myprofile",
+        component: MyProfileComponent
+      }
+      ,
+      {
+        path:"ManageAccountAdmin",
+        component: ManageUserAccountsComponent
+      }
+      ,
+      {
+        path: "AllQuestions",
+        component:AllQuestionComponent
+      }
+
+      ,
+      {
+        path:"Questions",
+        component:QuestionsComponent
+      }
+
     ]
   },
   {

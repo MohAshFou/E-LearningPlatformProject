@@ -15,6 +15,8 @@ public partial class Student
 
     public virtual ICollection<Enrollment> Enrollments { get; set; } = new List<Enrollment>();
 
+    public virtual ICollection<FavoriteLesson> FavoriteLessons { get; set; } = new List<FavoriteLesson>();
+
     public virtual ICollection<StudentComment> StudentComments { get; set; } = new List<StudentComment>();
 
     public virtual User StudentNavigation { get; set; } = null!;

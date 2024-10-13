@@ -1,0 +1,41 @@
+.lessons-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.lesson-card {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 300px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.lesson-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.lesson-card p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.lesson-card button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.lesson-card button:hover {
+  background-color: #0056b3;
+}

@@ -24,6 +24,8 @@ export class SubmittedhomeworkDetailComponent implements OnInit {
   constructor(private sumser: SumHomeService, private teachserv: TeacherService, private rou: Router) {}
 
   ngOnInit(): void {
+
+    
     this.allde = this.sumser.GetAlldetails();
     console.log(this.allde);
   }

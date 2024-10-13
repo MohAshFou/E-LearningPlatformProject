@@ -1,0 +1,90 @@
+
+<app-lesson-status-chart> </app-lesson-status-chart>
+
+<br>
+<div *ngIf="lessonStats.length > 0; else noData">
+     <h3 style="text-align: center;">   Levels in detail </h3>
+     <br> 
+  <!-- Table for Level A -->
+  <h3>Level 1</h3>
+  <table class="statistics-table">
+    <thead>
+      <tr>
+        <th>Lesson Name</th>
+        <th>Income</th>
+        <th>Number of Students</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let lesson of level1">
+        <td>{{ lesson.title }}</td>
+        <td>{{ lesson.totalFeeCollected | currency }}</td>
+        <td>{{ lesson.numberOfStudents }}</td>
+      </tr>
+      <!-- Row for total income of Level A -->
+      <tr>
+        <td><strong>Total Income for Level 1</strong></td>
+        <td><strong>{{ totalIncome1 | currency }}</strong></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+  <br>
+  <!-- Table for Level B -->
+  <h3>Level 2</h3>
+  <table class="statistics-table">
+    <thead>
+      <tr>
+        <th>Lesson Name</th>
+        <th>Income</th>
+        <th>Number of Students</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let lesson of level2">
+        <td>{{ lesson.title }}</td>
+        <td>{{ lesson.totalFeeCollected| currency }}</td>
+        <td>{{ lesson.numberOfStudents }}</td>
+      </tr>
+      <!-- Row for total income of Level B -->
+      <tr>
+        <td><strong>Total Income for Level 2</strong></td>
+        <td><strong>{{ totalIncome2 | currency }}</strong></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+ <br>
+ <br>
+  <!-- Table for Level C -->
+  <h3>Level 3</h3>
+  <table class="statistics-table">
+    <thead>
+      <tr>
+        <th>Lesson Name</th>
+        <th>Income</th>
+        <th>Number of Students</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let lesson of level3">
+        <td>{{ lesson.title }}</td>
+        <td>{{ lesson.totalFeeCollected| currency }}</td>
+        <td>{{ lesson.numberOfStudents }}</td>
+      </tr>
+      <!-- Row for total income of Level C -->
+      <tr>
+        <td><strong>Total Income for Level 3</strong></td>
+        <td><strong>{{ totalIncome3 | currency }}</strong></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Display error message or no data message -->
+<ng-template #noData>
+  <p *ngIf="errorMessage">{{ errorMessage }}</p>
+  <p *ngIf="!errorMessage">No data available for the last 14 days.</p>
+</ng-template>

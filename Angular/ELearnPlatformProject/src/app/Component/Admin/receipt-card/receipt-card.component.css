@@ -1,52 +1,46 @@
-.card {
-    border-radius: 10px;
-    background-color: #f9f9f9;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+.receipt-details {
+  h2 {
+    margin-bottom: 20px;
   }
-  
-  .form-group {
-    /* gap: 20px ;  */
-    margin-top: 20px;
-  }
-  
+
   label {
     font-weight: bold;
-    width: 10%;
+    display: block;
+    margin-top: 10px;
   }
-  
-  input[type="text"], input[type="number"], input[type="file"] {
-    border: 1px solid #ccc;
+
+  p {
+    margin: 5px 0 15px;
+    padding: 5px;
+    background-color: #f0f4fa;
     border-radius: 5px;
-    padding: 10px;
-    width: 50%;
-    box-sizing: border-box;
   }
-/* 
-  input [type="checkbox"] {
-    margin-top: 10px;
-    padding-top: 10px;
+
+  img {
+    margin: 15px 0;
+    border-radius: 5px;
   }
-   */
-  button {
-    padding: 10px;
-  }
-  
-  .btn-success, .btn-danger {
-    width: 10%;
-  }
-  
-  button[type="submit"] {
-    width: 20% !important;
-    font-size: 16px;
-    margin-top: 10px;
-  }
-  
-  /* @media (min-width: 768px) {
-    .form-group {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+
+  .buttons {
+    display: flex;
+    /* justify-content: space-around; */
+    margin-top: 20px;
+
+    .accept-button, .reject-button {
+      padding: 10px 20px;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
     }
-  } */
-  
+
+    .accept-button {
+      background-color: #5A77DF;
+      margin-right: 100px;
+    }
+
+    .reject-button {
+      background-color: #e74c3c;
+    }
+  }
+}

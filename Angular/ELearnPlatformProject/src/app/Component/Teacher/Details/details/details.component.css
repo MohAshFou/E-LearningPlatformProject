@@ -1,0 +1,18 @@
+.tables-container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+
+}
+
+.table {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.empty-cell {
+  height: 50px;
+  font-style: italic;
+  text-align: center;
+  color: #888;   
+}

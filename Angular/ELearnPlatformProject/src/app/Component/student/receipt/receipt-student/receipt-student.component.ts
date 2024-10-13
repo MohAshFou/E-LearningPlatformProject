@@ -1,20 +1,41 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RelationsService } from '../../../../Services/Student/relations.service';
 import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
+import { StudentService } from '../../../../Services/Student/student.service';
 
 @Component({
   selector: 'app-receipt-student',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './receipt-student.component.html',
-  styleUrl: './receipt-student.component.css'
+  styleUrls: ['./receipt-student.component.css']
 })
-export class ReceiptStudentComponent {
-  constructor(private StuInfo : RelationsService,private router: Router){}
+export class ReceiptStudentComponent implements OnInit {
+  studinf: any;
+  lesson: any;
+  id: number = 0;
+  level: string = '';
+  ImageFile!: File;
   imageUrl: string | ArrayBuffer | null = null;
   errorMessage: string | null = null;
   showError: boolean = false;
+  lessonid: number = 0;
+
+  constructor(private StuInfo: RelationsService, private router: Router, private studentser: StudentService , private loc:Location)  { }
+
+  ngOnInit(): void {
+    this.studinf = this.StuInfo.GetStudentInfo();
+    this.lesson = this.StuInfo.getcurrentLesson();
+    if (this.studinf) {
+      this.id = this.studinf.id;
+      this.level = this.studinf.gradeLevel;
+    }
+    if (this.lesson) {
+      this.lessonid = this.lesson.lessonId;
+    }
+  }
+
   onFileSelected(event: Event) {
     const file = (event.target as HTMLInputElement).files?.[0];
 
@@ -29,28 +50,49 @@ export class ReceiptStudentComponent {
       }
 
       this.errorMessage = null;
+      this.ImageFile = file;
+      this.showError = false;
+
       const reader = new FileReader();
       reader.onload = () => {
         this.imageUrl = reader.result;
       };
       reader.readAsDataURL(file);
-      this.showError = false;
     }
   }
+
   submit() {
-    if (!this.imageUrl) {
+    if (!this.ImageFile) {
       this.errorMessage = 'Please select a valid image before submitting.';
       this.showError = true;
       return;
     }
-    console.log(this.StuInfo.GetStudentInfo());
-    console.log('Submitting image:', this.imageUrl);
-    this.router.navigate(['/student']);
+
+    if (!this.lesson) {
+      this.errorMessage = 'Lesson information is missing.';
+      this.showError = true;
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('image', this.ImageFile);
+    formData.append('id', this.id.toString());
+    formData.append('level', this.level);
+    formData.append('lessonid', this.lesson.lessonId.toString());
+
+    this.studentser.UploadReceipt(formData).subscribe({
+      next: (d) => {
+        this.loc.back();
+      },
+      error: (e: any) => {
+        console.log(e);
+        this.errorMessage = 'Failed to upload receipt. Please try again later.';
+        this.showError = true;
+      }
+    });
   }
 
-  GoToHome()
-  {
+  GoToHome() {
     this.router.navigate(['/student']);
   }
-
 }
