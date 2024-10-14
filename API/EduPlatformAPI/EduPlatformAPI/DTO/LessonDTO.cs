@@ -7,6 +7,7 @@
         public string Description { get; set; }
         public string? VideoURL { get; set; }
         public string? PDFURL { get; set; }
+        public string? islessonInWishlist { get; set; }
         public string? homeworkURL { get; set; }
         public string? HomeWorkEvaluation {  get; set; }
         public string? hasVideoAccess { get; set; }

@@ -1,5 +1,10 @@
 <div class="container">
 
+  <div *ngIf="successMessage" class="alert alert-success mt-2">
+    {{ successMessage }}
+  </div>
+  <div *ngIf="ErrorMessage" class="alert alert-danger mt-2">   {{ ErrorMessage }}   </div>
+
 
 
 
@@ -37,19 +42,19 @@
                   </div>
               }
               @else{
-                <div *ngIf="successMessage" class="alert alert-success mt-2">
-                  {{ successMessage }}
-                </div>
-                <div *ngIf="ErrorMessage" class="alert alert-danger mt-2">   {{ ErrorMessage }}   </div>
-
 
                 <div class="card-footer">
 
-
-
                   <button (click)="goToReceipt(item)" class="btn btn-primary m-4">Pay Now</button>
+       @if (item.islessonInWishlist ==='NO') {
 
-                  <button class="wish-list-button"   (click)="addToWishList(item)"> <i class="fas fa-heart"></i></button>
+        <button #wis   class="wish-list-button"   (click)="addToWishList(wis,item)"> <i class="fas fa-heart"></i></button>
+       }
+       @else {
+
+        <button #wis   class="wish-list-button"   (click)="addToWishList(wis,item)" disabled> <i class="fas fa-heart"></i></button>
+       }
+
 
 
                 </div>

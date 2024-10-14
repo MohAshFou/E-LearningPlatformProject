@@ -90,6 +90,12 @@ namespace EduPlatformAPI.Controllers
                 _ => null
             };
 
+            // Fetch all lesson IDs in the wishlist for the student
+            var lessonIdsInWishlist = context.FavoriteLessons
+                .Where(f => f.StudentId == id)
+                .Select(f => f.LessonId)
+                .ToList();
+
             var lessons = context.Lessons
                 .Where(l => l.GradeLevel.ToLower() == gradeLevel.ToLower())
                 .Select(l => new
@@ -112,10 +118,10 @@ namespace EduPlatformAPI.Controllers
                         .FirstOrDefault() ?? ""),
                     HomeWorkEvaluation = context.Enrollments
                         .Where(e => e.LessonId == l.LessonId && e.StudentId == id)
-                        .Select(e => e.HomeWorkEvaluation).FirstOrDefault()
-                       , // Convert to a List here
+                        .Select(e => e.HomeWorkEvaluation).FirstOrDefault(),
                     l.UploadDate,
-                    l.FeeAmount
+                    l.FeeAmount,
+                    islessonInWishlist = lessonIdsInWishlist.Contains(l.LessonId) ? "Yes" : "NO"
                 })
                 .ToList();
 
@@ -136,12 +142,14 @@ namespace EduPlatformAPI.Controllers
                 FeeAmount = l.FeeAmount,
                 AccessPeriod = l.AccessPeriod,
                 homeworkURL = l.homeworkURL,
-                HomeWorkEvaluation = l.HomeWorkEvaluation
+                HomeWorkEvaluation = l.HomeWorkEvaluation,
+                islessonInWishlist = l.islessonInWishlist
 
             }).ToList();
 
             return Ok(lessonDTOs);
         }
+
 
         private string HasVideoAccess(int studentID, int lessonID)
         {
@@ -166,8 +174,19 @@ namespace EduPlatformAPI.Controllers
             return "NO";
         }
 
+        
+             private string islessonInWishlist(int studentID, int lessonID) { 
+               var lesson = context.FavoriteLessons.FirstOrDefault(e => e.LessonId == lessonID && e.StudentId == studentID);
 
 
+            if (lesson == null)
+            {
+                return "NO";
+            }
+
+            return "Yes";
+
+        }
         [HttpGet("GetFavoriteLessons/{studentId}")]
         public IActionResult GetFavoriteLessons(int studentId)
         {
@@ -177,7 +196,7 @@ namespace EduPlatformAPI.Controllers
             }
 
             var favoriteLessons = context.FavoriteLessons
-               .Where(e => e.StudentId == studentId)
+               .Where(e => e.StudentId == studentId).OrderByDescending(l => l.DateAdded)
                .Select(l => new FavoriteLessonDto
                {
                    LessonId = l.LessonId,
@@ -342,6 +361,7 @@ namespace EduPlatformAPI.Controllers
 
             var lessons = from enrollment in context.Enrollments
                           join lesson in context.Lessons on enrollment.LessonId equals lesson.LessonId
+                          where lesson.GradeLevel == gradeLevel
                           join materialPdf in context.Materials on lesson.LessonId equals materialPdf.LessonId into pdfGroup
                           from pdfMaterial in pdfGroup.Where(m => m.MaterialType == "PDF").DefaultIfEmpty()
                           join homeworkMaterial in context.Materials on lesson.LessonId equals homeworkMaterial.LessonId into homeworkGroup
@@ -369,18 +389,21 @@ namespace EduPlatformAPI.Controllers
                         context.Materials.Where(s => s.LessonId == lesson.LessonId && s.MaterialType == "PDF" && s.Name == "Homework")
                         .Select(w => w.MaterialLink)
                         .FirstOrDefault() ?? ""),
-                             
-                              UploadDate = lesson.UploadDate ,
 
-                               HomeWorkEvaluation = context.Enrollments
+                              UploadDate = lesson.UploadDate,
+                              acc = lesson.AccessPeriod,
+
+                              HomeWorkEvaluation = context.Enrollments
                         .Where(e => e.LessonId == lesson.LessonId && e.StudentId == studentId)
                         .Select(e => e.HomeWorkEvaluation).FirstOrDefault()
                           };
 
             var filteredLessons = lessons
                 .AsEnumerable()
-                .Where(x => x.Enrollment.AccessStartDate.HasValue && (currentDate - x.Enrollment.AccessStartDate.Value).TotalDays <= 14)
-                      .ToList();
+                .Where(x => x.Enrollment.AccessStartDate.HasValue && (currentDate - x.Enrollment.AccessStartDate.Value).TotalDays <= x.acc)
+                     .GroupBy(x => x.LessonId)
+    .Select(g => g.First())
+    .ToList();
 
             if (!filteredLessons.Any())
             {
@@ -397,8 +420,8 @@ namespace EduPlatformAPI.Controllers
                 HomeworkUrl = x.homeworkURL,
                 PdfUrl = x.PDFURL,
                 VideoUrl = x.VideoURL,
-                UploadDate = x.UploadDate ,
-                HomeWorkEvaluation= x.HomeWorkEvaluation
+                UploadDate = x.UploadDate,
+                HomeWorkEvaluation = x.HomeWorkEvaluation
             }).ToList();
 
             return Ok(result);
@@ -491,6 +514,34 @@ namespace EduPlatformAPI.Controllers
             return Ok();
         
         
+        }
+
+
+
+        [HttpGet("addtoWishlist")]
+        public IActionResult addtoWishlist(int studentid, int lessonid)
+        {
+
+
+            var wish = context.FavoriteLessons.FirstOrDefault(i => i.StudentId == studentid && i.LessonId == lessonid);
+            if (wish == null)
+            {
+
+                var newwish = new FavoriteLesson
+                {
+                    LessonId = lessonid,
+                    StudentId = studentid,
+                    DateAdded = DateOnly.FromDateTime(DateTime.Now)
+                };
+                context.FavoriteLessons.Add(newwish);
+                context.SaveChanges();
+
+                return Ok();
+
+            };
+
+
+            return BadRequest(new { message = "The lesson has already been added." });
         }
 
 

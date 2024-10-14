@@ -41,7 +41,7 @@ export class LecturesStudentComponent implements OnInit  {
         this.Lesson=data.lessons;
         this.Test.setLesson(data.lessons)
         this.Test.setStudentInfo(data.studentInfo)
-
+        this.id = this.Test.GetStudentInfo().id;
 
       },
       error:()=>{
@@ -50,17 +50,14 @@ export class LecturesStudentComponent implements OnInit  {
     })
   }
 
-  addToWishList(item:any){
-    this.id = this.Test.GetStudentInfo().id;
+  addToWishList(a: HTMLButtonElement ,item:any){
 
 
-    console.log(this.id)
-    console.log(item.lessonId)
 
-    this.myserv.addtoWishlist(this.id,item.lessonid).subscribe({
+    this.myserv.addtoWishlist(this.id,item.lessonId).subscribe({
       next:(data :any)=>{
         this.successMessage=`${item.title} has been successfully added to your wishlist`
-
+        a.disabled = true;
         this.ErrorMessage= null
       },
       error:()=>{

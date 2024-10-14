@@ -62,12 +62,12 @@ export class StudentService {
 
 
 
-  addtoWishlist(id: number ,lessonId:number): Observable<Lesson[]> {
+  addtoWishlist(id: number ,lessonId:number): Observable<any> {
 
     let params = new HttpParams()
     .set('studentid', id.toString())
     .set('lessonid', lessonId.toString());
-    return this.Clinent.get<any>(`${environment.baseUrl}${this.Controller}addtoWishlist`  ,{params});
+    return this.Clinent.get<any>(`${environment.baseUrl}${this.Controller}addtoWishlist`,{params});
   }
 
 

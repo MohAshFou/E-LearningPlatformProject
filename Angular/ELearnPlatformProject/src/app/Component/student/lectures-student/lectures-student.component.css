@@ -1,51 +1,3 @@
-.lecture-container {
-  display: flex;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-  padding: 20px;
-}
-
-.lecture-card {
-    width: 300px;
-    margin: 15px;
-}
-
-.card-img-top {
-    width: 100%;
-    height: auto;
-}
-
-.lecture-info {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-}
-
-.lecture-price {
-    font-weight: bold;
-}
-
-.lecture-date-time {
-    text-align: left;
-}
-
-
-/* style of login */
-.go-to-login-button {
-  margin-top: 20px;
-  background-color: #1e90ff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.go-to-login-button:hover {
-  background-color: #0073e6;
-}
-
 .wish-list-button {
   background-color: #007bff; /* لون خلفية الزر */
   color: white; /* لون النص */
@@ -64,3 +16,10 @@
   background-color: #0056b3; /* تغيير لون الخلفية عند التمرير */
 }
 
+/* نمط الزر عندما يكون معطلاً */
+.wish-list-button:disabled {
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+  opacity: 0.6; 
+}
