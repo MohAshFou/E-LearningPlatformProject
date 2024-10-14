@@ -12,6 +12,11 @@ import { RelationsService } from '../../../Services/Student/relations.service';
   styleUrl: './lectures-student.component.css'
 })
 export class LecturesStudentComponent implements OnInit  {
+
+  public successMessage: string | null = null;
+  public ErrorMessage: string | null = null;
+
+  id:number=0
   WatchVedio(e:any)
   {
     this.router.navigate(['student/WatchVedio'])
@@ -43,5 +48,26 @@ export class LecturesStudentComponent implements OnInit  {
         console.log("Eror");
       },
     })
+  }
+
+  addToWishList(item:any){
+    this.id = this.Test.GetStudentInfo().id;
+
+
+    console.log(this.id)
+    console.log(item.lessonId)
+
+    this.myserv.addtoWishlist(this.id,item.lessonid).subscribe({
+      next:(data :any)=>{
+        this.successMessage=`${item.title} has been successfully added to your wishlist`
+
+        this.ErrorMessage= null
+      },
+      error:()=>{
+        this.ErrorMessage= `${item.title} has already been added.`
+          this.successMessage=null
+      },
+    })
+
   }
 }

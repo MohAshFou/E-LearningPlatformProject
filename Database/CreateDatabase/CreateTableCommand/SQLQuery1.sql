@@ -67,7 +67,7 @@ CREATE TABLE Enrollment (
     SubmissionDate DATE,
     SubmissionLink NVARCHAR(max) default(''),
     HomeWorkEvaluation NVARCHAR(25) default('Pending'),
-	UserName Varchar(25) not null unique,
+	UserName Varchar(25)  unique,
 	Password Varchar(30) not null ,
     ReceiptStatus NVARCHAR(20) NOT NULL,
     FOREIGN KEY (LessonId) REFERENCES Lesson(LessonId)

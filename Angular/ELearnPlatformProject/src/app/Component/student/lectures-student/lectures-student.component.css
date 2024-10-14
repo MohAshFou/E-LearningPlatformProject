@@ -45,3 +45,22 @@
 .go-to-login-button:hover {
   background-color: #0073e6;
 }
+
+.wish-list-button {
+  background-color: #007bff; /* لون خلفية الزر */
+  color: white; /* لون النص */
+  border: none; /* إزالة الحدود */
+  padding: 10px 20px; /* حشوة الزر */
+  cursor: pointer; /* تغيير المؤشر عند التمرير */
+  display: flex; /* جعل الزر مرن */
+  align-items: center; /* محاذاة العناصر في الوسط عموديًا */
+}
+
+.wish-list-button i {
+  margin-right: 5px; /* مسافة بين الأيقونة والنص */
+}
+
+.wish-list-button:hover {
+  background-color: #0056b3; /* تغيير لون الخلفية عند التمرير */
+}
+

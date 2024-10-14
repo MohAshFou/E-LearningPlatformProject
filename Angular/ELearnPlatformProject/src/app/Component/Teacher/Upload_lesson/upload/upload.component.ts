@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { UserAuthService } from '../../../../Services/User/user-auth.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule, DatePipe } from '@angular/common';
@@ -30,6 +30,11 @@ export class UploadComponent implements OnInit {
     Description: ''
   };
   public successMessage: string | null = null;
+  public fileErrorMessage: string | null = null;
+
+  @ViewChild('video') videoInput!: ElementRef;
+  @ViewChild('homework') homeworkInput!: ElementRef;
+  @ViewChild('Attach') attachInput!: ElementRef;
 
   invalidFields = {
     Title: false,
@@ -62,9 +67,11 @@ export class UploadComponent implements OnInit {
     if (file) {
       if (!this.validVideoFile(file)) {
         this.invalidFields.FileVideo = true;
+        this.fileErrorMessage = 'Please select a valid video file.';
       } else {
         this.NewLesson.FileVideo = file;
         this.invalidFields.FileVideo = false;
+        this.fileErrorMessage = null;
       }
     }
     this.validateField('FileVideo');
@@ -75,9 +82,11 @@ export class UploadComponent implements OnInit {
     if (file) {
       if (!this.validPDFFile(file)) {
         this.invalidFields.FileAttach = true;
+        this.fileErrorMessage = 'Please select a valid PDF file.';
       } else {
         this.NewLesson.FileAttach = file;
         this.invalidFields.FileAttach = false;
+        this.fileErrorMessage = null;
       }
     }
     this.validateField('FileAttach');
@@ -88,9 +97,11 @@ export class UploadComponent implements OnInit {
     if (file) {
       if (!this.validPDFFile(file)) {
         this.invalidFields.PDFHomework = true;
+        this.fileErrorMessage = 'Please select a valid PDF file.';
       } else {
         this.NewLesson.PDFHomework = file;
         this.invalidFields.PDFHomework = false;
+        this.fileErrorMessage = null;
       }
     }
     this.validateField('PDFHomework');
@@ -156,7 +167,7 @@ export class UploadComponent implements OnInit {
   }
 
   validDescription(description: string): boolean {
-    return description.trim() !== '';
+    return description.trim() !== '' && description.length <= 50 && /^[a-zA-Z\u0600-\u06FF][a-zA-Z\u0600-\u06FF0-9\s]*$/.test(description)
   }
 
   submitVideo(): void {
@@ -165,7 +176,7 @@ export class UploadComponent implements OnInit {
     }
 
     if (Object.values(this.invalidFields).every(isInvalid => !isInvalid)) {
-      this.NewLesson.uploadDate = this.datePipe.transform(new Date(), 'yyyy-MM-dd') || "";
+      this.NewLesson.uploadDate = this.datePipe.transform(new Date(), 'yyyy-MM-dd')!;
 
       const formData = new FormData();
       formData.append('FileVideo', this.NewLesson.FileVideo as Blob);
@@ -177,12 +188,9 @@ export class UploadComponent implements OnInit {
       formData.append('uploadDate', this.NewLesson.uploadDate);
       formData.append('Description', this.NewLesson.Description);
       formData.append('HomeWork', this.NewLesson.PDFHomework as Blob);
-
-      console.log(this.NewLesson);
-
       this.TeacherService.AddNewLesson(formData).subscribe({
         next: (response) => {
-          this.successMessage = 'Lesson added successfully!';
+          this.successMessage = 'Lesson uploaded successfully';
 
           this.NewLesson = {
             Title: "",
@@ -196,15 +204,17 @@ export class UploadComponent implements OnInit {
             PDFHomework: null
           };
 
+           this.videoInput.nativeElement.value = '';
+           this.homeworkInput.nativeElement.value = '';
+            this.attachInput.nativeElement.value = '';
+          setTimeout(() => {
+            this.successMessage = null;
+          }, 3000);
         },
         error: (error) => {
-          console.error('Error adding lesson:', error);
+          console.error('Error uploading lesson:', error);
         }
       });
-
-      console.log(this.NewLesson);
-    } else {
-      console.error('Validation failed:', this.invalidFields);
     }
-  }
+}
 }

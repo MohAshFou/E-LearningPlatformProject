@@ -1,7 +1,8 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { TeacherService } from '../../../Services/Teacher/teacher.service';
 
 @Component({
   selector: 'app-edit-lecture',
@@ -10,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './edit-lecture.component.html',
   styleUrls: ['./edit-lecture.component.css'],
 })
-export class EditLectureComponent {
+export class EditLectureComponent implements OnChanges {
   @Input() lecture: any;
   @Output() onSave = new EventEmitter<any>();
   @Output() onClose = new EventEmitter<void>();
@@ -20,8 +21,8 @@ export class EditLectureComponent {
   selectedHomeWorkPDF: File | null = null;
   selectedAttachedFile: File | null = null;
   showModal: boolean = true;
-  errorMessage!:string|null;
-  showError:boolean=false;
+  errorMessage: string | null = null;
+  showError: boolean = false;
 
   invalidFields = {
     title: false,
@@ -36,43 +37,44 @@ export class EditLectureComponent {
 
   hasChanges: boolean = false;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private tec: TeacherService) {}
 
   ngOnChanges() {
     this.editedLecture = { ...this.lecture };
+    console.log(this.editedLecture);
   }
 
-  cha() {
+  markChanges() {
     this.hasChanges = true;
   }
 
-  validateField(field: string): void {
+  validateField(field: keyof typeof this.invalidFields): void {
     switch (field) {
       case 'title':
-        this.invalidFields.title = !this.validTitle(this.editedLecture.title);
+        this.invalidFields.title = !this.isValidTitle(this.editedLecture.title);
         break;
       case 'description':
-        this.invalidFields.description = !this.validDescription(this.editedLecture.description);
+        this.invalidFields.description = !this.isValidDescription(this.editedLecture.description);
         break;
       case 'uploadDate':
-        this.invalidFields.uploadDate = !this.validDate(this.editedLecture.uploadDate);
+        this.invalidFields.uploadDate = !this.isValidDate(this.editedLecture.uploadDate);
         break;
       case 'feeAmount':
-        this.invalidFields.feeAmount = !this.validPrice(this.editedLecture.feeAmount);
+        this.invalidFields.feeAmount = !this.isValidPrice(this.editedLecture.feeAmount);
         break;
       case 'gradeLevel':
-        this.invalidFields.gradeLevel = !this.validGradeLevel(this.editedLecture.gradeLevel);
+        this.invalidFields.gradeLevel = !this.isValidGradeLevel(this.editedLecture.gradeLevel);
         break;
       case 'videoURL':
-        this.invalidFields.videoURL = this.selectedVideo ? !this.validFile(this.selectedVideo) : false;
+        this.invalidFields.videoURL = this.selectedVideo ? !this.isValidFile(this.selectedVideo) : false;
         this.hasChanges = true;
         break;
       case 'pdfURL':
-        this.invalidFields.pdfURL = this.selectedAttachedFile ? !this.validFile(this.selectedAttachedFile) : false;
+        this.invalidFields.pdfURL = this.selectedAttachedFile ? !this.isValidFile(this.selectedAttachedFile) : false;
         this.hasChanges = true;
         break;
       case 'homeworkURL':
-        this.invalidFields.homeworkURL = this.selectedHomeWorkPDF ? !this.validFile(this.selectedHomeWorkPDF) : false;
+        this.invalidFields.homeworkURL = this.selectedHomeWorkPDF ? !this.isValidFile(this.selectedHomeWorkPDF) : false;
         this.hasChanges = true;
         break;
       default:
@@ -80,30 +82,40 @@ export class EditLectureComponent {
     }
   }
 
-  validTitle(title: string): boolean {
+  // Validation Functions
+  isValidTitle(title: string): boolean {
     return title.trim() !== '' && title.length <= 50 && !/^\d/.test(title);
   }
 
-  validDescription(description: string): boolean {
+  isValidDescription(description: string): boolean {
     return description.trim() !== '';
   }
 
-  validDate(date: string): boolean {
+  isValidDate(date: string): boolean {
     return date.trim() !== '';
   }
 
-  validPrice(price: number): boolean {
+  isValidPrice(price: number): boolean {
     return price > 0;
   }
 
-  validGradeLevel(gradeLevel: string): boolean {
+  isValidGradeLevel(gradeLevel: string): boolean {
     return gradeLevel.trim() !== '';
   }
 
-  validFile(file: File): boolean {
+  isValidFile(file: File): boolean {
     return file !== undefined && file !== null;
   }
 
+  validateFileType(file: File, type: 'video' | 'pdf'): boolean {
+    const validTypes = {
+      video: ['video/mp4', 'video/x-m4v', 'video/*'],
+      pdf: ['application/pdf'],
+    };
+    return validTypes[type].some(validType => file.type.startsWith(validType));
+  }
+
+  // File Removal Functions
   removeVideo(): void {
     this.editedLecture.videoURL = null;
     this.selectedVideo = null;
@@ -116,44 +128,59 @@ export class EditLectureComponent {
     this.hasChanges = true;
   }
 
-  removePDF(): void {
+  removeAttachedFile(): void {
     this.editedLecture.pdfurl = null;
     this.selectedAttachedFile = null;
     this.hasChanges = true;
   }
 
-  onVideoSelected(event: any): void {
-    const file: File = event.target.files[0];
-    if (file && this.validFile(file)) {
-      this.selectedVideo = file;
-    } else {
-      this.selectedVideo = null;
-    }
+  // File Selection Handlers
+  onVideoSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    const file: File|null = input.files?.[0] || null;
+    this.selectedVideo = file && this.isValidFile(file) ? file : null;
     this.validateField('videoURL');
   }
 
-  onHomeWorkPDF(event: any): void {
-    const file: File = event.target.files[0];
-    if (file && this.validFile(file)) {
-      this.selectedHomeWorkPDF = file;
-    } else {
-      this.selectedHomeWorkPDF = null;
-    }
+  onHomeworkPDFSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    const file: File|null = input.files?.[0] || null;
+    this.selectedHomeWorkPDF = file && this.isValidFile(file) ? file : null;
     this.validateField('homeworkURL');
   }
 
-  onFileSelected(event: any): void {
-    const file: File = event.target.files[0];
-    if (file && this.validFile(file)) {
-      this.selectedAttachedFile = file;
-    } else {
-      this.selectedAttachedFile = null;
-    }
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    const file: File|null = input.files?.[0] || null;
+    this.selectedAttachedFile = file && this.isValidFile(file) ? file : null;
     this.validateField('pdfURL');
   }
 
   save(): void {
     this.showError = false;
+
+    // Validate file types
+    if (this.selectedVideo && !this.validateFileType(this.selectedVideo, 'video')) {
+      this.invalidFields.videoURL = true;
+      this.showError = true;
+      this.errorMessage = 'Invalid video file type. Please upload a valid video.';
+      return;
+    }
+
+    if (this.selectedHomeWorkPDF && !this.validateFileType(this.selectedHomeWorkPDF, 'pdf')) {
+      this.invalidFields.homeworkURL = true;
+      this.showError = true;
+      this.errorMessage = 'Invalid homework PDF file type. Please upload a valid PDF.';
+      return;
+    }
+
+    if (this.selectedAttachedFile && !this.validateFileType(this.selectedAttachedFile, 'pdf')) {
+      this.invalidFields.pdfURL = true;
+      this.showError = true;
+      this.errorMessage = 'Invalid attachment file type. Please upload a valid PDF.';
+      return;
+    }
+
     if (!this.selectedVideo && !this.editedLecture.videoURL) {
       this.invalidFields.videoURL = true;
       this.showError = true;
@@ -177,14 +204,50 @@ export class EditLectureComponent {
       this.errorMessage = 'No changes detected.';
       return;
     }
+     // Create FormData to send the updated data
+     const formData = new FormData();
 
-    // إضافة الكود الخاص بحفظ البيانات هنا.
+     // Append the edited lecture details to FormData
+     formData.append('lessonId', this.editedLecture.lessonId.toString());
+     formData.append('gradeLevel', this.editedLecture.gradeLevel);
+     formData.append('title', this.editedLecture.title);
+     formData.append('description', this.editedLecture.description);
+     formData.append('uploadDate', this.editedLecture.uploadDate.toString());
+     formData.append('feeAmount', this.editedLecture.feeAmount.toString());
 
+     // Append the files if they were selected
+     if (this.selectedVideo) {
+         formData.append('VideoURL', this.selectedVideo);
+     }
+
+
+     if (this.selectedHomeWorkPDF) {
+         formData.append('HomeWork', this.selectedHomeWorkPDF);
+     }
+
+
+     if (this.selectedAttachedFile) {
+         formData.append('PDFURL', this.selectedAttachedFile);
+     }
+    
+    // Log the updated lecture object for verification
+    console.log('Updated Lecture:', this.editedLecture);
+
+    this.tec.UpdateLesson( this.editedLecture.lessonId,formData).subscribe({
+      next: (data: any) => {
+
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    });
+    // Emit the edited lecture data
     this.onSave.emit(this.editedLecture);
-    this.closeModal();
   }
 
   closeModal(): void {
-    this.onClose.emit();
+    // this.onClose.emit();
+
+    console.log('Updated Lecture:', this.editedLecture);
   }
 }

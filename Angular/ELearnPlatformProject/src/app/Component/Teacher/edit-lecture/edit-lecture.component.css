@@ -1,5 +1,3 @@
-
-/* The backdrop covers the entire screen */
 .modal-backdrop {
   position: fixed;
   top: 0;
@@ -10,7 +8,6 @@
   z-index: 999;
 }
 
-/* The modal content is centered */
 .modal-content {
   position: fixed;
   top: 50%;
@@ -18,6 +15,7 @@
   transform: translate(-50%, -50%);
   z-index: 1000;
   width: 900px;
+  /* height: 600px; */
   background-color: white;
   padding: 20px;
   border-radius: 8px;
@@ -36,48 +34,19 @@
 
 .form-group {
   display: flex;
-  align-items: flex-start; /* Vertically align the label and input */
-  /* justify-content: space-around; */
+  align-items: flex-start;
   gap: 10px;
 }
 
 .form-group label {
-  width: 110px;
-  margin-bottom: 0;
+  width: 200px;
 }
 
-.form-group input {
-  /* flex: 1; */
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-
+.small-input {
+  flex-grow: 1;
 }
 
 .button-group {
   display: flex;
-  justify-content: flex-start;
-  gap: 10px;
-}
-
-.edit-lecture button {
-  padding: 8px 12px;
-  border-radius: 4px;
-  cursor: pointer;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-}
-
-.edit-lecture button:last-child {
-  background-color: #f44336; /* Cancel button in red */
-}
-
-.small-input {
-  width: 80%; /* أو القيمة التي تناسبك */
-  max-width: 600px; /* يمكنك تعديلها حسب الحاجة */
-}
-
-.right-align {
-  margin-left: auto; /* لتحريك الحقل نحو اليمين */
+  justify-content: space-between;
 }

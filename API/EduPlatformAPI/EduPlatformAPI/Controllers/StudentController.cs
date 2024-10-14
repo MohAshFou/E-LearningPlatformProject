@@ -428,6 +428,7 @@ namespace EduPlatformAPI.Controllers
                   
                     context.SaveChanges();
 
+                    var videoUploadResult = videos.UploadVideo(newHomework.image, newHomework.level, "ReceiptImages");
 
                     var enr = new Enrollment()
                     {
@@ -446,8 +447,7 @@ namespace EduPlatformAPI.Controllers
 
 
                     };
-                    var videoUploadResult = videos.UploadVideo(newHomework.image, newHomework.level, "ReceiptImages");
-                    context.Enrollments.Add( enr );
+                        context.Enrollments.Add( enr );
                     context.SaveChanges();
 
                var FavoriteLesson =  context.FavoriteLessons.FirstOrDefault(i => i.StudentId == newHomework.id && i.LessonId == newHomework.lessonid);

@@ -346,7 +346,7 @@ namespace EduPlatformAPI.Controllers
                                                  userid= u.UserId,  
 
                                                  QuestionDate = c.QuestionDate
-                                             }).ToListAsync();
+                                             }).OrderByDescending(s=>s.CommentId).ToListAsync();
 
             if (unansweredQuestions == null || unansweredQuestions.Count == 0)
             {

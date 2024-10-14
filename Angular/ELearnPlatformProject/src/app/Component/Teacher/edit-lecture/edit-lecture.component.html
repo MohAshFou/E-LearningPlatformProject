@@ -1,20 +1,25 @@
 <div *ngIf="showModal">
-  <div class="modal-backdrop" (click)="closeModal()"></div>
+  <!-- <div class="modal-backdrop" (click)="closeModal()"></div> -->
   <div class="modal-content">
     <div class="edit-lecture">
       <h2>Edit Lecture</h2>
+
+
+    <br>
+      <span class=" alert alert-danger mt-2" *ngIf="showError">{{ errorMessage }}</span>
+
       <input type="hidden" [(ngModel)]="editedLecture.lessonId">
       <input type="hidden" [(ngModel)]="editedLecture.gradeLevel">
       <div class="form-group row">
         <label class="col-2">Title:</label>
-        <input class="col-10 small-input" [(ngModel)]="editedLecture.title" required (blur)="validateField('title')" (change)="cha()" />
+        <input class="col-10 small-input" [(ngModel)]="editedLecture.title" required (blur)="validateField('title')" (change)="markChanges()" />
         <div *ngIf="invalidFields.title" class="text-danger mt-1 col-12">
           Title is required, should be less than 50 characters, and should not start with a number.
         </div>
       </div>
       <div class="form-group row">
         <label class="col-2">Description:</label>
-        <input class="col-10 small-input" [(ngModel)]="editedLecture.description" required (blur)="validateField('description')" (change)="cha()"  />
+        <input class="col-10 small-input" [(ngModel)]="editedLecture.description" required (blur)="validateField('description')" (change)="markChanges()"  />
         <div *ngIf="invalidFields.description" class="text-danger mt-1 col-12">
           Description is required.
         </div>
@@ -27,7 +32,7 @@
       </div>
       <div class="form-group row">
         <label class="col-2">Price:</label>
-        <input class="col-10 small-input" [(ngModel)]="editedLecture.feeAmount" type="number" required (blur)="validateField('feeAmount')"  (change)="cha()" />
+        <input class="col-10 small-input" [(ngModel)]="editedLecture.feeAmount" type="number" required (blur)="validateField('feeAmount')"  (change)="markChanges()" />
         <div *ngIf="invalidFields.feeAmount" class="text-danger mt-1 col-12">
           Price must be greater than 0.
         </div>
@@ -40,7 +45,7 @@
         </div>
       </div>
       <div class="form-group row">
-        <label class="col-2">Lecture Video:</label>
+        <label class="col-3">Lecture Video:</label>
         <div class="col-10 d-flex align-items-center">
           <div *ngIf="editedLecture.videoURL" class="me-2">
             <a [href]="editedLecture.videoURL" target="_blank">Current Video</a>
@@ -59,9 +64,9 @@
             <a [href]="editedLecture.homeworkURL" target="_blank">Current Homework PDF</a>
             <a (click)="removeHomeworkPDF()" style="color: red; cursor: pointer;">remove</a>
           </div>
-          <span class="text-danger" *ngIf="showError">{{ errorMessage }}</span>
+
         </div>
-        <input type="file" class="form-control-file me-2" (change)="onHomeWorkPDF($event)" accept=".pdf" [disabled]="editedLecture.homeworkURL" (blur)="validateField('homeworkURL')" />
+        <input type="file" class="form-control-file me-2" (change)="onHomeworkPDFSelected($event)" accept=".pdf" [disabled]="editedLecture.homeworkURL" (blur)="validateField('homeworkURL')" />
         <div *ngIf="invalidFields.homeworkURL" class="text-danger mt-1">
           Homework PDF is required.
         </div>
@@ -71,7 +76,7 @@
         <div class="col-10 d-flex align-items-center">
           <div *ngIf="editedLecture.pdfurl" class="me-2">
             <a [href]="editedLecture.pdfurl" target="_blank">Current Attachment</a>
-            <a (click)="removePDF()" style="color: red; cursor: pointer;">remove</a>
+            <a (click)="removeAttachedFile()" style="color: red; cursor: pointer;">remove</a>
           </div>
           <input type="file" class="form-control-file me-2" (change)="onFileSelected($event)" accept=".pdf" [disabled]="editedLecture.pdfurl" (blur)="validateField('pdfURL')" />
           <div *ngIf="invalidFields.pdfURL" class="text-danger mt-1">

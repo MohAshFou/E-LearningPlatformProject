@@ -1,4 +1,9 @@
 <div class="container">
+
+
+
+
+
   <div class="row">
     <div *ngIf="Lesson && Lesson.length > 0; else noLessons">
       <div class="col-12">
@@ -32,9 +37,20 @@
                   </div>
               }
               @else{
+                <div *ngIf="successMessage" class="alert alert-success mt-2">
+                  {{ successMessage }}
+                </div>
+                <div *ngIf="ErrorMessage" class="alert alert-danger mt-2">   {{ ErrorMessage }}   </div>
+
 
                 <div class="card-footer">
+
+
+
                   <button (click)="goToReceipt(item)" class="btn btn-primary m-4">Pay Now</button>
+
+                  <button class="wish-list-button"   (click)="addToWishList(item)"> <i class="fas fa-heart"></i></button>
+
 
                 </div>
 

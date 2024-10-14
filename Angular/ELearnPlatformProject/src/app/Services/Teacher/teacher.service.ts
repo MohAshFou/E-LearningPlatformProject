@@ -136,4 +136,11 @@ export class TeacherService {
     return this.Clinent.delete<LessonStats[]>(`${environment.baseUrl}${this.Controller}RemoveQuestion/${a}`);
   }
 
+
+
+  UpdateLesson(id:number ,data:any): Observable<LessonStats[]> {
+
+    return this.Clinent.put<LessonStats[]>(`${environment.baseUrl}${this.Controller}UpdateLesson/${id}`,data);
+  }
+
 }

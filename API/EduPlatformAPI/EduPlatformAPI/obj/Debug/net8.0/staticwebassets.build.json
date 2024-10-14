@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Qdcdnj70Fqs0JrDxA7yHPuqoWNZNUVvHpeFcxnKM70g=",
+  "Hash": "fupcoQTN2182eVKZplM3196fqS3p1mU2TlOGt0v0cbs=",
   "Source": "EduPlatformAPI",
   "BasePath": "_content/EduPlatformAPI",
   "Mode": "Default",
@@ -131,6 +131,25 @@
       "OriginalItemSpec": "wwwroot\\Levels\\One\\Video\\lesson2.mp4"
     },
     {
+      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDF\\erd.pdf",
+      "SourceId": "EduPlatformAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "BasePath": "_content/EduPlatformAPI",
+      "RelativePath": "Levels/Three/PDF/erd.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Levels\\Three\\PDF\\erd.pdf"
+    },
+    {
       "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDF\\hhhhhhhhhhhhhhhhhhhhhhhhh.pdf",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
@@ -167,6 +186,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Levels\\Three\\PDF\\lesson3.pdf"
+    },
+    {
+      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDF\\'PREPOSITIONS' .pdf",
+      "SourceId": "EduPlatformAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "BasePath": "_content/EduPlatformAPI",
+      "RelativePath": "Levels/Three/PDF/'PREPOSITIONS' .pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Levels\\Three\\PDF\\'PREPOSITIONS' .pdf"
     },
     {
       "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDF\\rrrrrrrr.pdf",
@@ -340,6 +378,25 @@
       "OriginalItemSpec": "wwwroot\\Levels\\Three\\ReceiptImages\\dd.jpg"
     },
     {
+      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\ReceiptImages\\me.jpg",
+      "SourceId": "EduPlatformAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "BasePath": "_content/EduPlatformAPI",
+      "RelativePath": "Levels/Three/ReceiptImages/me.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Levels\\Three\\ReceiptImages\\me.jpg"
+    },
+    {
       "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\ReceiptImages\\ss.jpg",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
@@ -490,6 +547,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Levels\\Three\\Video\\lesson800.mp4"
+    },
+    {
+      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\test1.mp4",
+      "SourceId": "EduPlatformAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "BasePath": "_content/EduPlatformAPI",
+      "RelativePath": "Levels/Three/Video/test1.mp4",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Levels\\Three\\Video\\test1.mp4"
     },
     {
       "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Two\\PDF\\lesson2.pdf",

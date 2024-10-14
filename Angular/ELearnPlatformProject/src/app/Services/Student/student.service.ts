@@ -56,8 +56,21 @@ export class StudentService {
     let params = new HttpParams()
     .set('studentid', id.toString())
     .set('lessonid', lessonId.toString());
-    return this.Clinent.delete<Lesson[]>(`${environment.baseUrl}${this.Controller}RemoveWishlist`  ,{params});
+    return this.Clinent.delete<any>(`${environment.baseUrl}${this.Controller}RemoveWishlist`  ,{params});
   }
+
+
+
+
+  addtoWishlist(id: number ,lessonId:number): Observable<Lesson[]> {
+
+    let params = new HttpParams()
+    .set('studentid', id.toString())
+    .set('lessonid', lessonId.toString());
+    return this.Clinent.get<any>(`${environment.baseUrl}${this.Controller}addtoWishlist`  ,{params});
+  }
+
+
   getQAbyGreadleval(level:string){
     return this.Clinent.get(`${environment.baseUrl}${this.Controller}commonQA/${level}`);
   }

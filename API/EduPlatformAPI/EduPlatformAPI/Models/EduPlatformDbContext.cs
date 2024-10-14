@@ -40,12 +40,9 @@ public partial class EduPlatformDbContext : DbContext
     public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-         {
-
-
-        
-        }
-protected override void OnModelCreating(ModelBuilder modelBuilder)
+    { 
+    }
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Admin>(entity =>
         {
@@ -79,7 +76,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
             entity.ToTable("Enrollment");
 
-            entity.HasIndex(e => e.UserName, "UQ__Enrollme__C9F2845669E8A1EB").IsUnique();
+            //entity.HasIndex(e => e.UserName, "UQ__Enrollme__C9F2845669E8A1EB").IsUnique();
 
             entity.Property(e => e.AccessEndDate).HasColumnType("datetime");
             entity.Property(e => e.AccessStartDate).HasColumnType("datetime");

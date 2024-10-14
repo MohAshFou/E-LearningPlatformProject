@@ -33,6 +33,14 @@
       "PackagePath": "staticwebassets\\Levels\\Three\\PDFHomework\\ss.jpg"
     },
     {
+      "Id": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDF\\'PREPOSITIONS' .pdf",
+      "PackagePath": "staticwebassets\\Levels\\Three\\PDF\\'PREPOSITIONS' .pdf"
+    },
+    {
+      "Id": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDF\\erd.pdf",
+      "PackagePath": "staticwebassets\\Levels\\Three\\PDF\\erd.pdf"
+    },
+    {
       "Id": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDF\\hhhhhhhhhhhhhhhhhhhhhhhhh.pdf",
       "PackagePath": "staticwebassets\\Levels\\Three\\PDF\\hhhhhhhhhhhhhhhhhhhhhhhhh.pdf"
     },
@@ -69,6 +77,10 @@
       "PackagePath": "staticwebassets\\Levels\\Three\\ReceiptImages\\dd.jpg"
     },
     {
+      "Id": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\ReceiptImages\\me.jpg",
+      "PackagePath": "staticwebassets\\Levels\\Three\\ReceiptImages\\me.jpg"
+    },
+    {
       "Id": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\ReceiptImages\\ss.jpg",
       "PackagePath": "staticwebassets\\Levels\\Three\\ReceiptImages\\ss.jpg"
     },
@@ -99,6 +111,10 @@
     {
       "Id": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\lesson800.mp4",
       "PackagePath": "staticwebassets\\Levels\\Three\\Video\\lesson800.mp4"
+    },
+    {
+      "Id": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\test1.mp4",
+      "PackagePath": "staticwebassets\\Levels\\Three\\Video\\test1.mp4"
     },
     {
       "Id": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Two\\PDF\\lesson2.pdf",

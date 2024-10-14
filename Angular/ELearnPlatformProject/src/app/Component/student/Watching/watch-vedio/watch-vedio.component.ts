@@ -108,6 +108,25 @@ import { log } from 'node:console';
 
     initializeSignalR() {
       this.signalRService.hubConnection.on('SendTeacherMessage', (user: string, responseMessage: string, commentId: number, studentid: number) => {
+
+        let data = {
+          "studentid": this.userid,
+          "lessonid": this.lessonid
+        };
+
+        // استدعاء الدالة لجلب الرسائل
+        this.studentserv.getallmessege(data).subscribe({
+          next: (res) => {
+            this.allessage=  res
+            console.log(this.allessage)
+          },
+          error: (e: any) => {
+            console.log(e);
+          }
+        });
+
+
+
         if (studentid === this.userid) {
           for (const element of this.allessage) {
 
@@ -115,6 +134,7 @@ import { log } from 'node:console';
 
 
               element.reply = responseMessage;
+
             }
 
 
