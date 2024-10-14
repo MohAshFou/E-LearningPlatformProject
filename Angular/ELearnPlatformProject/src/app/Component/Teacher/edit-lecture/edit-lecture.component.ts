@@ -229,7 +229,7 @@ export class EditLectureComponent implements OnChanges {
      if (this.selectedAttachedFile) {
          formData.append('PDFURL', this.selectedAttachedFile);
      }
-    
+
     // Log the updated lecture object for verification
     console.log('Updated Lecture:', this.editedLecture);
 
@@ -246,7 +246,7 @@ export class EditLectureComponent implements OnChanges {
   }
 
   closeModal(): void {
-    // this.onClose.emit();
+    this.onClose.emit();
 
     console.log('Updated Lecture:', this.editedLecture);
   }

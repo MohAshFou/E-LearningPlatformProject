@@ -1,10 +1,7 @@
   <div class="container video-container mt-1">
     <div class="card shadow-lg">
 
-      <div class="container mt-4">
-        <div *ngIf="alertMessage" class="alert" [ngClass]="{'alert-success': isSuccess, 'alert-danger': !isSuccess}" role="alert">
-          {{ alertMessage }}
-        </div>
+
       <div class="card-header bg-primary text-white text-center">
         <h4 class="mb-0">Lecture</h4>
       </div>
@@ -43,7 +40,14 @@
           <a *ngIf="curentlesson.homeworkURL" [href]="curentlesson.homeworkURL" target="_blank" class="btn btn-outline-secondary" style="cursor: pointer;" download>Download HomeWork</a>
         </div>
 
+
         <h5>Upload Your HomeWork</h5>
+
+        <div *ngIf="alertMessage" class="alert" [ngClass]="{'alert-success': isSuccess, 'alert-danger': !isSuccess}" role="alert">
+          {{ alertMessage }}
+        </div>
+        <div class="container mt-4">
+
         <div class="d-flex align-items-center mb-3">
           <form [formGroup]="uploadForm" (ngSubmit)="onSubmit(curentlesson.lessonId)">
 
@@ -57,13 +61,14 @@
 
                           }
 
-                          @if (curentlesson.homeWorkEvaluation =="reject" )
+                          @else if (curentlesson.homeWorkEvaluation =="reject" )
                           {
 
                             <div class="alert alert-danger" role="alert">
                               The homework has been rejected , please upload yor homework again.
                             </div>
-
+                            <input style="width: 70%;" type="file" id="receiptInput" accept="application/pdf" (change)="onFileChange($event)" class="form-control me-2" />
+                            <button type="submit" class="btn btn-outline-primary ms-auto" style="margin-top: 5px; " [disabled]="!isFileValid">Send</button>
 
                           }
                           @else if (curentlesson.homeWorkEvaluation =="Pending") {
@@ -73,12 +78,13 @@
                             </div>
 
                           }
-                          @else {
-                            <input style="width: 70%;" type="file" id="receiptInput" accept="application/pdf" (change)="onFileChange($event)" class="form-control me-2" />
-                            <button type="submit" class="btn btn-outline-primary ms-auto" style="margin-top: 5px; " [disabled]="!isFileValid">Send</button>
+                            @else {
 
+                              <input style="width: 70%;" type="file" id="receiptInput" accept="application/pdf" (change)="onFileChange($event)" class="form-control me-2" />
+                              <button type="submit" class="btn btn-outline-primary ms-auto" style="margin-top: 5px; " [disabled]="!isFileValid">Send</button>
 
                           }
+
 
                   </form>
       </div>
@@ -89,17 +95,19 @@
 
       <div *ngFor="let item of allessage;">
         <div class="mb-2">
-            <label for="studentQuestion" class="form-label">Student's Question:</label>
+            <label for="studentQuestion" class="form-label"  style="font-weight: bold;" >Student's Question:</label>
+
             <label class="form-control form-control-sm">{{ item.question }}</label>
         </div>
         <div class="mb-3">
-            <label for="teacherReply" class="form-label">Teacher's Reply:</label>
-            <label class="form-control form-control-sm">{{ item.reply }}</label>
+            <label for="teacherReply" class="form-label" style="font-weight: bold;">Teacher's Reply:  &nbsp; </label>
+            <br>
+            <label class=""> {{ item.reply }}</label>
         </div>
     </div>
 
     <div class="mb-2">
-        <label for="studentQuestion" class="form-label">Type your question here:</label>
+        <label for="studentQuestion" class="form-label"  style="font-weight: bold;" >Type your question here:</label>
         <textarea id="studentQuestion" class="form-control form-control-sm" rows="2" placeholder="Type your question here..."></textarea>
     </div>
     <button (click)="onSubmitQuestion()" class="btn btn-primary btn-sm">Submit</button>

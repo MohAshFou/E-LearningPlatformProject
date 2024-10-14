@@ -235,22 +235,53 @@ namespace EduPlatformAPI.Controllers
         [HttpGet("GetNumberOfVideosByLevel")]
         public IActionResult GetNumberOfVideosByLevel()
         {
+            //var videoCounts = new
+            //{
+            //    F = context.Materials
+            //        .Where(m => m.MaterialType == "video" && m.Lesson.GradeLevel == "F")
+            //        .Count(),
+
+            //    S = context.Materials
+            //        .Where(m => m.MaterialType == "video" && m.Lesson.GradeLevel == "S")
+            //        .Count(),
+
+            //    T = context.Materials
+            //        .Where(m => m.MaterialType == "video" && m.Lesson.GradeLevel == "T")
+            //        .Count()
+            //};
+
+            //return Ok(videoCounts);
+
+
+
+
             var videoCounts = new
             {
-                F = context.Materials
-                    .Where(m => m.MaterialType == "video" && m.Lesson.GradeLevel == "F")
-                    .Count(),
+                F = context.Lessons
+                   .Where(m =>  m.GradeLevel == "F")
+                   .Count(),
 
-                S = context.Materials
-                    .Where(m => m.MaterialType == "video" && m.Lesson.GradeLevel == "S")
-                    .Count(),
+                S = context.Lessons
+                   .Where(m =>  m.GradeLevel == "S")
+                   .Count(),
 
-                T = context.Materials
-                    .Where(m => m.MaterialType == "video" && m.Lesson.GradeLevel == "T")
-                    .Count()
+                T = context.Lessons
+                   .Where(m => m.GradeLevel == "T")
+                   .Count()
             };
 
             return Ok(videoCounts);
+
+
+
+
+
+
+
+
+
+
+
         }
 
 

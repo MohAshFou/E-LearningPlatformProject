@@ -64,14 +64,14 @@ export class WishlistComponent {
 
     this.wishlistService.removelessonfromWishList(this.id, lesson.lessonId).subscribe({
       next: () => {
-        this.wishlist = this.wishlist.filter(lesson => lesson.id !== lesson.lessonId);
+        this.fetchWishlist();
       },
       error: (error) => {
         console.error('Failed to remove lesson from wishlist', error);
       }
     });
 
- 
+
   }
 
 }
