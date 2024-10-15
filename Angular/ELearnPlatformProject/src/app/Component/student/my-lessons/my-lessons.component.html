@@ -4,15 +4,16 @@
     <div *ngFor="let lesson of paidLessons" class="lesson-card">
       <h3>{{ lesson.title }}</h3>
       <p>{{ lesson.description }}</p>
-      <button (click)="watchLesson(lesson)">Watch Now</button>
+      <button (click)="watchLesson(lesson)" class="btn btn-primary">Watch Now</button>
     </div>
   </div>
 </div>
 
 <ng-template #noData>
-  <p *ngIf="errorMessage">{{ errorMessage }}</p>
-  <p *ngIf="!errorMessage">You haven't paid for any lessons yet.</p>
+  <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+  <p *ngIf="!errorMessage" class="no-lessons-message">You haven't paid for any lessons yet.</p>
 </ng-template>
+
 
 
 

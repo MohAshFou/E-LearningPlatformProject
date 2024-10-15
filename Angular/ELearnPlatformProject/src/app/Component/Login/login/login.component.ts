@@ -55,6 +55,7 @@ export default class LoginComponent implements OnInit {
       },
       error: (e: any) => {
         this.err = "The username or password is incorrect";
+        console.log(e);
       }
     });
   }
