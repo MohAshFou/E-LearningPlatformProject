@@ -40,7 +40,7 @@ export class PaypalComponent implements OnInit {
       this.lessonid = this.lesson.lessonId;
       this.userid = this.studeninfo.id;
     }
-    console.log(this.lesson);
+  
     this.state = { total: this.lesson.feeAmount, description: `Payment for lesson: ${this.lesson.title}` };
     console.log(this.state);
     this.checkPaymentStatus();
