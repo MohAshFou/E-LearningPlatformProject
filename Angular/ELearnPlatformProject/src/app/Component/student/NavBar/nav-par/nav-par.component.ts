@@ -29,12 +29,15 @@ export class NavParComponent implements OnInit {
     if (localStorage.getItem("token")) {
 
       this.service.getRoleAndName().subscribe({
+
         next: (d) => {
            this.Name= d.username
-        },
+        }
+        ,
         error: (e: any) => {
 
         }
+        
       });
   }
    }

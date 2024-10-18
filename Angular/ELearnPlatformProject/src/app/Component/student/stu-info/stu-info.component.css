@@ -1,114 +1,55 @@
-.main {
-  flex-grow: 1;
-}
-
 body {
-  background-color: #F0F0F0;
-}
-
-.Dashboard {
-  width: 25px;
-  float: left;
-}
-
-#Name {
-  text-align: center;
-  font-weight: bolder;
-  color: white;
-}
-
-.container {
-  background-color: #DCDCDC;
-  height: auto;
-  margin-left: 200px;
-}
-
-.bodyInput {
-  background-color: #6495ED;
-  padding: 20px;
-  border-radius: 15px;
-  margin-bottom: 20px;
-}
-
-.paragraph {
-  color: white;
-}
-
-.p {
-  text-align: center;
-}
-
-.LessonStyle {
-  position: relative;
-}
-
-.Level {
-  padding: 3px;
-  background-color: #696969;
-  color: white;
-  font-weight: bold;
-  text-align: center;
-  border-radius: 10px;
-}
-
-.table {
-  background-color: #B0C4DE;
-  margin-top: 20px;
-}
-
-th {
-  text-align: center;
-}
-
-td {
-  text-align: center;
-}
-body {
-  padding-top: 60px;
-}
-
-.container-fluid {
-  display: flex;
+  background-color: #F0F0F0; /* لون الخلفية العامة */
+  padding-top: 60px; /* مسافة علوية للجسم */
 }
 
 main {
-  /* margin: auto; */
-  margin-top: 30px ;
+  margin-top: 30px; /* مسافة علوية للمحتوى الرئيسي */
 }
 
-.bodyInput {
-  background-color: #6495ED;
-  padding: 20px;
-  border-radius: 15px;
-  margin-bottom: 20px;
+#upload {
+  width: 350px; /* عرض زر التحميل */
+  font-size: 30px; /* حجم خط الزر */
+  border-radius: 10px; /* زوايا مستديرة للزر */
+  position: sticky; /* تثبيت الزر في مكانه */
 }
 
 .row {
-  margin-right: 0;
-  margin-left: 0;
+  margin-right: 0; /* إزالة الهامش الأيمن */
+  margin-left: 0; /* إزالة الهامش الأيسر */
+}
+
+.Level {
+  padding: 3px; /* حشوة للخلفية */
+  background-color: #696969; /* لون الخلفية للأقسام */
+  color: white; /* لون النص */
+  font-weight: bold; /* جعل النص عريضًا */
+  text-align: center; /* محاذاة النص في الوسط */
+  border-radius: 10px; /* زوايا مستديرة */
 }
 
 .table {
-  margin-top: 20px;
+  background-color: #B0C4DE; /* لون خلفية الجدول */
+  margin-top: 20px; /* مسافة علوية للجدول */
+}
+
+thead.thead-dark th {
+  background-color: #343a40; /* لون خلفية رأس الجدول */
+  color: white; /* لون النص */
+}
+
+th,
+td {
+  text-align: center; /* محاذاة النص في الوسط */
+}
+
+#ShowAll {
+  margin-top: 20px; /* مسافة علوية للزر "Show All" */
 }
 
 @media (max-width: 768px) {
   .sidebar {
     position: static;
-    width: 100%;
+    width: 100%; /* عرض الشريط الجانبي */
   }
-}
-#levels{
-  float: left;
-}
-#upload{
-width: 350px;
-font-size: 30px;
-border-radius: 10px;
-/* position: relative;
-left: 200px; */
-position: sticky;
-}
-#ShowAll{
-  position: relative;
 }

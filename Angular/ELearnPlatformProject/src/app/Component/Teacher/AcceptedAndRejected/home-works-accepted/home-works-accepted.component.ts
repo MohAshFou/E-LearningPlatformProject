@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { TeacherService } from '../../../../Services/Teacher/teacher.service';
 import { ALLStudentAcceptAndRejectDTO } from '../../../../Models/Teacher/allstudent-accept-and-reject-dto';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home-works-accepted',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink ,CommonModule],
   templateUrl: './home-works-accepted.component.html',
   styleUrl: './home-works-accepted.component.css'
 

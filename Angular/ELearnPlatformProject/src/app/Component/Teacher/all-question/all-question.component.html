@@ -1,28 +1,27 @@
-<table class="table table-bordered text-center">
-  <thead class="thead-light">
+
+<table class="table table-bordered text-center" style="margin-top: 30px;">
+    <thead class="thead-dark">
       <tr>
-          <th class="small-width">Grade Level</th>
-          <th class="small-width">Lesson Name</th>
-          <th class="large-width">Question</th>
-          <th class="extra-large-width">Reply</th>
-          <th class="small-width">Actions</th>
+        <th class="small-width">Grade Level</th>
+        <th class="small-width">Lesson Name</th>
+        <th class="large-width">Question</th>
+        <th class="extra-large-width">Reply</th>
+        <th class="small-width">Actions</th>
       </tr>
-  </thead>
-  <tbody>
-      <tr *ngFor="let question of info">
-          <td>{{ question.gradeLevel }}</td>
-          <td>{{ question.lessonTitle }}</td>
-          <td>{{ question.question }}</td>
-          <td>{{ question.reply }}</td>
-          <td>
-
-              <button class="btn btn-danger btn-sm"  (click)="deleteQuestion(question.questionID)">Delete</button>
-
-
-          </td>
+    </thead>
+    <tbody>
+      <tr *ngFor="let question of info; let index = index;">
+        <td>{{ question.gradeLevel }}</td>
+        <td>{{ question.lessonTitle }}</td>
+        <td>{{ question.question }}</td>
+        <td>{{ question.reply }}</td>
+        <td>
+          <button class="btn btn-danger btn-sm" (click)="deleteQuestion(question.questionID)">Delete</button>
+        </td>
       </tr>
-  </tbody>
-</table>
-<div class="d-flex justify-content-center mt-3">
-  <a routerLink="/teacher/Questions/" class="btn btn-primary">Add Common Questions</a>
-</div>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-center mt-3">
+    <a routerLink="/teacher/Questions/" class="btn btn-primary">Add Common Questions</a>
+  </div>
+  

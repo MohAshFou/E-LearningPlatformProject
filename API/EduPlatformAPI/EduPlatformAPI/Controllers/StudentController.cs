@@ -435,6 +435,8 @@ namespace EduPlatformAPI.Controllers
         {
             if (ModelState.IsValid)
             {
+             
+
                 if (newHomework.image != null)
                 {
 
@@ -576,5 +578,55 @@ namespace EduPlatformAPI.Controllers
 
             return Ok(questions);
         }
+
+
+
+        [HttpGet("AddNewEnrollmen")]
+        public IActionResult AddNewEnrollmen(int studentid, int lessonid)
+        {
+
+            if (lessonid == null || studentid == null)
+            {
+                return BadRequest();
+            }
+
+            var AccessPeriod = context.Lessons.FirstOrDefault(i => i.LessonId == lessonid).AccessPeriod;
+            if (AccessPeriod == 0)
+            {
+                AccessPeriod = 14;
+
+            }
+
+            var enr = new Enrollment()
+            {
+                LessonId = lessonid,
+                StudentId = studentid,
+                ReceiptId = 1,
+                AccessStartDate = DateTime.Now,
+                AccessEndDate = DateTime.Now.AddDays(AccessPeriod),
+                SubmissionDate = null,
+                SubmissionLink = "",
+                HomeWorkEvaluation = "",
+                UserName = "",
+                Password = "",
+                ReceiptStatus = "accept"
+
+
+
+            };
+            context.Enrollments.Add(enr);
+            context.SaveChanges();
+            return Ok();
+
+
+
+
+        }
+
+
+
+
+
+
     }
 }

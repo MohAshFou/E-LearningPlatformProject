@@ -1,14 +1,14 @@
 <div class="container">
 
-  <div *ngIf="successMessage" class="alert alert-success mt-2">
+  <!-- Success and Error Messages -->
+  <div *ngIf="successMessage" class="alert alert-success mt-2 success-message">
     {{ successMessage }}
   </div>
-  <div *ngIf="ErrorMessage" class="alert alert-danger mt-2">   {{ ErrorMessage }}   </div>
+  <div *ngIf="ErrorMessage" class="alert alert-danger mt-2 error-message">
+    {{ ErrorMessage }}
+  </div>
 
-
-
-
-
+  <!-- Lessons List -->
   <div class="row">
     <div *ngIf="Lesson && Lesson.length > 0; else noLessons">
       <div class="col-12">
@@ -25,48 +25,45 @@
                 <div>Date: {{item.uploadDate}}</div>
               </div>
 
-              @if (item.hasVideoAccess=="Pending" ) {
-
-
-                <div class="form-label text-warning " style="text-align: center;">
-
-              Your submitted receipt is under review by the admin.
-                <br> For further assistance, please contact support at [ 01000000000].
+              <!-- Access Status Handling -->
+              @if (item.hasVideoAccess == "Pending") {
+                <div class="form-label text-center" style="color: #2c3e50; line-height: 1.8;">
+                  <i class="fas fa-spinner fa-spin" style="margin-right: 10px;"></i>
+                  Your submitted receipt is under review by the admin.<br />
+                  For further assistance, please contact support at <strong>[01000000000]</strong>.
                 </div>
               }
-
-              @else if (item.hasVideoAccess=="Yes") {
-
+              @else if (item.hasVideoAccess == "Yes") {
                 <div class="card-footer">
-                <button (click)="WatchVedio(item)" class="btn btn-success">Watch Now</button>
-                  </div>
+                  <button (click)="WatchVedio(item)" class="btn btn-success">Watch Now</button>
+                </div>
               }
-              @else{
-
+              @else {
                 <div class="card-footer">
 
-                  <button (click)="goToReceipt(item)" class="btn btn-primary m-4">Pay Now</button>
-       @if (item.islessonInWishlist ==='NO') {
-
-        <button #wis   class="wish-list-button"   (click)="addToWishList(wis,item)"> <i class="fas fa-heart"></i></button>
-       }
-       @else {
-
-        <button #wis   class="wish-list-button"   (click)="addToWishList(wis,item)" disabled> <i class="fas fa-heart"></i></button>
-       }
-
-
+                  <!-- Wishlist Button -->
+                  @if (item.islessonInWishlist === 'NO') {
+                    <button #wis class="wish-list-button" (click)="addToWishList(wis,item)" >
+                      <i class="fas fa-heart" style="color: white;"></i>
+                    </button>
+                  }
+                  @else {
+                    <button #wis class="wish-list-button" (click)="remove(wis,item)"  >
+                      <i class="fas fa-heart"  style="color:red;"></i>
+                    </button>
+                  }
+                  <button (click)="goToReceipt(item)" class="btn btn-primary "  style="margin-top: -6px;">Upload Your Receipt</button>
+                  <button (click)=" goToReceiptpaypal(item)" class="btn btn-primary">Pay Now</button>
 
                 </div>
-
-
               }
-
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- No Lessons Message -->
     <ng-template #noLessons>
       <p>No lessons available.</p>
     </ng-template>

@@ -1,38 +1,51 @@
+<!-- إضافة Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 <nav class="sidebar">
     <div class="sidebar-sticky">
         <ul class="nav flex-column">
-            <li id="Name" class="nav-item">Welcome MR / {{Name}}</li>
+            <li id="Name" class="nav-item">Welcome/ {{Name}}</li>
+
+            <li class="nav-item">
+              <a class="nav-link" routerLink="MyProfile/">
+                <i class="fas fa-user"></i> My Profile
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" routerLink="MyLessons/">
+                <i class="fas fa-book"></i> My Lessons
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" routerLink="Lectures/">
+                <i class="fas fa-chalkboard-teacher"></i> Lectures
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" routerLink="commonquestions/">
+                <i class="fas fa-question-circle"></i> Question And Answer
+              </a>
+            </li>
             <!-- <li class="nav-item">
-                <a class="nav-link active" routerLink="/teacher"><img class="Dashboard" src="Images/Dashboard2.PNG"> Home</a>
+              <a class="nav-link" routerLink="livesession/">
+                <i class="fas fa-user-shield"></i>  live session
+              </a>
             </li> -->
 
-
             <li class="nav-item">
-              <a class="nav-link" routerLink="MyProfile/"><img class="Dashboard" src="Images/upload.PNG"> My Profile</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="MyLessons/"><img class="Dashboard" src="Images/book.PNG"> My Lessons</a>
-        </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="Lectures/"><img class="Dashboard" src="Images/upload.PNG"> Lectures</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="commonquestions/"><img class="Dashboard" src="Images/book.PNG"> Question And Answer</a>
+              <a class="nav-link" routerLink="Wishlist/">
+                <i class="fas fa-heart"></i> Wishlist
+              </a>
             </li>
 
-
-
             <li class="nav-item">
-              <a class="nav-link" routerLink="Wishlist/"><img class="Dashboard" src="Images/book.PNG"> Wishlist</a>
-          </li>
-
-            <li>
-
-              <button class="btn custom-logout-button"(click)="logout()" >Logout</button>
+              <button class="btn custom-logout-button" (click)="logout()">
+                <i class="fas fa-sign-out-alt"></i> Logout
+              </button>
             </li>
-
         </ul>
     </div>
 </nav>
-
-

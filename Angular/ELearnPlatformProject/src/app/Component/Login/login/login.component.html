@@ -1,30 +1,38 @@
-<div class="login-card mx-auto ">
-    <h2>Login</h2>
-    <div class="input-group">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" placeholder="Enter your Email"  #email>
-    </div>
-    <div class="input-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" placeholder="Enter your Password" #pass>
-    </div>
-    <button class="login-button" (click)="log(email.value , pass.value)"  >Login</button>
-    <div>
-      Don't have an account?
-      <button (click)="navigateToRegistration()"  class="btn btn-secondary">Go to Registration</button>
 
+<div *ngIf="ErrorMessage" class="alert alert-danger mt-2" style="text-align: center;">
+  {{ ErrorMessage }}
 
-      <!-- <video src="https://localhost:7217/api/Video/Levels/One/Video/lesson2.mp4" controls></video> -->
+ </div>
+
+<div class="body">
 
 
 
+
+  <div class="login-card mx-auto">
+      <div class="login-header">
+          <h2>Login</h2>
+      </div>
+      <div class="input-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" placeholder="Enter your Email" #email>
+      </div>
+      <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter your Password" #pass>
+      </div>
+      <button class="login-button" (click)="log(email.value, pass.value)">Login</button>
+
+      <div class="registration">
+
+        <a class="nav-link" routerLink="/forgotpassword/">    Forgotten password? </a>
+        </div>
+
+      <div class="registration">
+          Don't have an account?
+          <button (click)="navigateToRegistration()" class="btn-secondary">Go to Registration</button>
+      </div>
+
+      <div class="text-danger">{{err}}</div>
   </div>
-
-    <div class="text-danger">   {{err}}</div>
-</div>
-
-
-
-<!-- <input type="file"  accept=".pdf" name="" id=""   (change)="onAttachSelected($event)" >
-<input type="file"  accept="image/*" name="" id=""  (change)="onAttachSelected($event)" > -->
-
+  </div>

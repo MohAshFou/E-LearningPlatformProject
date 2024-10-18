@@ -49,4 +49,29 @@ export class UserAuthService {
    ISExpired(): Observable<any> {
      return this.client.get(`${environment.baseUrl}${this.Controller}ISExpired`);
    }
+
+
+   sendVerificationCode(email: string ):Observable<any> {
+    const user = { Email: email};
+    return this.client.post<any>(`${environment.baseUrl}${this.Controller}forgot-password`, user);
+  }
+  private key1 = 'email';
+
+   setemail(data:any){
+
+    sessionStorage.setItem(this.key1, JSON.stringify(data));
+   }
+   getemail(){
+    const data = sessionStorage.getItem(this.key1);
+    return data ? JSON.parse(data) : null;
+
+   }
+   removeemail(){
+    sessionStorage.removeItem(this.key1)
+
+   }
+  ResetPassword(email: string , VerificationCode:string ,NewPassword:string ):Observable<any> {
+    const user = { Email: email ,VerificationCode:VerificationCode,NewPassword:NewPassword};
+    return this.client.post<any>(`${environment.baseUrl}${this.Controller}reset-password`, user);
+  }
 }

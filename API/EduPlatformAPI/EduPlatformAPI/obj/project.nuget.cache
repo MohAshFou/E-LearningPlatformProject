@@ -1,11 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "jpe2oUZq140=",
+  "dgSpecHash": "l29COrr3b0I=",
   "success": true,
   "projectFilePath": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\EduPlatformAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\USER\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\google.apis\\1.68.0\\google.apis.1.68.0.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\google.apis.auth\\1.68.0\\google.apis.auth.1.68.0.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\google.apis.core\\1.68.0\\google.apis.core.1.68.0.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\google.apis.gmail.v1\\1.68.0.3427\\google.apis.gmail.v1.1.68.0.3427.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\google.apis.oauth2.v2\\1.68.0.1869\\google.apis.oauth2.v2.1.68.0.1869.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.8\\microsoft.aspnetcore.authentication.jwtbearer.8.0.8.nupkg.sha512",
@@ -79,12 +84,13 @@
     "C:\\Users\\USER\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\paypal\\1.9.1\\paypal.1.9.1.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.4.0\\swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.4.0\\swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",
-    "C:\\Users\\USER\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\system.codedom\\7.0.0\\system.codedom.7.0.0.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\system.composition\\6.0.0\\system.composition.6.0.0.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\system.composition.attributedmodel\\6.0.0\\system.composition.attributedmodel.6.0.0.nupkg.sha512",
@@ -100,6 +106,7 @@
     "C:\\Users\\USER\\.nuget\\packages\\system.io\\4.3.0\\system.io.4.3.0.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\system.io.filesystem.accesscontrol\\5.0.0\\system.io.filesystem.accesscontrol.5.0.0.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\system.io.pipelines\\6.0.3\\system.io.pipelines.6.0.3.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\system.management\\7.0.2\\system.management.7.0.2.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\system.memory.data\\1.0.2\\system.memory.data.1.0.2.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\system.net.websockets.websocketprotocol\\4.5.1\\system.net.websockets.websocketprotocol.4.5.1.nupkg.sha512",
@@ -126,5 +133,16 @@
     "C:\\Users\\USER\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'PayPal 1.9.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
+      "libraryId": "PayPal",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
 }

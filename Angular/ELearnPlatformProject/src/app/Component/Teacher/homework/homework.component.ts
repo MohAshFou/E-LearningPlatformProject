@@ -26,7 +26,7 @@ export class HomeworkComponent implements OnInit {
       next: (data: any) => {
         this.allStudents = data;
         this.sumser.SetAlldetails(data);
-       
+
       },
       error: (e: any) => {
         console.error(e); // Consider logging the error for debugging

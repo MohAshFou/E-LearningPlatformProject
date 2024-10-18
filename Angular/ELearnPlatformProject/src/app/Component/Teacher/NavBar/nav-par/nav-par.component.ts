@@ -2,11 +2,12 @@ import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { UserAuthService } from '../../../../Services/User/user-auth.service';
 import { TeacherService } from '../../../../Services/Teacher/teacher.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-nav-par',
   standalone: true,
-  imports: [ RouterLink],
+  imports: [ RouterLink ,CommonModule],
   templateUrl: './nav-par.component.html',
   styleUrl: './nav-par.component.css'
 })
@@ -17,6 +18,12 @@ export class NavParComponent implements OnInit , OnChanges {
 
 
   }
+
+  isDropdownOpen = false;
+
+    toggleDropdown() {
+      this.isDropdownOpen = !this.isDropdownOpen;
+    }
   ngOnChanges(changes: SimpleChanges): void {
     this.updateQuestionCount()
   }

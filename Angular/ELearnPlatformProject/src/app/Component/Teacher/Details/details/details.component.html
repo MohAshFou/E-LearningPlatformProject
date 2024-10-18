@@ -1,49 +1,39 @@
 <div class="tables-container">
-     <table class="table table-bordered">
-      <thead>
+  <table class="table table-bordered text-center" style="margin-top: 30px;">
+    <thead class="thead-dark">
+      <tr>
+        <th class="text-center">Student Name Accepted</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of accepts; track $index) {
         <tr>
-          <th class="text-center">Student Name Accepted</th>
+          <td>{{item}}</td>
         </tr>
-      </thead>
-      <tbody>
-          @for (item of accepts; track $index) {
-
-
-            <tr class="text-center">
-              <td>{{item}}</td>
-           </tr>
-          }@empty {
-
-            <tr class="text-center">
-             <td>  No Student Accepted</td>
-           </tr>
-          }
-      </tbody>
-    </table>
-  
-    <table class="table table-bordered">
-      <thead>
+      } @empty {
         <tr>
-          <th class="text-center">Student Name Reject</th>
+          <td>No Student Accepted</td>
         </tr>
-      </thead>
-      <tbody>
+      }
+    </tbody>
+  </table>
 
-          @for (item of rejects; track $index) {
-
-            <tr class="text-center">
-              <td>{{item}}</td>
-           </tr>
-          }@empty {
-
-            <tr class="text-center">
-              <td> No Student Rejected </td>
-           </tr>
-          }
-
-
-      </tbody>
-    </table>
-  </div>
-
-
+  <table class="table table-bordered text-center" style="margin-top: 30px;">
+    <thead class="thead-dark">
+      <tr>
+        <th class="text-center">Student Name Rejected</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of rejects; track $index) {
+        <tr>
+          <td>{{item}}</td>
+        </tr>
+      } @empty {
+        <tr>
+          <td>No Student Rejected</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

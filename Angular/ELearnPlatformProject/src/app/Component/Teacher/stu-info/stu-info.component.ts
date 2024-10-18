@@ -6,12 +6,13 @@ import { CommonModule } from '@angular/common';
 import { CountOfVideoLevels } from '../../../Models/Teacher/count-of-video-levels';
 import { SumHomeService } from '../../../Services/Teacher/sum-home.service';
 import { StudentsWithSubmittedHomeworks } from '../../../Models/Teacher/students-with-submitted-homeworks';
+import { LessonIncomeComponent } from '../lesson-income/lesson-income.component';
 
 
 @Component({
   selector: 'app-stu-info',
   standalone: true,
-  imports: [ RouterLink,CommonModule,RouterModule],
+  imports: [ RouterLink,CommonModule,RouterModule ,LessonIncomeComponent],
   templateUrl: './stu-info.component.html',
   styleUrl: './stu-info.component.css'
 })
@@ -82,5 +83,5 @@ export class StuInfoComponent  implements OnInit{
 
 
 
-  
+
 }

@@ -1,10 +1,9 @@
-
 <div class="wishlist-container">
   <h1>Wishlist</h1>
   <br><br>
 
   <div *ngIf="wishlist.length === 0">
-    <p>Your wishlist is empty.</p>
+    <p class="empty-message">Your wishlist is empty.</p>
   </div>
 
   <div *ngIf="wishlist.length > 0">
@@ -12,11 +11,11 @@
       <div class="item-title">{{ lesson.title }}</div>
       <div class="item-description">{{ lesson.description }}</div>
       <div class="item-feeAmount">Price: {{ lesson.feeAmount }} USD</div>
-
-
-                  <button  class="button button-info" (click)="getlesson(lesson)">Pay </button>
-                  <button class="button button-danger" (click)="removeFromWishlist(lesson)">Remove </button>
-
+      
+      <div class="button-container">
+        <button class="button button-info" (click)="getlesson(lesson)">Pay</button>
+        <button class="button button-danger" (click)="removeFromWishlist(lesson)">Remove</button>
+      </div>
     </div>
   </div>
 </div>

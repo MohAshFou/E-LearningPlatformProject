@@ -136,6 +136,15 @@ CREATE TABLE SelectedQuestions (
     ReplyText NVARCHAR(MAX)
 );
 
+CREATE TABLE VerificationCodes (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    Email NVARCHAR(255) NOT NULL,
+    VerificationCode NVARCHAR(6) NOT NULL,
+    ExpiryDate DATETIME NOT NULL,
+    IsUsed BIT NOT NULL DEFAULT 0
+);
+
+
 
 
 

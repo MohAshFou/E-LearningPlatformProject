@@ -2,11 +2,9 @@
   <div class="modal-backdrop" (click)="closeModal()"></div>
   <div class="modal-content">
     <div class="edit-lecture">
-      <h2>Edit Lecture</h2>
+      <h3 style="text-align: center;">Edit Lecture</h3>
 
-
-    <br>
-      <span class=" alert alert-danger mt-2" *ngIf="showError">{{ errorMessage }}</span>
+      <!-- <span class=" alert alert-danger mt-2" *ngIf="showError">{{ errorMessage }}</span> -->
 
       <input type="hidden" [(ngModel)]="editedLecture.lessonId">
       <input type="hidden" [(ngModel)]="editedLecture.gradeLevel">
@@ -45,10 +43,10 @@
         </div>
       </div>
       <div class="form-group row">
-        <label class="col-3">Lecture Video:</label>
-        <div class="col-10 d-flex align-items-center">
+        <label class="col-3">Lecture Video:</label><br>
+        <div class="video d-flex ">
           <div *ngIf="editedLecture.videoURL" class="me-2">
-            <a [href]="editedLecture.videoURL" target="_blank">Current Video</a>
+            <a [href]="editedLecture.videoURL" target="_blank">Show Current</a>&nbsp;
             <a (click)="removeVideo()" style="color: red; cursor: pointer;">remove</a>
           </div>
           <input type="file" class="form-control-file me-2" (change)="onVideoSelected($event)" accept="video/*" [disabled]="editedLecture.videoURL" (blur)="validateField('videoURL')" />
@@ -59,12 +57,10 @@
       </div>
       <div class="form-group row">
         <label class="col-3">Homework PDF:</label>
-        <div class="col-9 d-flex align-items-center">
+        <div class="homework d-flex ">
           <div *ngIf="editedLecture.homeworkURL" class="me-2">
-            <a [href]="editedLecture.homeworkURL" target="_blank">Current Homework PDF</a>
+            <a [href]="editedLecture.homeworkURL" target="_blank">Show Current</a>&nbsp;
             <a (click)="removeHomeworkPDF()" style="color: red; cursor: pointer;">remove</a>
-          </div>
-
         </div>
         <input type="file" class="form-control-file me-2" (change)="onHomeworkPDFSelected($event)" accept=".pdf" [disabled]="editedLecture.homeworkURL" (blur)="validateField('homeworkURL')" />
         <div *ngIf="invalidFields.homeworkURL" class="text-danger mt-1">
@@ -72,10 +68,10 @@
         </div>
       </div>
       <div class="form-group row align-items-center">
-        <label class="col-2">Attached File:</label>
-        <div class="col-10 d-flex align-items-center">
+        <label class="col-2">PowerPoint File:</label>
+        <div class="attached d-flex ">
           <div *ngIf="editedLecture.pdfurl" class="me-2">
-            <a [href]="editedLecture.pdfurl" target="_blank">Current Attachment</a>
+            <a [href]="editedLecture.pdfurl" target="_blank">Show Current</a>&nbsp;
             <a (click)="removeAttachedFile()" style="color: red; cursor: pointer;">remove</a>
           </div>
           <input type="file" class="form-control-file me-2" (change)="onFileSelected($event)" accept=".pdf" [disabled]="editedLecture.pdfurl" (blur)="validateField('pdfURL')" />

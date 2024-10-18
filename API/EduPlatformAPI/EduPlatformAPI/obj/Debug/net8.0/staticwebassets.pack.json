@@ -25,6 +25,10 @@
       "PackagePath": "staticwebassets\\Levels\\One\\Video\\lesson2.mp4"
     },
     {
+      "Id": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDFHomework\\Test4.pdf",
+      "PackagePath": "staticwebassets\\Levels\\Three\\PDFHomework\\Test4.pdf"
+    },
+    {
       "Id": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDFHomework\\TestHomework4.pdf",
       "PackagePath": "staticwebassets\\Levels\\Three\\PDFHomework\\TestHomework4.pdf"
     },

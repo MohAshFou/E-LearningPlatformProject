@@ -76,7 +76,7 @@ namespace EduPlatformAPI.Controllers
         }
 
 
-        [HttpGet("UpdateRecepit")]
+        [HttpGet("UpdateRecepit")]  
         public IActionResult UpdateRecepit(int EnrollmentID, int ReceiptId, string state) {
             var rec = context.Receipts.FirstOrDefault(i => i.ReceiptId == ReceiptId);
             if (rec == null) {

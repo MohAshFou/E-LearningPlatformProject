@@ -1,23 +1,34 @@
-
 body {
   font-family: serif;
+  background-color: #F0F0F0;
   margin: 40px;
 }
 
 h1 {
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 28px;
+  font-weight: bolder;
   text-align: center;
+  color: #333;
 }
 
 .wishlist-container {
   max-width: 600px;
   margin: 0 auto;
+  background-color: #DCDCDC;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.empty-message {
+  text-align: center;
+  color: #555;
+  font-size: 18px;
 }
 
 .item {
   margin-bottom: 40px;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid #ccc;
   padding-bottom: 20px;
 }
 
@@ -26,39 +37,52 @@ h1 {
 }
 
 .item-title {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
+  color: #2c3e50;
 }
 
 .item-description {
-  font-size: 14px;
+  font-size: 16px;
   margin: 5px 0;
+  color: #555;
 }
 
 .item-feeAmount {
-  font-size: 14px;
+  font-size: 16px;
   margin-bottom: 10px;
+  color: #27ae60;
+}
+
+.button-container {
+  margin-top: 10px;
 }
 
 .button {
   display: inline-block;
-  width: 70px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding: 8px 12px;
   border: 1px solid;
   text-align: center;
   text-decoration: none;
-  color: #000;
   margin-right: 10px;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 .button-info {
   border-color: #17a2b8;
-  color: #17a2b8;
+  background-color: #17a2b8;
+  color: white;
 }
 
 .button-danger {
   border-color: #dc3545;
-  color: #dc3545;
+  background-color: #dc3545;
+  color: white;
+}
+
+
+
+.button:hover {
+  opacity: 0.8;
 }

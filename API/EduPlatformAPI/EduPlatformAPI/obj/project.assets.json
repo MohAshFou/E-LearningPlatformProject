@@ -46,6 +46,90 @@
           }
         }
       },
+      "Google.Apis/1.68.0": {
+        "type": "package",
+        "dependencies": {
+          "Google.Apis.Core": "1.68.0"
+        },
+        "compile": {
+          "lib/net6.0/Google.Apis.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Google.Apis.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "Google.Apis.Auth/1.68.0": {
+        "type": "package",
+        "dependencies": {
+          "Google.Apis": "1.68.0",
+          "Google.Apis.Core": "1.68.0",
+          "System.Management": "7.0.2"
+        },
+        "compile": {
+          "lib/net6.0/Google.Apis.Auth.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Google.Apis.Auth.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "Google.Apis.Core/1.68.0": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3"
+        },
+        "compile": {
+          "lib/net6.0/Google.Apis.Core.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Google.Apis.Core.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "Google.Apis.Gmail.v1/1.68.0.3427": {
+        "type": "package",
+        "dependencies": {
+          "Google.Apis": "1.68.0",
+          "Google.Apis.Auth": "1.68.0"
+        },
+        "compile": {
+          "lib/net6.0/Google.Apis.Gmail.v1.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Google.Apis.Gmail.v1.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "Google.Apis.Oauth2.v2/1.68.0.1869": {
+        "type": "package",
+        "dependencies": {
+          "Google.Apis": "1.68.0",
+          "Google.Apis.Auth": "1.68.0"
+        },
+        "compile": {
+          "lib/net6.0/Google.Apis.Oauth2.v2.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Google.Apis.Oauth2.v2.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Humanizer.Core/2.14.1": {
         "type": "package",
         "compile": {
@@ -1462,6 +1546,22 @@
           }
         }
       },
+      "PayPal/1.9.1": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "7.0.1"
+        },
+        "compile": {
+          "lib/net451/PayPal.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net451/PayPal.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Swashbuckle.AspNetCore/6.4.0": {
         "type": "package",
         "dependencies": {
@@ -1534,15 +1634,20 @@
           "lib/netcoreapp2.0/_._": {}
         }
       },
-      "System.CodeDom/4.4.0": {
+      "System.CodeDom/7.0.0": {
         "type": "package",
         "compile": {
-          "ref/netstandard2.0/_._": {
+          "lib/net7.0/System.CodeDom.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/netstandard2.0/System.CodeDom.dll": {}
+          "lib/net7.0/System.CodeDom.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Collections.Immutable/6.0.0": {
@@ -1818,6 +1923,31 @@
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.Management/7.0.2": {
+        "type": "package",
+        "dependencies": {
+          "System.CodeDom": "7.0.0"
+        },
+        "compile": {
+          "lib/net7.0/System.Management.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/System.Management.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net7.0/System.Management.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
         }
       },
       "System.Memory/4.5.4": {
@@ -2289,6 +2419,116 @@
         "azureicon.png",
         "lib/netstandard2.0/Azure.Identity.dll",
         "lib/netstandard2.0/Azure.Identity.xml"
+      ]
+    },
+    "Google.Apis/1.68.0": {
+      "sha512": "s2MymhdpH+ybZNBeZ2J5uFgFHApBp+QXf9FjZSdM1lk/vx5VqIknJwnaWiuAzXxPrLEkesX0Q+UsiWn39yZ9zw==",
+      "type": "package",
+      "path": "google.apis/1.68.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "NuGetIcon.png",
+        "google.apis.1.68.0.nupkg.sha512",
+        "google.apis.nuspec",
+        "lib/net462/Google.Apis.dll",
+        "lib/net462/Google.Apis.pdb",
+        "lib/net462/Google.Apis.xml",
+        "lib/net6.0/Google.Apis.dll",
+        "lib/net6.0/Google.Apis.pdb",
+        "lib/net6.0/Google.Apis.xml",
+        "lib/netstandard2.0/Google.Apis.dll",
+        "lib/netstandard2.0/Google.Apis.pdb",
+        "lib/netstandard2.0/Google.Apis.xml"
+      ]
+    },
+    "Google.Apis.Auth/1.68.0": {
+      "sha512": "hFx8Qz5bZ4w0hpnn4tSmZaaFpjAMsgVElZ+ZgVLUZ2r9i+AKcoVgwiNfv1pruNS5cCvpXqhKECbruBCfRezPHA==",
+      "type": "package",
+      "path": "google.apis.auth/1.68.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "NuGetIcon.png",
+        "google.apis.auth.1.68.0.nupkg.sha512",
+        "google.apis.auth.nuspec",
+        "lib/net462/Google.Apis.Auth.dll",
+        "lib/net462/Google.Apis.Auth.pdb",
+        "lib/net462/Google.Apis.Auth.xml",
+        "lib/net6.0/Google.Apis.Auth.dll",
+        "lib/net6.0/Google.Apis.Auth.pdb",
+        "lib/net6.0/Google.Apis.Auth.xml",
+        "lib/netstandard2.0/Google.Apis.Auth.dll",
+        "lib/netstandard2.0/Google.Apis.Auth.pdb",
+        "lib/netstandard2.0/Google.Apis.Auth.xml"
+      ]
+    },
+    "Google.Apis.Core/1.68.0": {
+      "sha512": "pAqwa6pfu53UXCR2b7A/PAPXeuVg6L1OFw38WckN27NU2+mf+KTjoEg2YGv/f0UyKxzz7DxF1urOTKg/6dTP9g==",
+      "type": "package",
+      "path": "google.apis.core/1.68.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "NuGetIcon.png",
+        "google.apis.core.1.68.0.nupkg.sha512",
+        "google.apis.core.nuspec",
+        "lib/net462/Google.Apis.Core.dll",
+        "lib/net462/Google.Apis.Core.pdb",
+        "lib/net462/Google.Apis.Core.xml",
+        "lib/net6.0/Google.Apis.Core.dll",
+        "lib/net6.0/Google.Apis.Core.pdb",
+        "lib/net6.0/Google.Apis.Core.xml",
+        "lib/netstandard2.0/Google.Apis.Core.dll",
+        "lib/netstandard2.0/Google.Apis.Core.pdb",
+        "lib/netstandard2.0/Google.Apis.Core.xml"
+      ]
+    },
+    "Google.Apis.Gmail.v1/1.68.0.3427": {
+      "sha512": "SOCapuhgPUxPARbO97TpB26jmyJwyJG1hLeEXjeVnWhgf3sXfANbu4JcPULkEkNC7RUahh02gqiN7jyo3mvedw==",
+      "type": "package",
+      "path": "google.apis.gmail.v1/1.68.0.3427",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "NuGetIcon.png",
+        "google.apis.gmail.v1.1.68.0.3427.nupkg.sha512",
+        "google.apis.gmail.v1.nuspec",
+        "lib/net462/Google.Apis.Gmail.v1.dll",
+        "lib/net462/Google.Apis.Gmail.v1.pdb",
+        "lib/net462/Google.Apis.Gmail.v1.xml",
+        "lib/net6.0/Google.Apis.Gmail.v1.dll",
+        "lib/net6.0/Google.Apis.Gmail.v1.pdb",
+        "lib/net6.0/Google.Apis.Gmail.v1.xml",
+        "lib/netstandard2.0/Google.Apis.Gmail.v1.dll",
+        "lib/netstandard2.0/Google.Apis.Gmail.v1.pdb",
+        "lib/netstandard2.0/Google.Apis.Gmail.v1.xml"
+      ]
+    },
+    "Google.Apis.Oauth2.v2/1.68.0.1869": {
+      "sha512": "6gf5dpi6d+sezfRwqEfA9lDfP7OT5ZrQFgiO1r2jDS8rkMpxaS6/mpTsyW/EgcXr8R4NEHIbAN4FvZClRq0+Zg==",
+      "type": "package",
+      "path": "google.apis.oauth2.v2/1.68.0.1869",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "NuGetIcon.png",
+        "google.apis.oauth2.v2.1.68.0.1869.nupkg.sha512",
+        "google.apis.oauth2.v2.nuspec",
+        "lib/net462/Google.Apis.Oauth2.v2.dll",
+        "lib/net462/Google.Apis.Oauth2.v2.pdb",
+        "lib/net462/Google.Apis.Oauth2.v2.xml",
+        "lib/net6.0/Google.Apis.Oauth2.v2.dll",
+        "lib/net6.0/Google.Apis.Oauth2.v2.pdb",
+        "lib/net6.0/Google.Apis.Oauth2.v2.xml",
+        "lib/netstandard2.0/Google.Apis.Oauth2.v2.dll",
+        "lib/netstandard2.0/Google.Apis.Oauth2.v2.pdb",
+        "lib/netstandard2.0/Google.Apis.Oauth2.v2.xml"
       ]
     },
     "Humanizer.Core/2.14.1": {
@@ -4360,6 +4600,23 @@
         "newtonsoft.json.bson.nuspec"
       ]
     },
+    "PayPal/1.9.1": {
+      "sha512": "b3vq6Lc9CwSooCX2tsZ02zb7E/K/cA6EILCoMynue+ZeVuitJNqt0YwxPnp7uN0Pccob02oDlpAjRLH+GRCRxA==",
+      "type": "package",
+      "path": "paypal/1.9.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/PayPal.dll",
+        "lib/net40/PayPal.xml",
+        "lib/net45/PayPal.dll",
+        "lib/net45/PayPal.xml",
+        "lib/net451/PayPal.dll",
+        "lib/net451/PayPal.xml",
+        "paypal.1.9.1.nupkg.sha512",
+        "paypal.nuspec"
+      ]
+    },
     "Swashbuckle.AspNetCore/6.4.0": {
       "sha512": "eUBr4TW0up6oKDA5Xwkul289uqSMgY0xGN4pnbOIBqCcN9VKGGaPvHX3vWaG/hvocfGDP+MGzMA0bBBKz2fkmQ==",
       "type": "package",
@@ -4470,25 +4727,31 @@
         "version.txt"
       ]
     },
-    "System.CodeDom/4.4.0": {
-      "sha512": "2sCCb7doXEwtYAbqzbF/8UAeDRMNmPaQbU2q50Psg1J9KzumyVVCgKQY8s53WIPTufNT0DpSe9QRvVjOzfDWBA==",
+    "System.CodeDom/7.0.0": {
+      "sha512": "GLltyqEsE5/3IE+zYRP5sNa1l44qKl9v+bfdMcwg+M9qnQf47wK3H0SUR/T+3N4JEQXF3vV4CSuuo0rsg+nq2A==",
       "type": "package",
-      "path": "system.codedom/4.4.0",
+      "path": "system.codedom/7.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "Icon.png",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
-        "lib/net461/System.CodeDom.dll",
+        "buildTransitive/net461/System.CodeDom.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/System.CodeDom.targets",
+        "lib/net462/System.CodeDom.dll",
+        "lib/net462/System.CodeDom.xml",
+        "lib/net6.0/System.CodeDom.dll",
+        "lib/net6.0/System.CodeDom.xml",
+        "lib/net7.0/System.CodeDom.dll",
+        "lib/net7.0/System.CodeDom.xml",
         "lib/netstandard2.0/System.CodeDom.dll",
-        "ref/net461/System.CodeDom.dll",
-        "ref/net461/System.CodeDom.xml",
-        "ref/netstandard2.0/System.CodeDom.dll",
-        "ref/netstandard2.0/System.CodeDom.xml",
-        "system.codedom.4.4.0.nupkg.sha512",
+        "lib/netstandard2.0/System.CodeDom.xml",
+        "system.codedom.7.0.0.nupkg.sha512",
         "system.codedom.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
+        "useSharedDesignerContext.txt"
       ]
     },
     "System.Collections.Immutable/6.0.0": {
@@ -4925,6 +5188,34 @@
         "lib/netstandard2.0/System.IO.Pipelines.xml",
         "system.io.pipelines.6.0.3.nupkg.sha512",
         "system.io.pipelines.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.Management/7.0.2": {
+      "sha512": "/qEUN91mP/MUQmJnM5y5BdT7ZoPuVrtxnFlbJ8a3kBJGhe2wCzBfnPFtK2wTtEEcf3DMGR9J00GZZfg6HRI6yA==",
+      "type": "package",
+      "path": "system.management/7.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/System.Management.targets",
+        "lib/net462/_._",
+        "lib/net6.0/System.Management.dll",
+        "lib/net6.0/System.Management.xml",
+        "lib/net7.0/System.Management.dll",
+        "lib/net7.0/System.Management.xml",
+        "lib/netstandard2.0/System.Management.dll",
+        "lib/netstandard2.0/System.Management.xml",
+        "runtimes/win/lib/net6.0/System.Management.dll",
+        "runtimes/win/lib/net6.0/System.Management.xml",
+        "runtimes/win/lib/net7.0/System.Management.dll",
+        "runtimes/win/lib/net7.0/System.Management.xml",
+        "system.management.7.0.2.nupkg.sha512",
+        "system.management.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
@@ -6032,12 +6323,16 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "Google.Apis.Auth >= 1.68.0",
+      "Google.Apis.Gmail.v1 >= 1.68.0.3427",
+      "Google.Apis.Oauth2.v2 >= 1.68.0.1869",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 8.0.8",
       "Microsoft.AspNetCore.Mvc.NewtonsoftJson >= 8.0.8",
       "Microsoft.AspNetCore.SignalR >= 1.1.0",
       "Microsoft.AspNetCore.StaticFiles >= 2.2.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.8",
       "Microsoft.EntityFrameworkCore.Tools >= 8.0.8",
+      "PayPal >= 1.9.1",
       "Swashbuckle.AspNetCore >= 6.4.0"
     ]
   },
@@ -6091,6 +6386,18 @@
       "net8.0": {
         "targetAlias": "net8.0",
         "dependencies": {
+          "Google.Apis.Auth": {
+            "target": "Package",
+            "version": "[1.68.0, )"
+          },
+          "Google.Apis.Gmail.v1": {
+            "target": "Package",
+            "version": "[1.68.0.3427, )"
+          },
+          "Google.Apis.Oauth2.v2": {
+            "target": "Package",
+            "version": "[1.68.0.1869, )"
+          },
           "Microsoft.AspNetCore.Authentication.JwtBearer": {
             "target": "Package",
             "version": "[8.0.8, )"
@@ -6116,6 +6423,10 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[8.0.8, )"
+          },
+          "PayPal": {
+            "target": "Package",
+            "version": "[1.9.1, )"
           },
           "Swashbuckle.AspNetCore": {
             "target": "Package",
@@ -6144,5 +6455,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'PayPal 1.9.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
+      "libraryId": "PayPal",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
 }

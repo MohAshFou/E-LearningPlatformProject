@@ -1,25 +1,127 @@
+/* Container for Cards */
+.container {
+  padding: 20px;
+  background-color: #ecf0f1;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Success and Error Messages */
+.success-message, .error-message {
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.success-message {
+  background-color: #27ae60;
+  color: #ffffff;
+}
+
+.error-message {
+  background-color: #e74c3c;
+  color: #ffffff;
+}
+
+/* Card Customizations */
+.card {
+  border: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  color: #2c3e50;
+}
+
+.card-body p {
+  font-size: 1rem;
+  color: #34495e;
+}
+
+.card-footer {
+  text-align: center;
+  background-color: transparent;
+  border-top: none;
+}
+
+/* Button Customizations */
+.btn-success, .btn-primary {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  color: #ffffff;
+  border: none;
+}
+
+.btn-success {
+  background-color: #27ae60;
+}
+
+.btn-success:hover {
+  background-color: #229954;
+}
+
+.btn-primary {
+  background-color: #2c3e50;
+}
+
+.btn-primary:hover {
+  background-color: #34495e;
+}
+
+/* Wishlist Button Customizations */
 .wish-list-button {
-  background-color: #007bff; /* لون خلفية الزر */
-  color: white; /* لون النص */
-  border: none; /* إزالة الحدود */
-  padding: 10px 20px; /* حشوة الزر */
-  cursor: pointer; /* تغيير المؤشر عند التمرير */
-  display: flex; /* جعل الزر مرن */
-  align-items: center; /* محاذاة العناصر في الوسط عموديًا */
+  background-color: #2c3e50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  width: 100%;
 }
 
 .wish-list-button i {
-  margin-right: 5px; /* مسافة بين الأيقونة والنص */
+  margin-right: 5px;
 }
 
 .wish-list-button:hover {
-  background-color: #0056b3; /* تغيير لون الخلفية عند التمرير */
+  background-color: #34495e;
 }
 
-/* نمط الزر عندما يكون معطلاً */
 .wish-list-button:disabled {
   background-color: #cccccc;
   color: #666666;
+
   cursor: not-allowed;
-  opacity: 0.6; 
+  opacity: 0.6;
+}
+
+/* Image Container Styling */
+.image-container {
+  overflow: hidden;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.image-container:hover img {
+  transform: scale(1.05);
+}
+
+.card-footer button {
+  margin: 10px 0; /* إضافة مسافة من الأعلى والأسفل */
 }

@@ -1,19 +1,25 @@
 <nav class="sidebar">
-    <div class="sidebar-sticky">
-        <ul class="nav flex-column">
-            <li id="Name" class="nav-item">Welcome MR / {{Name}}</li>
+  <div class="sidebar-sticky">
+    <ul class="nav flex-column">
+      <li id="Name" class="nav-item">Welcome MR / {{Name}}</li>
 
-            <li class="nav-item">
-                <a class="nav-link" routerLink="Receipt/"><img class="Dashboard" src="Images/upload.PNG"> Receipt</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="ManageAccounts/"><img class="Dashboard" src="Images/book.PNG"> Manage Accounts</a>
-            </li>
-            <li class="nav-item">
-              <button class="btn custom-logout-button"(click)="logout()" >Logout</button>
-            </li>
-        </ul>
-    </div>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="Receipt/">
+          <i class="fas fa-file-upload"></i> Receipt
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="ManageAccounts/">
+          <i class="fas fa-cog"></i> Manage Accounts
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <button class="btn custom-logout-button" (click)="logout()">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+      </li>
+    </ul>
+  </div>
 </nav>
-
-

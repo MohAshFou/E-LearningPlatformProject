@@ -35,6 +35,11 @@ import { MyProfileSTUComponent } from './Component/student/my-profile-stu/my-pro
 import { QuestationAndAnswerStuComponent } from './Component/student/questation-and-answer-stu/questation-and-answer-stu.component';
 import { AllQuestionComponent } from './Component/Teacher/all-question/all-question.component';
 import { QuestionsComponent } from './Component/Teacher/questions/questions.component';
+import { PaypalComponent } from './Component/student/PayPalPage/paypal/paypal.component';
+import { TeacherLiveSessionComponent } from './Component/Teacher/teacher-live-session/teacher-live-session.component';
+import { StudentLiveSessionComponent } from './Component/student/student-live-session/student-live-session.component';
+import { ForgotPasswordComponent } from './Component/Login/forgot-password/forgot-password.component';
+import { NewPasswordComponent } from './Component/Login/SetNewPassword/newPassword';
 
 export const routes: Routes = [
   {
@@ -46,6 +51,16 @@ export const routes: Routes = [
     path: "Login",
     component: LoginComponent
   },
+  {
+    path: "forgotpassword",
+    component: ForgotPasswordComponent
+  }
+  ,
+  {
+    path: "forgotpassword/NewPassword",
+    component: NewPasswordComponent
+  },
+
   {
     path: "Registration",
     component: RegistrationComponent
@@ -90,6 +105,17 @@ export const routes: Routes = [
         path:"commonquestions",
         component: QuestationAndAnswerStuComponent
       }
+      ,
+      {
+        path:"PayPal",
+        component: PaypalComponent
+      }
+      ,
+      {
+        path:"livesession",
+        component:StudentLiveSessionComponent
+      }
+
     ]
   },
   {
@@ -180,6 +206,15 @@ export const routes: Routes = [
         path:"Questions",
         component:QuestionsComponent
       }
+      ,
+      {
+        path:"livesession",
+        component:TeacherLiveSessionComponent
+      }
+
+
+
+
 
     ]
   },

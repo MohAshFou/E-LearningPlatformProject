@@ -39,8 +39,12 @@ public partial class EduPlatformDbContext : DbContext
 
     public virtual DbSet<User> Users { get; set; }
 
+    public virtual DbSet<VerificationCode> VerificationCodes { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     { 
+    
+    
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -75,8 +79,6 @@ public partial class EduPlatformDbContext : DbContext
             entity.HasKey(e => e.EnrollmentId).HasName("PK__Enrollme__7F68771BF56DB4C0");
 
             entity.ToTable("Enrollment");
-
-            //entity.HasIndex(e => e.UserName, "UQ__Enrollme__C9F2845669E8A1EB").IsUnique();
 
             entity.Property(e => e.AccessEndDate).HasColumnType("datetime");
             entity.Property(e => e.AccessStartDate).HasColumnType("datetime");
@@ -245,6 +247,17 @@ public partial class EduPlatformDbContext : DbContext
             entity.Property(e => e.Password).HasMaxLength(50);
             entity.Property(e => e.Phone).HasMaxLength(11);
             entity.Property(e => e.Role).HasMaxLength(2);
+        });
+
+        modelBuilder.Entity<VerificationCode>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Verifica__3214EC0711258B27");
+
+            entity.Property(e => e.Email).HasMaxLength(255);
+            entity.Property(e => e.ExpiryDate).HasColumnType("datetime");
+            entity.Property(e => e.VerificationCode1)
+                .HasMaxLength(6)
+                .HasColumnName("VerificationCode");
         });
 
         OnModelCreatingPartial(modelBuilder);

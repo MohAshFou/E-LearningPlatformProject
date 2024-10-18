@@ -15,6 +15,10 @@ using System.Text;
 
 namespace EduPlatformAPI.Controllers
 {
+
+
+
+
     [Route("api/[controller]")]
     [ApiController]
     public class AccountController : ControllerBase
@@ -217,7 +221,59 @@ namespace EduPlatformAPI.Controllers
 
         }
 
+
+
+
+        [HttpPost("forgot-password")]
+        public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordRequest request)
+        {
+            var user = context.Users.FirstOrDefault(u => request.Email == u.Email);
+
+            if (user == null)
+            {
+                return BadRequest("Email not found");
+            }
+
+            await authService.SendVerificationCode(request.Email);
+
+            return Ok();
+        }
+
+        [HttpPost("reset-password")]
+        public IActionResult ResetPassword([FromBody] ResetPasswordRequest request)
+        {
+            if (authService.IsVerificationCodeValid(request.Email, request.VerificationCode ))
+            {
+                authService.UpdatePassword(request.Email, request.NewPassword , request.VerificationCode);
+                return Ok( new {message ="Password has been reset successfully" });
+            }
+
+            return BadRequest(new { message = "Invalid or already used verification code" });
+        }
+
+
+
+
+
+
+
+
     }
-   
+
+
+
+
+    public class ForgotPasswordRequest
+    {
+        public string Email { get; set; }
     }
+
+    public class ResetPasswordRequest
+    {
+        public string Email { get; set; }
+        public string VerificationCode { get; set; }
+        public string NewPassword { get; set; }
+    }
+
+}
 

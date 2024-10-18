@@ -1,16 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { UserAuthService } from '../../../Services/User/user-auth.service';
 import { Router, RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink,CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export default class LoginComponent implements OnInit {
+
+  public ErrorMessage: string | null = null;
   constructor( private ser:UserAuthService , private rou:Router){}
   ngOnInit(): void {
 
@@ -26,7 +29,7 @@ export default class LoginComponent implements OnInit {
         },
         error: (e: any) => {
             if (e.status === 401) {
-                alert("Session expired. Please log in again.");
+               this.ErrorMessage="Session expired. Please log in again."
 
                 this.rou.navigate(['/Login']);
             } else {

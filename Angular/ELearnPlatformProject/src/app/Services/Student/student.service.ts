@@ -23,9 +23,7 @@ export class StudentService {
     return this.Clinent.get<LessonWishList[]>(`${environment.baseUrl}${this.Controller}GetFavoriteLessons/${id}`);
   }
 
-  removeFromWishlist(lessonId: number): Observable<void> {
-    return this.Clinent.delete<void>(`${environment.baseUrl}${this.Controller}removeLesson/${lessonId}`);
-  }
+ 
 
   uploadStudentHomework(newhomework: any): Observable<void> {
     return this.Clinent.post<void>(`${environment.baseUrl}${this.Controller}UploadHomework`,newhomework);
@@ -73,6 +71,15 @@ export class StudentService {
 
   getQAbyGreadleval(level:string){
     return this.Clinent.get(`${environment.baseUrl}${this.Controller}commonQA/${level}`);
+  }
+
+
+  AddNewEnrollmen(id: number ,lessonId:number): Observable<any> {
+
+    let params = new HttpParams()
+    .set('studentid', id.toString())
+    .set('lessonid', lessonId.toString());
+    return this.Clinent.get<any>(`${environment.baseUrl}${this.Controller}AddNewEnrollmen`,{params});
   }
 
 }

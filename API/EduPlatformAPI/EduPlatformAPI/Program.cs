@@ -26,6 +26,7 @@ namespace EduPlatformAPI
             builder.Services.AddScoped<GenerateUserAndPass>();
             builder.Services.AddScoped<LessonService>();
             builder.Services.AddScoped<MediaController>();
+            builder.Services.AddScoped<PayPalService>();
 
             builder.Services.AddScoped<TeacherController>();
             builder.Services.AddSignalR();
@@ -33,21 +34,14 @@ namespace EduPlatformAPI
             // Add services to the Cors.
             builder.Services.AddCors(options =>
             {
-                //options.AddPolicy("pa", policy =>
-                //{
-                //    policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials()   ;
-                //});
-
-
-                 options.AddPolicy("pa", policy =>
+                options.AddPolicy("AllowMultipleOrigins", policy =>
                 {
-                    policy.WithOrigins("http://localhost:4200") 
+                    policy.WithOrigins("http://localhost:4200", "http://localhost:53043")
                           .AllowAnyHeader()
                           .AllowAnyMethod()
                           .AllowCredentials();
-                            });
+                });
             });
-
 
             // to search about word Bearer in header 
             builder.Services.AddAuthentication(options => {
@@ -106,11 +100,12 @@ namespace EduPlatformAPI
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-            app.UseCors("pa");
+
+            
+            app.UseCors("AllowMultipleOrigins");
+
             app.UseStaticFiles();
-
             app.UseHttpsRedirection();
-
             app.UseAuthorization();
 
             app.MapControllers();

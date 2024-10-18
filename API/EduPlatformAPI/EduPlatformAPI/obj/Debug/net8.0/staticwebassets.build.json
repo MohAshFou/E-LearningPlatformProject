@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "G0G58Jo/DloIWX9xTR4V7WmEdlOvq24jENl8uxiw+YU=",
+  "Hash": "NjUGVRZbCnK1xxhDSdTefXp/7Js/52tQHfa+fr4KGiE=",
   "Source": "EduPlatformAPI",
   "BasePath": "_content/EduPlatformAPI",
   "Mode": "Default",
@@ -376,6 +376,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Levels\\Three\\PDFHomework\\ss.jpg"
+    },
+    {
+      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDFHomework\\Test4.pdf",
+      "SourceId": "EduPlatformAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "BasePath": "_content/EduPlatformAPI",
+      "RelativePath": "Levels/Three/PDFHomework/Test4.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Levels\\Three\\PDFHomework\\Test4.pdf"
     },
     {
       "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDFHomework\\TestHomework4.pdf",

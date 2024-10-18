@@ -1,0 +1,85 @@
+/* General page styling */
+#body {
+  background-color:  rgb(184, 184, 184); /* لون الخلفية */
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  display: flex;
+  justify-content: center; /* للتوسيط أفقيًا */
+
+  height: auto /* ارتفاع الصفحة بالكامل */
+}
+
+/* Register form styling */
+.register-form {
+  background-color: #ffffff; /* لون خلفية النموذج */
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  padding:40px ; /* زيادة الحشو */
+
+  width: 100%;
+  max-width: 500px; /* تحديد عرض النموذج */
+  text-align: left; /* محاذاة النص إلى اليسار */
+}
+
+/* Title styling */
+.form-title {
+  color: #007bff; /* لون النص */
+  margin-bottom: 20px;
+  text-align: center; /* توسيط العنوان */
+}
+
+/* Input fields */
+.input-group {
+  display: flex; /* استخدام flexbox لتنسيق العناصر */
+ /* محاذاة العناصر عموديًا */
+  margin-bottom: 20px;
+  flex-direction: column;
+}
+
+.input-group label {
+  font-weight: bold;
+  color: #007bff; /* لون التسمية */
+  font-size: 16px;
+  margin-right: 10px; /* مسافة بين التسمية وحقل الإدخال */
+  width: 40%; /* عرض التسمية */
+}
+
+.input-group input,
+.input-group select {
+  padding: 12px; /* زيادة الحشو */
+  border: 2px solid #007bff; /* لون الحدود */
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%; /* عرض الحقل */
+  box-sizing: border-box; /* احتساب الحشو والحدود في الحجم الكلي */
+  transition: border-color 0.3s ease; /* تأثير تغيير لون الحدود */
+}
+
+.input-group input:focus,
+.input-group select:focus {
+  border-color: #0056b3; /* لون الحدود عند التركيز */
+}
+
+/* Error message */
+.text-danger {
+  margin-top: 5px;
+  color: #e74c3c; /* لون الخطأ */
+  font-weight: bold;
+}
+
+/* Submit button */
+.submit-button {
+  background-color: #007bff; /* لون الزر */
+  color: white;
+  border: none;
+  padding: 12px; /* زيادة الحشو */
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%; /* لجعل الزر بنفس عرض الحقول */
+}
+
+.submit-button:hover {
+  background-color: #0056b3; /* اللون عند التحويم */
+}
