@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "NjUGVRZbCnK1xxhDSdTefXp/7Js/52tQHfa+fr4KGiE=",
+  "Hash": "TZY3xTTUCeERKUJSHJ+UoAu7He7de6ENg+qnDU7QdK0=",
   "Source": "EduPlatformAPI",
   "BasePath": "_content/EduPlatformAPI",
   "Mode": "Default",
@@ -530,6 +530,25 @@
       "OriginalItemSpec": "wwwroot\\Levels\\Three\\Video\\lesson2.mp4"
     },
     {
+      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\lesson200.mp4",
+      "SourceId": "EduPlatformAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "BasePath": "_content/EduPlatformAPI",
+      "RelativePath": "Levels/Three/Video/lesson200.mp4",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Levels\\Three\\Video\\lesson200.mp4"
+    },
+    {
       "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\lesson2000.mp4",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
@@ -604,6 +623,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Levels\\Three\\Video\\lesson545.mp4"
+    },
+    {
+      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\lesson7.mp4",
+      "SourceId": "EduPlatformAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "BasePath": "_content/EduPlatformAPI",
+      "RelativePath": "Levels/Three/Video/lesson7.mp4",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Levels\\Three\\Video\\lesson7.mp4"
     },
     {
       "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\lesson800.mp4",

@@ -67,6 +67,7 @@ export class WishlistComponent {
         this.fetchWishlist();
       },
       error: (error) => {
+        this.wishlist.length =0
         console.error('Failed to remove lesson from wishlist', error);
       }
     });

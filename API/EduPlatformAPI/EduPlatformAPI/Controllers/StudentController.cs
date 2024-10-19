@@ -156,7 +156,9 @@ namespace EduPlatformAPI.Controllers
             var enrollment = context.Enrollments.FirstOrDefault(e => e.LessonId == lessonID && e.StudentId == studentID);
             var currentDate = DateTime.Now;
 
-            if (enrollment == null || enrollment.AccessEndDate < currentDate)
+         
+
+            if (   enrollment == null ||enrollment.AccessEndDate < currentDate || enrollment.ReceiptStatus== "reject" )
             {
                 return "NO";
             }
@@ -166,7 +168,7 @@ namespace EduPlatformAPI.Controllers
                 return "Pending";
             }
 
-            if (enrollment.AccessEndDate >= currentDate)
+            if (enrollment.AccessEndDate >= currentDate && enrollment.ReceiptStatus == "accept")
             {
                 return "Yes";
             }

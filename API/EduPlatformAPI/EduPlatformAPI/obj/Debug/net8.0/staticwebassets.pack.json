@@ -109,6 +109,10 @@
       "PackagePath": "staticwebassets\\Levels\\Three\\Video\\lesson2.mp4"
     },
     {
+      "Id": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\lesson200.mp4",
+      "PackagePath": "staticwebassets\\Levels\\Three\\Video\\lesson200.mp4"
+    },
+    {
       "Id": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\lesson2000.mp4",
       "PackagePath": "staticwebassets\\Levels\\Three\\Video\\lesson2000.mp4"
     },
@@ -123,6 +127,10 @@
     {
       "Id": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\lesson545.mp4",
       "PackagePath": "staticwebassets\\Levels\\Three\\Video\\lesson545.mp4"
+    },
+    {
+      "Id": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\lesson7.mp4",
+      "PackagePath": "staticwebassets\\Levels\\Three\\Video\\lesson7.mp4"
     },
     {
       "Id": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\lesson800.mp4",
