@@ -2,6 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { UserAuthService } from '../../../Services/User/user-auth.service';
+import { Router } from '@angular/router';
+import { window } from 'rxjs';
+import { setInterval } from 'timers/promises';
 
 @Component({
   selector: 'app-new-password',
@@ -18,7 +21,7 @@ export class NewPasswordComponent implements OnInit {
   passwordErrorMessage: string = '';
   confirmPasswordErrorMessage: string = '';
   email:string=''
-   constructor( private userser:UserAuthService){
+   constructor( private userser:UserAuthService , private rou:Router){
 
 
    }
@@ -38,8 +41,8 @@ export class NewPasswordComponent implements OnInit {
     this.message = '';
 
 
-    console.log(this.newpassword)
-  console.log(  this.strongPasswordRegex.test(this.newpassword) )
+  //   console.log(this.newpassword)
+  // console.log(  this.strongPasswordRegex.test(this.newpassword) )
     if (!this.isStrongPassword(this.newpassword)) {
 
       this.passwordErrorMessage = 'Password must be at least 8 characters long, contain uppercase and lowercase letters, a number, and a special character.';
@@ -55,21 +58,25 @@ export class NewPasswordComponent implements OnInit {
 
 
 
-  //  this.userser.ResetPassword(this.email,this.VerificationCode,this.newpassword).subscribe({
+   this.userser.ResetPassword(this.email,this.VerificationCode,this.newpassword).subscribe({
 
 
 
-  //   next:(e:any)=>{
-  //     this.userser.removeemail()
-  //     this.message = 'Password Updated Successfully!';
-  //   }
+    next:(e:any)=>{
+      this.userser.removeemail()
 
-  // ,
-  // error:(e:any)=>{
+        this.message = 'Password Updated Successfully!';
+        setTimeout(() => {
+          this.rou.navigate(['/Login']);
+        }, 3000);
+      }
+    // rou
+  ,
+  error:(e:any)=>{
 
-  //   this.message= e.error.message;
-  //   // console.log(e.)
-  // } })
+    this.message= e.error.message;
+    // console.log(e.)
+  } })
 
 
   }
