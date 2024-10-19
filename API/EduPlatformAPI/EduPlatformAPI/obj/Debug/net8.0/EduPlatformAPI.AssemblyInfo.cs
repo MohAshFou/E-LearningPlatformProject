@@ -13,7 +13,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EduPlatformAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2d158512c6c9f8f2edcbd5801a70996730db63ed")]
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2a887e751b4021629780a019277c371f92b8a5a5")]
+>>>>>>> aebef5cf1de83405e5d752501c0210ce1008ff14
 [assembly: System.Reflection.AssemblyProductAttribute("EduPlatformAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EduPlatformAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

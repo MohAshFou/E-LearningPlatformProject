@@ -1,6 +1,10 @@
 {
   "Version": 1,
+<<<<<<< HEAD
   "Hash": "TZY3xTTUCeERKUJSHJ+UoAu7He7de6ENg+qnDU7QdK0=",
+=======
+  "Hash": "1tnYeodPTpVYZAJAuNOT/YtimqbinvRefPFtXCA/zvQ=",
+>>>>>>> aebef5cf1de83405e5d752501c0210ce1008ff14
   "Source": "EduPlatformAPI",
   "BasePath": "_content/EduPlatformAPI",
   "Mode": "Default",
@@ -10,17 +14,17 @@
     {
       "Name": "EduPlatformAPI\\wwwroot",
       "Source": "EduPlatformAPI",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\One\\PDF\\lesson1.pdf",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\One\\PDF\\lesson1.pdf",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/One/PDF/lesson1.pdf",
       "AssetKind": "All",
@@ -36,10 +40,10 @@
       "OriginalItemSpec": "wwwroot\\Levels\\One\\PDF\\lesson1.pdf"
     },
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\One\\PDF\\lesson500.mp4",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\One\\PDF\\lesson500.mp4",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/One/PDF/lesson500.mp4",
       "AssetKind": "All",
@@ -55,10 +59,10 @@
       "OriginalItemSpec": "wwwroot\\Levels\\One\\PDF\\lesson500.mp4"
     },
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\One\\PDF\\placement test (2).pdf",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\One\\PDF\\placement test (2).pdf",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/One/PDF/placement test (2).pdf",
       "AssetKind": "All",
@@ -74,10 +78,10 @@
       "OriginalItemSpec": "wwwroot\\Levels\\One\\PDF\\placement test (2).pdf"
     },
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\One\\Video\\[Arabic] Learn Git & GitHub #03 - Create Github Repository And Clone It (720p_30fps_H264-192kbit_AAC).mp4",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\One\\Video\\[Arabic] Learn Git & GitHub #03 - Create Github Repository And Clone It (720p_30fps_H264-192kbit_AAC).mp4",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/One/Video/[Arabic] Learn Git & GitHub #03 - Create Github Repository And Clone It (720p_30fps_H264-192kbit_AAC).mp4",
       "AssetKind": "All",
@@ -93,10 +97,10 @@
       "OriginalItemSpec": "wwwroot\\Levels\\One\\Video\\[Arabic] Learn Git & GitHub #03 - Create Github Repository And Clone It (720p_30fps_H264-192kbit_AAC).mp4"
     },
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\One\\Video\\lesson1.mp4",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\One\\Video\\lesson1.mp4",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/One/Video/lesson1.mp4",
       "AssetKind": "All",
@@ -112,10 +116,10 @@
       "OriginalItemSpec": "wwwroot\\Levels\\One\\Video\\lesson1.mp4"
     },
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\One\\Video\\lesson2.mp4",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\One\\Video\\lesson2.mp4",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/One/Video/lesson2.mp4",
       "AssetKind": "All",
@@ -131,10 +135,10 @@
       "OriginalItemSpec": "wwwroot\\Levels\\One\\Video\\lesson2.mp4"
     },
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDF\\erd.pdf",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDF\\erd.pdf",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/Three/PDF/erd.pdf",
       "AssetKind": "All",
@@ -150,10 +154,10 @@
       "OriginalItemSpec": "wwwroot\\Levels\\Three\\PDF\\erd.pdf"
     },
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDF\\hhhhhhhhhhhhhhhhhhhhhhhhh.pdf",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDF\\hhhhhhhhhhhhhhhhhhhhhhhhh.pdf",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/Three/PDF/hhhhhhhhhhhhhhhhhhhhhhhhh.pdf",
       "AssetKind": "All",
@@ -169,10 +173,10 @@
       "OriginalItemSpec": "wwwroot\\Levels\\Three\\PDF\\hhhhhhhhhhhhhhhhhhhhhhhhh.pdf"
     },
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDF\\lesson3.pdf",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDF\\lesson3.pdf",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/Three/PDF/lesson3.pdf",
       "AssetKind": "All",
@@ -188,10 +192,10 @@
       "OriginalItemSpec": "wwwroot\\Levels\\Three\\PDF\\lesson3.pdf"
     },
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDF\\'PREPOSITIONS' .pdf",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDF\\'PREPOSITIONS' .pdf",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/Three/PDF/'PREPOSITIONS' .pdf",
       "AssetKind": "All",
@@ -207,10 +211,10 @@
       "OriginalItemSpec": "wwwroot\\Levels\\Three\\PDF\\'PREPOSITIONS' .pdf"
     },
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDF\\rrrrrrrr.pdf",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDF\\rrrrrrrr.pdf",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/Three/PDF/rrrrrrrr.pdf",
       "AssetKind": "All",
@@ -226,10 +230,10 @@
       "OriginalItemSpec": "wwwroot\\Levels\\Three\\PDF\\rrrrrrrr.pdf"
     },
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDF\\rrrrrrrrrrrrrrrrrrrr.pdf",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDF\\rrrrrrrrrrrrrrrrrrrr.pdf",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/Three/PDF/rrrrrrrrrrrrrrrrrrrr.pdf",
       "AssetKind": "All",
@@ -245,10 +249,10 @@
       "OriginalItemSpec": "wwwroot\\Levels\\Three\\PDF\\rrrrrrrrrrrrrrrrrrrr.pdf"
     },
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDF\\Test4.pdf",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDF\\Test4.pdf",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/Three/PDF/Test4.pdf",
       "AssetKind": "All",
@@ -264,10 +268,10 @@
       "OriginalItemSpec": "wwwroot\\Levels\\Three\\PDF\\Test4.pdf"
     },
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDF\\TestHomework4.pdf",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDF\\TestHomework4.pdf",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/Three/PDF/TestHomework4.pdf",
       "AssetKind": "All",
@@ -283,10 +287,10 @@
       "OriginalItemSpec": "wwwroot\\Levels\\Three\\PDF\\TestHomework4.pdf"
     },
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDF\\update.pdf",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDF\\update.pdf",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/Three/PDF/update.pdf",
       "AssetKind": "All",
@@ -302,10 +306,10 @@
       "OriginalItemSpec": "wwwroot\\Levels\\Three\\PDF\\update.pdf"
     },
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDF\\we.pdf",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDF\\we.pdf",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/Three/PDF/we.pdf",
       "AssetKind": "All",
@@ -321,10 +325,10 @@
       "OriginalItemSpec": "wwwroot\\Levels\\Three\\PDF\\we.pdf"
     },
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDF\\wwwwwwwww.pdf",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDF\\wwwwwwwww.pdf",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/Three/PDF/wwwwwwwww.pdf",
       "AssetKind": "All",
@@ -340,10 +344,10 @@
       "OriginalItemSpec": "wwwroot\\Levels\\Three\\PDF\\wwwwwwwww.pdf"
     },
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDFHomework\\erd.pdf",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDFHomework\\erd.pdf",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/Three/PDFHomework/erd.pdf",
       "AssetKind": "All",
@@ -359,10 +363,10 @@
       "OriginalItemSpec": "wwwroot\\Levels\\Three\\PDFHomework\\erd.pdf"
     },
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDFHomework\\ss.jpg",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDFHomework\\ss.jpg",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/Three/PDFHomework/ss.jpg",
       "AssetKind": "All",
@@ -378,10 +382,10 @@
       "OriginalItemSpec": "wwwroot\\Levels\\Three\\PDFHomework\\ss.jpg"
     },
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDFHomework\\Test4.pdf",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDFHomework\\Test4.pdf",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/Three/PDFHomework/Test4.pdf",
       "AssetKind": "All",
@@ -397,10 +401,10 @@
       "OriginalItemSpec": "wwwroot\\Levels\\Three\\PDFHomework\\Test4.pdf"
     },
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDFHomework\\TestHomework4.pdf",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\PDFHomework\\TestHomework4.pdf",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/Three/PDFHomework/TestHomework4.pdf",
       "AssetKind": "All",
@@ -416,10 +420,10 @@
       "OriginalItemSpec": "wwwroot\\Levels\\Three\\PDFHomework\\TestHomework4.pdf"
     },
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\ReceiptImages\\B612_20220716_003409_545.jpg",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\ReceiptImages\\B612_20220716_003409_545.jpg",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/Three/ReceiptImages/B612_20220716_003409_545.jpg",
       "AssetKind": "All",
@@ -435,10 +439,10 @@
       "OriginalItemSpec": "wwwroot\\Levels\\Three\\ReceiptImages\\B612_20220716_003409_545.jpg"
     },
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\ReceiptImages\\dd.jpg",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\ReceiptImages\\dd.jpg",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/Three/ReceiptImages/dd.jpg",
       "AssetKind": "All",
@@ -454,10 +458,10 @@
       "OriginalItemSpec": "wwwroot\\Levels\\Three\\ReceiptImages\\dd.jpg"
     },
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\ReceiptImages\\me.jpg",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\ReceiptImages\\me.jpg",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/Three/ReceiptImages/me.jpg",
       "AssetKind": "All",
@@ -473,10 +477,10 @@
       "OriginalItemSpec": "wwwroot\\Levels\\Three\\ReceiptImages\\me.jpg"
     },
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\ReceiptImages\\ss.jpg",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\ReceiptImages\\ss.jpg",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/Three/ReceiptImages/ss.jpg",
       "AssetKind": "All",
@@ -492,10 +496,10 @@
       "OriginalItemSpec": "wwwroot\\Levels\\Three\\ReceiptImages\\ss.jpg"
     },
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\lesson1.mp4",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\lesson1.mp4",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/Three/Video/lesson1.mp4",
       "AssetKind": "All",
@@ -511,10 +515,10 @@
       "OriginalItemSpec": "wwwroot\\Levels\\Three\\Video\\lesson1.mp4"
     },
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\lesson2.mp4",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\lesson2.mp4",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/Three/Video/lesson2.mp4",
       "AssetKind": "All",
@@ -530,6 +534,7 @@
       "OriginalItemSpec": "wwwroot\\Levels\\Three\\Video\\lesson2.mp4"
     },
     {
+<<<<<<< HEAD
       "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\lesson200.mp4",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
@@ -550,9 +555,31 @@
     },
     {
       "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\lesson2000.mp4",
+=======
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\lesson200.mp4",
+>>>>>>> aebef5cf1de83405e5d752501c0210ce1008ff14
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "BasePath": "_content/EduPlatformAPI",
+      "RelativePath": "Levels/Three/Video/lesson200.mp4",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Levels\\Three\\Video\\lesson200.mp4"
+    },
+    {
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\lesson2000.mp4",
+      "SourceId": "EduPlatformAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/Three/Video/lesson2000.mp4",
       "AssetKind": "All",
@@ -568,10 +595,10 @@
       "OriginalItemSpec": "wwwroot\\Levels\\Three\\Video\\lesson2000.mp4"
     },
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\lesson4.mp4",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\lesson4.mp4",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/Three/Video/lesson4.mp4",
       "AssetKind": "All",
@@ -587,10 +614,10 @@
       "OriginalItemSpec": "wwwroot\\Levels\\Three\\Video\\lesson4.mp4"
     },
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\lesson5.mp4",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\lesson5.mp4",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/Three/Video/lesson5.mp4",
       "AssetKind": "All",
@@ -606,10 +633,10 @@
       "OriginalItemSpec": "wwwroot\\Levels\\Three\\Video\\lesson5.mp4"
     },
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\lesson545.mp4",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\lesson545.mp4",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/Three/Video/lesson545.mp4",
       "AssetKind": "All",
@@ -625,6 +652,7 @@
       "OriginalItemSpec": "wwwroot\\Levels\\Three\\Video\\lesson545.mp4"
     },
     {
+<<<<<<< HEAD
       "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\lesson7.mp4",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
@@ -645,9 +673,31 @@
     },
     {
       "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\lesson800.mp4",
+=======
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\lesson7.mp4",
+>>>>>>> aebef5cf1de83405e5d752501c0210ce1008ff14
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "BasePath": "_content/EduPlatformAPI",
+      "RelativePath": "Levels/Three/Video/lesson7.mp4",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Levels\\Three\\Video\\lesson7.mp4"
+    },
+    {
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\lesson800.mp4",
+      "SourceId": "EduPlatformAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/Three/Video/lesson800.mp4",
       "AssetKind": "All",
@@ -663,10 +713,10 @@
       "OriginalItemSpec": "wwwroot\\Levels\\Three\\Video\\lesson800.mp4"
     },
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\test1.mp4",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\test1.mp4",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/Three/Video/test1.mp4",
       "AssetKind": "All",
@@ -682,10 +732,10 @@
       "OriginalItemSpec": "wwwroot\\Levels\\Three\\Video\\test1.mp4"
     },
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\test4.mp4",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Three\\Video\\test4.mp4",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/Three/Video/test4.mp4",
       "AssetKind": "All",
@@ -701,10 +751,10 @@
       "OriginalItemSpec": "wwwroot\\Levels\\Three\\Video\\test4.mp4"
     },
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Two\\PDF\\erd.pdf",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Two\\PDF\\erd.pdf",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/Two/PDF/erd.pdf",
       "AssetKind": "All",
@@ -720,10 +770,10 @@
       "OriginalItemSpec": "wwwroot\\Levels\\Two\\PDF\\erd.pdf"
     },
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Two\\PDF\\lesson2.pdf",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Two\\PDF\\lesson2.pdf",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/Two/PDF/lesson2.pdf",
       "AssetKind": "All",
@@ -739,10 +789,10 @@
       "OriginalItemSpec": "wwwroot\\Levels\\Two\\PDF\\lesson2.pdf"
     },
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Two\\PDF\\'PREPOSITIONS' .pdf",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Two\\PDF\\'PREPOSITIONS' .pdf",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/Two/PDF/'PREPOSITIONS' .pdf",
       "AssetKind": "All",
@@ -758,10 +808,10 @@
       "OriginalItemSpec": "wwwroot\\Levels\\Two\\PDF\\'PREPOSITIONS' .pdf"
     },
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Two\\ReceiptImages\\mm.jpg",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Two\\ReceiptImages\\mm.jpg",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/Two/ReceiptImages/mm.jpg",
       "AssetKind": "All",
@@ -777,10 +827,10 @@
       "OriginalItemSpec": "wwwroot\\Levels\\Two\\ReceiptImages\\mm.jpg"
     },
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Two\\Video\\lesson1.mp4",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Two\\Video\\lesson1.mp4",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/Two/Video/lesson1.mp4",
       "AssetKind": "All",
@@ -796,10 +846,10 @@
       "OriginalItemSpec": "wwwroot\\Levels\\Two\\Video\\lesson1.mp4"
     },
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Two\\Video\\lesson2.mp4",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Two\\Video\\lesson2.mp4",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/Two/Video/lesson2.mp4",
       "AssetKind": "All",
@@ -815,10 +865,10 @@
       "OriginalItemSpec": "wwwroot\\Levels\\Two\\Video\\lesson2.mp4"
     },
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Two\\Video\\lesson3.mp4",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Two\\Video\\lesson3.mp4",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/Two/Video/lesson3.mp4",
       "AssetKind": "All",
@@ -834,10 +884,10 @@
       "OriginalItemSpec": "wwwroot\\Levels\\Two\\Video\\lesson3.mp4"
     },
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Two\\Video\\lesson5.mp4",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Two\\Video\\lesson5.mp4",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/Two/Video/lesson5.mp4",
       "AssetKind": "All",
@@ -853,10 +903,10 @@
       "OriginalItemSpec": "wwwroot\\Levels\\Two\\Video\\lesson5.mp4"
     },
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Two\\Video\\lesson500.mp4",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Two\\Video\\lesson500.mp4",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/Two/Video/lesson500.mp4",
       "AssetKind": "All",
@@ -872,10 +922,10 @@
       "OriginalItemSpec": "wwwroot\\Levels\\Two\\Video\\lesson500.mp4"
     },
     {
-      "Identity": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Two\\Video\\test3.mp4",
+      "Identity": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\Levels\\Two\\Video\\test3.mp4",
       "SourceId": "EduPlatformAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ITI\\ITI\\Projects\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ITI\\ITI\\E-LearningPlatformProject\\API\\EduPlatformAPI\\EduPlatformAPI\\wwwroot\\",
       "BasePath": "_content/EduPlatformAPI",
       "RelativePath": "Levels/Two/Video/test3.mp4",
       "AssetKind": "All",

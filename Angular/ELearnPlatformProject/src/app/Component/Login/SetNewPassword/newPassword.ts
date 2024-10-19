@@ -58,7 +58,7 @@ export class NewPasswordComponent implements OnInit {
 //
 
 
-   this.userser.ResetPassword(this.email,this.VerificationCode,this.newpassword).subscribe({
+ this.userser.ResetPassword(this.email,this.VerificationCode,this.newpassword).subscribe({
 
 
 
@@ -78,8 +78,8 @@ export class NewPasswordComponent implements OnInit {
     // console.log(e.)
   } })
 
-
   }
+
 
   // Method to check if the password is strong
   private isStrongPassword(password: string): boolean {
