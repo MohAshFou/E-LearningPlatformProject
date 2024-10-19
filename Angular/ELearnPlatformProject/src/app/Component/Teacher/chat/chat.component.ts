@@ -38,16 +38,24 @@ export class ChatComponent implements OnInit {
 
   loadUnansweredQuestions(): void {
     this.teatherSer.GetAllUnansweredQuestions().subscribe({
-      next: (d) => {
-        this.allQuestions = d.map((question: any) => ({ ...question, TeacherReply: '' }));
-        this.unansweredQuestionsCount = d.length;
-        this.teatherSer.updateCount(this.unansweredQuestionsCount);
+      next: (response: any) => {
+        const questions = response || []; // تأكد من استخراج المصفوفة بشكل صحيح
+        console.log(questions)
+        if (Array.isArray(questions)) {
+          this.allQuestions = questions.map((question: any) => ({ ...question, TeacherReply: '' }));
+          this.unansweredQuestionsCount = questions.length;
+          this.teatherSer.updateCount(this.unansweredQuestionsCount);
+        } else {
+          this.allQuestions.length=0
+         
+        }
       },
       error: (e: any) => {
         console.log(e);
       }
     });
   }
+
 
   sendReply(commentId: number, teacherReply: string , studid:number): void {
 
@@ -65,7 +73,7 @@ export class ChatComponent implements OnInit {
 
         // this.signalRService.sendTeacherReply('Mohamed sayed ', teacherReply ,commentId ,studid); //
 
-        this.loadUnansweredQuestions(); 
+        this.loadUnansweredQuestions();
         this.teatherSer.updateCount(this.unansweredQuestionsCount - 1);
       },
       error: (e: any) => {

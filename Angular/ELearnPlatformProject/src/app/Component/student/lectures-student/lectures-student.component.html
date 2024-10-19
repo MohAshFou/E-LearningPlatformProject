@@ -19,9 +19,9 @@
                 <img src="Images/lessonVideo.jpg" class="card-img-top" alt="Lecture Image" />
               </div>
               <div class="card-body">
-                <h5 class="card-title">Lesson {{item.title}}</h5>
-                <p>Description: {{item.description}}</p>
-                <p class="card-text">Price: {{item.feeAmount}}</p>
+                <h5 class="card-title"> {{item.title}}</h5>
+                <p> {{item.description}}</p>
+                <p class="card-text">Price: {{item.feeAmount}} LE</p>
                 <div>Date: {{item.uploadDate}}</div>
               </div>
 
@@ -29,8 +29,10 @@
               @if (item.hasVideoAccess == "Pending") {
                 <div class="form-label text-center" style="color: #2c3e50; line-height: 1.8;">
                   <i class="fas fa-spinner fa-spin" style="margin-right: 10px;"></i>
-                  Your submitted receipt is under review by the admin.<br />
-                  For further assistance, please contact support at <strong>[01000000000]</strong>.
+                  <!-- Pending while Admin Accept your receipt , For any problem contact as  <strong>[0100000]</strong>. -->
+                  <br>
+
+                  <p class="text-warning">Your receipt is pending. For contact:  <strong>[0100000]</strong>.</p>
                 </div>
               }
               @else if (item.hasVideoAccess == "Yes") {

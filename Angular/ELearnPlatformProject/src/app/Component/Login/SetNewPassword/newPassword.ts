@@ -27,14 +27,21 @@ export class NewPasswordComponent implements OnInit {
 
   }
   // Regular expression for a strong password
+  // private strongPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  // private  = /./;
   private strongPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
 
   enterVerificationCode() {
     this.passwordErrorMessage = '';
     this.confirmPasswordErrorMessage = '';
     this.message = '';
 
+
+    console.log(this.newpassword)
+  console.log(  this.strongPasswordRegex.test(this.newpassword) )
     if (!this.isStrongPassword(this.newpassword)) {
+
       this.passwordErrorMessage = 'Password must be at least 8 characters long, contain uppercase and lowercase letters, a number, and a special character.';
       return;
     }
@@ -48,21 +55,21 @@ export class NewPasswordComponent implements OnInit {
 
 
 
-   this.userser.ResetPassword(this.email,this.VerificationCode,this.newpassword).subscribe({
+  //  this.userser.ResetPassword(this.email,this.VerificationCode,this.newpassword).subscribe({
 
 
 
-    next:(e:any)=>{
-      this.userser.removeemail()
-      this.message = 'Password Updated Successfully!';
-    }
+  //   next:(e:any)=>{
+  //     this.userser.removeemail()
+  //     this.message = 'Password Updated Successfully!';
+  //   }
 
-  ,
-  error:(e:any)=>{
+  // ,
+  // error:(e:any)=>{
 
-    this.message= e.error.message;
-    // console.log(e.)
-  } })
+  //   this.message= e.error.message;
+  //   // console.log(e.)
+  // } })
 
 
   }

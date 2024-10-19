@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, CurrencyPipe, DatePipe } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { StudentService } from '../../../Services/Student/student.service';
 import { RelationsService } from '../../../Services/Student/relations.service';
@@ -8,7 +8,7 @@ import test from 'node:test';
 @Component({
   selector: 'app-lectures-student',
   standalone: true,
-  imports: [CommonModule ,RouterModule],
+  imports: [CommonModule ,RouterModule ,CurrencyPipe],
   templateUrl: './lectures-student.component.html',
   styleUrl: './lectures-student.component.css'
 })
