@@ -55,7 +55,7 @@ export class NewPasswordComponent implements OnInit {
     }
 
 
-
+//
 
 
    this.userser.ResetPassword(this.email,this.VerificationCode,this.newpassword).subscribe({
