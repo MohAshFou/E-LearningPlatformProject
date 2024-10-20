@@ -3,30 +3,28 @@ body {
   background-color: #f0f2f5;
 }
 .sidebar{
-
-  position: relative;
-  top: -25px;
-  left: -15px;
-  height: 100vh;
+  position: fixed;
+  top: 70px;
+  left: -5px;
+  height: 100%;
 }
 
 nav {
   background-color: #2c3e50;
   width: 250px;
   text-align: center;
-  height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 100;
   overflow-y: auto;
-  padding-top: 20px;
+  /* padding-top: 20px; */
 }
 
 #Name {
   text-align: center;
   font-weight: bold;
-  font-family: 'Courier New', Courier, monospace;
+  font-family:'Lucida Sans', sans-serif;
   color: wheat;
   background-color: #2c3e50;
   padding: 10px;
@@ -36,7 +34,7 @@ nav {
 }
 
 .sidebar .nav-link {
-  font-weight: bold;
+  /* font-weight: bold; */
   color: white;
   display: flex;
   align-items: center;
@@ -46,6 +44,7 @@ nav {
   font-size: 18px;
   margin-bottom: 10px;
   transition: background-color 0.3s ease;
+  font-family: 'Lucida Sans', sans-serif;
 }
 
 .sidebar .nav-link i {
@@ -67,12 +66,14 @@ nav {
   background-color: #e74c3c;
   color: white;
   border: none;
-  padding: 10px 15px;
-  font-size: 18px;
+  padding: 10px 20px;
+  font-size: 16px;
   cursor: pointer;
-  margin-top: 20px;
-  border-radius: 5px;
-  width: 90%;
+  margin-top: 15px;
+  margin-left: 60px;
+  border-radius: 3px;
+  width:max-content;
+  height: max-content;
 }
 
 .custom-logout-button:hover {
@@ -100,7 +101,4 @@ nav {
     justify-content: center;
   }
 
-  .custom-logout-button {
-    width: 100%;
-  }
 }

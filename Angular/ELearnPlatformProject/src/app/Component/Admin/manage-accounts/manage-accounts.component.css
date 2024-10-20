@@ -1,5 +1,5 @@
 .manage-account-container {
-  max-width: 500px;
+  max-width: 700px;
   margin: 0 auto;
   padding: 20px;
   background-color: #f9f9f9;
@@ -14,7 +14,7 @@
 .form-control {
   width: 100%;
   padding: 10px;
-  font-size: 1rem;
+  font-size: 16px;
   border-radius: 4px;
   border: 1px solid #ccc;
 }
@@ -31,11 +31,12 @@
 
 .btn {
   padding: 10px 20px;
-  font-size: 1rem;
+  font-size: 16px;
   border-radius: 4px;
-  background-color: #007bff;
+  background-color: #2c3e50;
   color: white;
   border: none;
+  width:100%;
 }
 
 .btn:disabled {

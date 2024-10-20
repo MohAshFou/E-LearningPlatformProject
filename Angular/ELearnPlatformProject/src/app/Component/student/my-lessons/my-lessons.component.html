@@ -1,5 +1,5 @@
 <div *ngIf="paidLessons.length > 0; else noData">
-  <h2>Your Paid Lessons</h2>
+  <h3 style="text-align: center;">Your Paid Lessons</h3>
   <div class="lessons-container">
     <div *ngFor="let lesson of paidLessons" class="lesson-card">
       <h3>{{ lesson.title }}</h3>
