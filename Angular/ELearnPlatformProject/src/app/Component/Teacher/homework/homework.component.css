@@ -1,3 +1,6 @@
+/* @import " @angular/material/prebuilt-themes/azure-blue.css"; */
+
+
 .table {
     width: 100%;
     margin-top: 30px;
@@ -44,7 +47,7 @@ button img {
 
 button:hover {
     transform: scale(1.1);
-    background-color: #d1f0f0; 
+    background-color: #d1f0f0;
     border-radius: 50%;
 }
 

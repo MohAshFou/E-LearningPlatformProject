@@ -3,12 +3,13 @@ import { TeacherService } from '../../../Services/Teacher/teacher.service';
 import { ReplyToQuestion } from '../../../Models/Teacher/reply-to-question';
 import { FormsModule } from '@angular/forms';
 import { SignalRService } from '../../../Services/Hubs/signalr.service';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
   selector: 'app-chat',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, DatePipe],
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css']
 })

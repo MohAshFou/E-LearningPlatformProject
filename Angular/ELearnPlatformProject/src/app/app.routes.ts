@@ -122,9 +122,14 @@ export const routes: Routes = [
     path: "admin",
     component: AdminComponent,
     canActivate: [adminGuard] ,children:[
-
       {
         path: "Receipt",
+        component: ReceiptComponent
+
+      },
+
+      {
+        path: "",
         component: ReceiptComponent
       },
 

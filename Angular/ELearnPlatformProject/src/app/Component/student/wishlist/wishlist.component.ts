@@ -60,6 +60,15 @@ export class WishlistComponent {
 
   }
 
+  getPaypal(lesson:any){
+    this.Test.setcurrentLesson(lesson)
+    const total = lesson.feeAmount;
+    const description = `Payment for lesson: ${lesson.title}`
+    localStorage.setItem('isPaid', 'false');
+
+    this.rou.navigate(['student/PayPal'], { state: { total, description } });
+  }
+
   removeFromWishlist(lesson: LessonWishList): void {
 
     this.wishlistService.removelessonfromWishList(this.id, lesson.lessonId).subscribe({

@@ -181,6 +181,7 @@ import { log } from 'node:console';
     togglePlay() {
       const video: HTMLVideoElement = this.videoPlayer.nativeElement;
       if (video.paused) {
+        console.log(video)
         video.play();
         this.isPaused = false;
       } else {
@@ -270,7 +271,12 @@ import { log } from 'node:console';
 
   clearInput() {
     this.homeworkFile = null;
-    (document.getElementById('receiptInput') as HTMLInputElement).value = '';
+
+   let x=  (document.getElementById('receiptInput') as HTMLInputElement)
+   console.log(x)
+    	      x.value = '';
+
+            x.disabled =true
   }
     Back()
     {

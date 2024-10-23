@@ -8,8 +8,9 @@
   .card {
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
     border: none;
-    background-color:#e9ebed; /* white background for card */
+    background-color:#f4f5f6; /* white background for card */
     color: #333;
+    /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
   }
 
   .card-body {
@@ -18,31 +19,33 @@
     flex-direction: column;
   }
   textarea{
- background-color: #f1f3f4 !important;
+ background-color:#fbfdff !important;
 
 
   }
 
   .form-label {
-    font-size: 1rem;
     margin-bottom: 0.5rem;
-    color: #555; /* darker text color for labels */
+    color: black; /* darker text color for labels */
+    font-family: 'Lucida Sans', sans-serif !important;
+    font-size: 16px !important;
+
   }
 
   .label-title {
     font-weight: bold;
     margin-right: 5px;
-    color: #000; /* black for emphasis */
+    color: #000; 
   }
 
-  .form-control-static {
-    background-color: #f1f1f1; /* light gray background for non-editable text */
+  /* .form-control-static {
+    background-color: #f1f1f1;
     color: #333;
     padding: 0.5rem;
     border-radius: 5px;
     font-size: 0.95rem;
-    border: 1px solid #ddd; /* subtle border */
-  }
+    border: 1px solid #ddd; 
+  } */
 
   textarea#teacherReply {
     resize: vertical;
@@ -59,6 +62,7 @@
   .btn {
     margin-top: 10px;
     font-size: .9rem;
+    background-color: #2c3e50;
 
   }
 
@@ -74,10 +78,13 @@
     cursor: pointer;
     transition: transform 0.2s;
     color: #ffffff;
-    background-color: #3498db;
+    background-color: #2c3e50;
     padding: 5px 10px;
     border-radius: 4px;
     text-decoration: none;
+    font-family: 'Lucida Sans',sans-serif;
+    width: 150px;
+    font-size: 16px;
 }
 
 
@@ -86,3 +93,5 @@
     background-color: #2980b9;
     font-family: 'Lucida Sans';
 }
+
+

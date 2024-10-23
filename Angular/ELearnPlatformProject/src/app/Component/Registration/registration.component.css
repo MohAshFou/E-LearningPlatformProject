@@ -1,13 +1,18 @@
 /* General page styling */
 #body {
-  background-color:  rgb(184, 184, 184); /* لون الخلفية */
-  font-family: 'Arial', sans-serif;
+  background-color:  rgb(184, 184, 184);
+  font-family:'Lucida Sans',sans-serif;
   margin: 0;
   display: flex;
-  justify-content: center; /* للتوسيط أفقيًا */
-
-  height: auto /* ارتفاع الصفحة بالكامل */
+  justify-content: center; 
+  background-image: url("../../../../public/Images/bg1.jpeg") ;
+  background-repeat: no-repeat;
+  background-size:cover;
+  height:100vh; 
+  overflow-y: scroll;
+  background-attachment: fixed;
 }
+
 
 /* Register form styling */
 .register-form {
@@ -15,10 +20,12 @@
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   padding:40px ; /* زيادة الحشو */
-
+  height: max-content;
   width: 100%;
   max-width: 500px; /* تحديد عرض النموذج */
   text-align: left; /* محاذاة النص إلى اليسار */
+  position: relative;
+  top:50px;
 }
 
 /* Title styling */
@@ -49,10 +56,19 @@
   padding: 12px; /* زيادة الحشو */
   border: 2px solid #007bff; /* لون الحدود */
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 14px;
   width: 100%; /* عرض الحقل */
   box-sizing: border-box; /* احتساب الحشو والحدود في الحجم الكلي */
   transition: border-color 0.3s ease; /* تأثير تغيير لون الحدود */
+}
+
+.form-control{
+  height: 40px;
+}
+
+.form-select{
+  height: 50px;
+  font-size: 14px;
 }
 
 .input-group input:focus,

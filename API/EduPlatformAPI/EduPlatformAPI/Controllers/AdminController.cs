@@ -91,12 +91,22 @@ namespace EduPlatformAPI.Controllers
             {
                 return BadRequest();
             }
-            var AccessPeriod = context.Lessons.FirstOrDefault(i => i.LessonId== enr.LessonId).AccessPeriod;
-            rec.AdminReviewed = "Y";
-            enr.ReceiptStatus = state;
-            enr.AccessStartDate = DateTime.Now;
-            enr.AccessEndDate = DateTime.Now.AddDays(AccessPeriod);
+
+            if (state == "accept")
+            {
+                var AccessPeriod = context.Lessons.FirstOrDefault(i => i.LessonId == enr.LessonId).AccessPeriod;
+                rec.AdminReviewed = "Y";
+                enr.ReceiptStatus = state;
+                enr.AccessStartDate = DateTime.Now;
+                enr.AccessEndDate = DateTime.Now.AddDays(AccessPeriod);
+                context.SaveChanges();
+                return Ok();
+            }
+            context.Receipts.Remove(rec);
+            context.Enrollments.Remove(enr);
             context.SaveChanges();
+
+
             return Ok();
         }
 

@@ -21,7 +21,7 @@
               <div class="card-body">
                 <h5 class="card-title"> {{item.title}}</h5>
                 <p> {{item.description}}</p>
-                <p class="card-text">Price: {{item.feeAmount}} LE</p>
+                <p class="card-text" style="font-weight: bold; color: rgb(37, 181, 37);">Price: {{item.feeAmount}} LE</p>
                 <div>Date: {{item.uploadDate}}</div>
               </div>
 
@@ -32,12 +32,12 @@
                   <!-- Pending while Admin Accept your receipt , For any problem contact as  <strong>[0100000]</strong>. -->
                   <br>
 
-                  <p class="text-warning">Your receipt is pending. For contact:  <strong>[0100000]</strong>.</p>
+                  <p class="" style="color: #2c3e50;">Your receipt is pending. For contact:  <strong>01099962058</strong>.</p>
                 </div>
               }
               @else if (item.hasVideoAccess == "Yes") {
-                <div class="card-footer">
-                  <button (click)="WatchVedio(item)" class="btn btn-success">Watch Now</button>
+                <div class="card-footer" >
+                  <button (click)="WatchVedio(item)" class="btn" style="width: 100%;">Watch Now</button>
                 </div>
               }
               @else {
@@ -46,16 +46,16 @@
                   <!-- Wishlist Button -->
                   @if (item.islessonInWishlist === 'NO') {
                     <button #wis class="wish-list-button" (click)="addToWishList(wis,item)" >
-                      <i class="fas fa-heart" style="color: white;"></i>
+                      <i class="fas fa-heart" style="color: white; font-size: 30px;"></i>
                     </button>
                   }
                   @else {
                     <button #wis class="wish-list-button" (click)="remove(wis,item)"  >
-                      <i class="fas fa-heart"  style="color:red;"></i>
+                      <i class="fas fa-heart"  style="color:red; font-size: 30px;"></i>
                     </button>
                   }
-                  <button (click)="goToReceipt(item)" class="btn btn-primary "  style="margin-top: -6px;">Upload Your Receipt</button>
-                  <button (click)=" goToReceiptpaypal(item)" class="btn btn-primary">Pay Now</button>
+                  <button (click)="goToReceipt(item)" class="btn btn-primary "  style="margin-top: -6px; position: relative; right: 5px;">Receipt</button>
+                  <button (click)=" goToReceiptpaypal(item)" class="btn btn-primary" style="margin-top: -6px; position: relative; ">Paypal</button>
 
                 </div>
               }

@@ -1,8 +1,11 @@
 /* General page styling */
 .body {
 
-  background-color: rgb(184, 184, 184); /* لون الخلفية */
-  font-family: 'Arial', sans-serif;
+  /* background-color: rgb(184, 184, 184);  */
+  background-image: url("../../../../../public/Images/bg1.jpeg") ;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family:'Lucida Sans', sans-serif;
   margin: 0;
   display: flex;
   justify-content: center; /* للتوسيط أفقيًا */
@@ -20,12 +23,17 @@
   width: 100%;
   max-width: 400px; /* تحديد عرض البطاقة */
   text-align: center;
+  position: relative;
 }
 
 /* Header styling */
-.login-header h2 {
-  color: #007bff; /* لون النص */
+.login-header h1 {
+  /* color: #007bff;  */
   margin-bottom: 20px;
+  font-family: 'Lucida Sans', sans-serif;
+  font-weight: bold;
+  color: black;
+  /* opacity: 100%; */
 }
 
 /* Input fields */

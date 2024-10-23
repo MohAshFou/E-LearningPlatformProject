@@ -16,7 +16,7 @@ body {
   flex-direction: row;
 }
 .lecture-card {
-  background-color: #fff;
+  background-color: #dde5ec;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -24,6 +24,8 @@ body {
   text-align: center;
   position: relative;
   margin-bottom: 20px;
+  font-family: 'Lucida Sans', sans-serif;
+  font-size: 16px;
 }
 .lecture-card img {
   width: 100%;
@@ -92,6 +94,7 @@ body {
   border-radius: 5px;
   cursor: pointer;
   margin-bottom: 15px;
+  width: 80%;
 }
 .lecture-card .play-button {
   position: absolute;

@@ -47,7 +47,7 @@ button img, a.btn-info img {
     width: 20px;
 }
 
-button:hover, a.btn-info:hover {
+button:hover{
     transform: scale(1.02);
     background-color: #2980b9;
     font-family: 'Lucida Sans';

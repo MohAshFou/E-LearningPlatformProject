@@ -93,6 +93,7 @@ export class ReceiptStudentComponent implements OnInit {
   }
 
   GoToHome() {
-    this.router.navigate(['/student']);
+    // this.router.navigate(['/student']);
+    this.loc.back()
   }
 }

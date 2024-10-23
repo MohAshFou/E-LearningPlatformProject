@@ -25,7 +25,7 @@ export class SubmittedhomeworkDetailComponent implements OnInit {
 
   ngOnInit(): void {
 
-    
+
     this.allde = this.sumser.GetAlldetails();
     console.log(this.allde);
   }
@@ -35,7 +35,7 @@ export class SubmittedhomeworkDetailComponent implements OnInit {
 
     this.teachserv.acceptorrejectHomework(data).subscribe({
       next: () => {
-        this.rou.navigate(['/teacher']);
+        this.rou.navigate(['/teacher/homework']);
       },
       error: (e: any) => {
         console.error(e);

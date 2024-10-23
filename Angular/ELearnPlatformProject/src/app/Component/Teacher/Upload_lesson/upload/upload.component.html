@@ -30,7 +30,7 @@
       <input  #homework   id="HomeWorkPDF" type="file" accept=".pdf" (change)="onHomeWork($event)" required (blur)="validateField('PDFHomework')" /><br>
       <div *ngIf="invalidFields.PDFHomework" class="text-danger mt-1">HomeWork PDF is required</div> <br>
 
-      <label>Attached File:</label>
+      <label> Upload Summary </label>
       <input #Attach type="file" accept=".pdf" (change)="onAttachSelected($event)" (blur)="validateField('FileAttach')" /><br>
       <div *ngIf="invalidFields.FileAttach" class="text-danger mt-1">Attachment file is required</div> <br>
 

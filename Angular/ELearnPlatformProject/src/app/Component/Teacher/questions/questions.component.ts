@@ -1,27 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { TeacherService } from '../../../Services/Teacher/teacher.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
 
 @Component({
   selector: 'app-questions',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, MatCheckboxModule , MatTableModule, MatPaginatorModule, MatSortModule],
   templateUrl: './questions.component.html',
-  styleUrl: './questions.component.css'
+  styleUrls: ['./questions.component.css']
 })
-export class QuestionsComponent {
+export class QuestionsComponent implements OnInit {
 
-  questions: any[] = []; // Initialize as an array
+  dataSource = new MatTableDataSource<any>(); // استخدام MatTableDataSource
   selectedQuestions: any[] = []; // Array to store selected questions
+  displayedColumns: string[] = ['gradeLevel', 'lessonTitle', 'question', 'reply', 'selected']; // Define the columns to display
+  @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatPaginator) paginator!: MatPaginator; // ViewChild to access paginator
 
   constructor(private myserv: TeacherService) {}
 
   ngOnInit(): void {
-    this.myserv.GetAllQuestionsAndRepliesonForCommanQuestion	().subscribe({
+    this.myserv.GetAllQuestionsAndRepliesonForCommanQuestion().subscribe({
       next: (data: any) => {
-        this.questions = data;
-        console.log(this.questions);
+        this.dataSource.data = data; // تعيين البيانات إلى dataSource
+        console.log(this.dataSource.data);
       },
       error: (err) => {
         console.error(err);
@@ -29,8 +36,14 @@ export class QuestionsComponent {
     });
   }
 
+  // Handle paginator changes
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator; // تعيين paginator إلى dataSource
+    this.dataSource.sort = this.sort;
+  }
+
   sendSelectedQuestions(): void {
-    this.selectedQuestions = this.questions
+    this.selectedQuestions = this.dataSource.data
       .filter(question => question.selected)
       .map(question => ({
         gradeLevel: question.gradeLevel,
@@ -43,7 +56,7 @@ export class QuestionsComponent {
     this.myserv.saveCommonQuestionChosen(this.selectedQuestions).subscribe({
       next: (data: any) => {
         // بعد إرسال الأسئلة، قم بإزالة الأسئلة المحددة من المصفوفة
-        this.questions = this.questions.filter(question => !question.selected);
+        this.dataSource.data = this.dataSource.data.filter(question => !question.selected);
         console.log('Selected questions sent:', this.selectedQuestions);
       },
       error: (err) => {
@@ -53,5 +66,4 @@ export class QuestionsComponent {
 
     console.log(this.selectedQuestions);
   }
-
 }

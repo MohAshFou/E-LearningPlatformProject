@@ -1,24 +1,39 @@
-<table class="table table-bordered table-striped" style="margin-top: 30px;">
-  <thead class="thead-dark">
-    <tr>
-      <th>#</th>
-      <th>Student</th>
-      <th>Course Title</th>
-      <th>Level</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let item of allStudents; let i = index; trackBy: trackByStudentId">
-      <td>{{ i + 1 }}</td>
-      <td>{{ item.userName }}</td>
-      <td>{{ item.lessonTitle }}</td>
-      <td>{{ item.gradeLevel }}</td>
-      <td>
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <ng-container matColumnDef="index">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>#</th>
+      <td mat-cell *matCellDef="let item; let i = index">{{ i + 1 }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="userName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Student</th>
+      <td mat-cell *matCellDef="let item">{{ item.userName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="lessonTitle">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Course Title</th>
+      <td mat-cell *matCellDef="let item">{{ item.lessonTitle }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="gradeLevel">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Level</th>
+      <td mat-cell *matCellDef="let item">{{ item.gradeLevel }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef>Action</th>
+      <td mat-cell *matCellDef="let item">
         <button (click)="onclick(item)">
           <img style="width: 20px;" src="Images/Edit.PNG" alt="Edit">
         </button>
       </td>
-    </tr>
-  </tbody>
-</table>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[1, 10, 20]" showFirstLastButtons aria-label="Select page of students">
+  </mat-paginator>
+</div>

@@ -1,7 +1,7 @@
-
-import { Component, OnInit } from '@angular/core';
-// import { ReceiptService } from '../../../Services/Receipt/receipt.service';
-import { ReceiptCardComponent } from '../receipt-card/receipt-card.component';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatSort, MatSortModule } from '@angular/material/sort';
 import { CommonModule } from '@angular/common';
 import { ReceiptService } from '../../../Services/Admin/receipt-service.service';
 import { Router } from '@angular/router';
@@ -9,14 +9,16 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-receipt',
   standalone: true,
-  imports: [ReceiptCardComponent, CommonModule],
+  imports: [CommonModule , MatTableModule, MatPaginatorModule, MatSortModule],
   templateUrl: './receipt.component.html',
   styleUrls: ['./receipt.component.css'],
 })
-
 export class ReceiptComponent implements OnInit {
-  receipts: any[] = [];
+  displayedColumns: string[] = ['index', 'name', 'title', 'gradeLevel', 'details'];
+  dataSource = new MatTableDataSource<any>([]);
 
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
   constructor(private receiptService: ReceiptService, private router: Router) {}
 
@@ -27,15 +29,11 @@ export class ReceiptComponent implements OnInit {
 
   fetchReceipts() {
     console.log('fetchReceipts method called');
-    // this.http.get<any[]>(`https://localhost:7217/api/Admin/unapproved`).subscribe
     this.receiptService.getUnapprovedReceipts().subscribe(
-
       (data) => {
-
         if (data && data.length > 0) {
-
-          this.receipts = data;
-          console.log( this.receipts);
+          this.dataSource.data = data;
+          console.log(this.dataSource.data);
         } else {
           console.error('No receipts returned from the API');
         }
@@ -46,26 +44,13 @@ export class ReceiptComponent implements OnInit {
     );
   }
 
-  // onSubmitReceipt(receiptData: any) {
-  //   console.log('Receipt submitted:', receiptData);
-  // }
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
 
-  // onAcceptReceipt(receipt: any) {
-  //   console.log('Receipt accepted:', receipt);
-  // }
-
-  // onRejectReceipt(receipt: any) {
-  //   console.log('Receipt rejected:', receipt);
-  // }
-
-  viewReceiptDetails(receipt: any){
-
-    this.receiptService.SetAlldetails(receipt)
-    this.router.navigate(["admin/Receipt/"+ receipt.receiptId])
+  viewReceiptDetails(receipt: any) {
+    this.receiptService.SetAlldetails(receipt);
+    this.router.navigate(["admin/Receipt/" + receipt.receiptId]);
   }
 }
-
-
-
-
-

@@ -9,19 +9,11 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = EduPlatformAPI
 build_property.RootNamespace = EduPlatformAPI
-<<<<<<< HEAD
-build_property.ProjectDir = d:\ITI\ITI\Projects\E-LearningPlatformProject\API\EduPlatformAPI\EduPlatformAPI\
-=======
-build_property.ProjectDir = d:\ITI\ITI\E-LearningPlatformProject\API\EduPlatformAPI\EduPlatformAPI\
->>>>>>> aebef5cf1de83405e5d752501c0210ce1008ff14
+build_property.ProjectDir = D:\ITI\ITI\Projects\E-LearningPlatformProject\API\EduPlatformAPI\EduPlatformAPI\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-<<<<<<< HEAD
-build_property.MSBuildProjectDirectory = d:\ITI\ITI\Projects\E-LearningPlatformProject\API\EduPlatformAPI\EduPlatformAPI
-=======
-build_property.MSBuildProjectDirectory = d:\ITI\ITI\E-LearningPlatformProject\API\EduPlatformAPI\EduPlatformAPI
->>>>>>> aebef5cf1de83405e5d752501c0210ce1008ff14
+build_property.MSBuildProjectDirectory = D:\ITI\ITI\Projects\E-LearningPlatformProject\API\EduPlatformAPI\EduPlatformAPI
 build_property._RazorSourceGeneratorDebug = 

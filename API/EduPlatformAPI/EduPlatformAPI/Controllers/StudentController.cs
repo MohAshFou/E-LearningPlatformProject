@@ -15,7 +15,7 @@ using System.Security.Claims;
 
 namespace EduPlatformAPI.Controllers
 {
-  //  [Authorize(Policy = "StudentOnly")]
+    //  [Authorize(Policy = "StudentOnly")]
     [Route("api/[controller]")]
     [ApiController]
     public class StudentController : ControllerBase
@@ -30,9 +30,9 @@ namespace EduPlatformAPI.Controllers
             this.context = context;
             this.vidSer = vidSer;
             this.videos = videos;
-              _hubContext= hubContext;
+            _hubContext = hubContext;
 
-    }
+        }
 
 
         [HttpGet("GetStudentInfo")]
@@ -156,9 +156,9 @@ namespace EduPlatformAPI.Controllers
             var enrollment = context.Enrollments.FirstOrDefault(e => e.LessonId == lessonID && e.StudentId == studentID);
             var currentDate = DateTime.Now;
 
-         
 
-            if (   enrollment == null ||enrollment.AccessEndDate < currentDate || enrollment.ReceiptStatus== "reject" )
+
+            if (enrollment == null || enrollment.AccessEndDate < currentDate || enrollment.ReceiptStatus == "reject")
             {
                 return "NO";
             }
@@ -176,9 +176,10 @@ namespace EduPlatformAPI.Controllers
             return "NO";
         }
 
-        
-             private string islessonInWishlist(int studentID, int lessonID) { 
-               var lesson = context.FavoriteLessons.FirstOrDefault(e => e.LessonId == lessonID && e.StudentId == studentID);
+
+        private string islessonInWishlist(int studentID, int lessonID)
+        {
+            var lesson = context.FavoriteLessons.FirstOrDefault(e => e.LessonId == lessonID && e.StudentId == studentID);
 
 
             if (lesson == null)
@@ -204,14 +205,14 @@ namespace EduPlatformAPI.Controllers
                    LessonId = l.LessonId,
                    Title = l.Lesson.Title,
                    Description = l.Lesson.Description,
-                   FeeAmount = l.Lesson.FeeAmount ,
+                   FeeAmount = l.Lesson.FeeAmount,
                    UploadDate = l.Lesson.UploadDate,
                }
-                   
+
                    )
                .ToList();
 
-         
+
 
             if (!favoriteLessons.Any())
             {
@@ -279,7 +280,7 @@ namespace EduPlatformAPI.Controllers
                     var videoUploadResult = videos.UploadVideo(newHomework.homeworkpdf, newHomework.level, "PDFHomework");
 
                     enrr.SubmissionLink = newHomework.homeworkpdf.FileName;
-                    enrr.SubmissionDate= DateTime.Now;
+                    enrr.SubmissionDate = DateTime.Now;
                     enrr.HomeWorkEvaluation = "Pending";
                     context.SaveChanges();
                 }
@@ -337,8 +338,8 @@ namespace EduPlatformAPI.Controllers
 
         public IActionResult getallquestionandreply(getallquestionandreply s)
         {
-            var studentcoment = context.StudentComments.Where(e => e.LessonId == s.lessonid && e.StudentId == s.studentid).Select(s=> s.Comment);
-       
+            var studentcoment = context.StudentComments.Where(e => e.LessonId == s.lessonid && e.StudentId == s.studentid).Select(s => s.Comment);
+
             return Ok(studentcoment);
         }
 
@@ -419,9 +420,9 @@ namespace EduPlatformAPI.Controllers
                 Description = x.Description,
                 FeeAmount = x.FeeAmount,
                 GradeLevel = x.GradeLevel,
-                HomeworkUrl = x.homeworkURL,
-                PdfUrl = x.PDFURL,
-                VideoUrl = x.VideoURL,
+                homeworkURL = x.homeworkURL,
+                PDFURL = x.PDFURL,
+                videoURL = x.VideoURL,
                 UploadDate = x.UploadDate,
                 HomeWorkEvaluation = x.HomeWorkEvaluation
             }).ToList();
@@ -437,22 +438,22 @@ namespace EduPlatformAPI.Controllers
         {
             if (ModelState.IsValid)
             {
-             
+
 
                 if (newHomework.image != null)
                 {
 
-                  
+
                     var receit = new Receipt()
                     {
 
                         AdminReviewed = "N",
-                        UploadDate = DateTime.Now ,
-                        ReceiptImageLink= newHomework.image.FileName ,
+                        UploadDate = DateTime.Now,
+                        ReceiptImageLink = newHomework.image.FileName,
 
                     };
-                     context.Receipts.Add( receit );
-                  
+                    context.Receipts.Add(receit);
+
                     context.SaveChanges();
 
                     var videoUploadResult = videos.UploadVideo(newHomework.image, newHomework.level, "ReceiptImages");
@@ -464,25 +465,25 @@ namespace EduPlatformAPI.Controllers
                         ReceiptId = receit.ReceiptId,
                         AccessStartDate = null,
                         AccessEndDate = null,
-                        SubmissionDate= null,
-                        SubmissionLink="",
+                        SubmissionDate = null,
+                        SubmissionLink = "",
                         HomeWorkEvaluation = "",
-                        UserName="",
-                        Password="",
-                        ReceiptStatus="Pending"
+                        UserName = "",
+                        Password = "",
+                        ReceiptStatus = "Pending"
 
 
 
                     };
-                        context.Enrollments.Add( enr );
+                    context.Enrollments.Add(enr);
                     context.SaveChanges();
 
-               var FavoriteLesson =  context.FavoriteLessons.FirstOrDefault(i => i.StudentId == newHomework.id && i.LessonId == newHomework.lessonid);
+                    var FavoriteLesson = context.FavoriteLessons.FirstOrDefault(i => i.StudentId == newHomework.id && i.LessonId == newHomework.lessonid);
                     if (FavoriteLesson != null)
                     {
                         RemoveWishlist(newHomework.id, newHomework.lessonid);
 
-                       
+
                     }
 
 
@@ -504,20 +505,22 @@ namespace EduPlatformAPI.Controllers
 
         [HttpDelete("RemoveWishlist")]
 
-        public IActionResult RemoveWishlist(int studentid, int lessonid) {
+        public IActionResult RemoveWishlist(int studentid, int lessonid)
+        {
 
 
             var wish = context.FavoriteLessons.FirstOrDefault(i => i.StudentId == studentid && i.LessonId == lessonid);
-            if (wish == null) { 
-            
-            
-              return NotFound();
+            if (wish == null)
+            {
+
+
+                return NotFound();
             }
-            context.FavoriteLessons.Remove( wish ); 
+            context.FavoriteLessons.Remove(wish);
             context.SaveChanges();
             return Ok();
-        
-        
+
+
         }
 
 
@@ -566,9 +569,9 @@ namespace EduPlatformAPI.Controllers
                     GradeLevel = q.GradeLevel,
                     LessonName = q.LessonName,
                     QuestionText = q.QuestionText,
-                    ReplyText = q.ReplyText ,
+                    ReplyText = q.ReplyText,
 
-                    Id= q.Id
+                    Id = q.Id
                 })
                 .ToListAsync();
 
@@ -603,7 +606,7 @@ namespace EduPlatformAPI.Controllers
             {
                 LessonId = lessonid,
                 StudentId = studentid,
-                ReceiptId = 1,
+                ReceiptId = 1024,
                 AccessStartDate = DateTime.Now,
                 AccessEndDate = DateTime.Now.AddDays(AccessPeriod),
                 SubmissionDate = null,
